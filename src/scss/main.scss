@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:700');
+
+/* Base files. */
+@import "base/normalize";
+@import "base/variables";
+@import "base/functions";
+@import "base/base-styles";
+@import "base/utils";
+@import "base/typography";
+
+/* Modules */
+@import "modules/grid";
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/lists";
+@import "modules/code";
+@import "modules/tables";
+@import "modules/spacing";
+@import "modules/media-queries";
+
+#content,
+#root,
+body,
+html {
+  height: 100%;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  line-height: 1;
+  background-color: #272727;
+  color: #F8F5EB;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: 'Dosis', sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+a,
+a:visited {
+  color: #F8F5EB;
+  // line-height: 30px;
+  display: block;
+  text-decoration: none;
+}
+/* Containers */
+#container {
+  margin: 0 auto;
+  min-height: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 80px 50px;
+}
+
+// canvas {
+//   position: fixed;
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   overflow: hidden;
+//   float: left;
+//   z-index: -100;
+// }
