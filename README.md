@@ -1,9 +1,9 @@
 
 # cozy.nyc
 
-[![Build Status](https://travis-ci.org/bertho-zero/react-redux-universal-hot-example.svg?branch=master&style=flat-square)](https://travis-ci.org/bertho-zero/react-redux-universal-hot-example)
-[![Dependency Status](https://david-dm.org/bertho-zero/react-redux-universal-hot-example.svg?style=flat-square)](https://david-dm.org/bertho-zero/react-redux-universal-hot-example)
-[![devDependency Status](https://david-dm.org/bertho-zero/react-redux-universal-hot-example/dev-status.svg?style=flat-square)](https://david-dm.org/bertho-zero/react-redux-universal-hot-example?type=dev)
+[![Build Status](https://travis-ci.org/cozy-nyc/cozy.nyc.svg?branch=master&style=flat-square)](https://travis-ci.org/cozy-nyc/cozy.nyc)
+[![Dependency Status](https://david-dm.org/cozy-nyc/cozy.nyc.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc)
+[![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
 
 ---
 
