@@ -19,11 +19,11 @@ export const socket = io('', { path: host('/ws'), autoConnect: false });
 
 export function createApp(req) {
   if (req === 'rest') {
-    return configureApp(rest(host('/api')).axios(axios));
+    return configureApp(rest(host()).axios(axios));
   }
 
   if (__SERVER__ && req) {
-    const app = configureApp(rest(host('/api')).axios(axios.create({
+    const app = configureApp(rest(host()).axios(axios.create({
       headers: {
         Cookie: req.get('cookie'),
         authorization: req.header('authorization') || ''

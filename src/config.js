@@ -19,18 +19,18 @@ module.exports = Object.assign(
       title: 'React Redux Example',
       description: 'All the modern best practices in one example.',
       head: {
-        titleTemplate: 'React Redux Example: %s',
+        titleTemplate: 'cozy.%s',
         meta: [
-          { name: 'description', content: 'All the modern best practices in one example.' },
+          { name: 'description', content: 'A site for neets...' },
           { charset: 'utf-8' },
-          { property: 'og:site_name', content: 'React Redux Example' },
-          { property: 'og:image', content: 'https://react-redux.herokuapp.com/logo.jpg' },
+          { property: 'og:site_name', content: 'cozy.nyc' },
+          { property: 'og:image', content: 'https://github.com/cozy-nyc/cozy-nyc-frontend/blob/master/dist/img/cube.svg' },
           { property: 'og:locale', content: 'en_US' },
-          { property: 'og:title', content: 'React Redux Example' },
-          { property: 'og:description', content: 'All the modern best practices in one example.' },
+          { property: 'og:title', content: 'cozy.' },
+          { property: 'og:description', content: 'A site for neets...' },
           { property: 'og:card', content: 'summary' },
-          { property: 'og:site', content: '@erikras' },
-          { property: 'og:creator', content: '@erikras' },
+          { property: 'og:site', content: '@cozy.nyc' },
+          { property: 'og:creator', content: '@cozy.nyc' },
           { property: 'og:image:width', content: '200' },
           { property: 'og:image:height', content: '200' }
         ]

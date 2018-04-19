@@ -10,6 +10,23 @@ import Register from 'containers/Register/Loadable';
 import Survey from 'containers/Survey/Loadable';
 import Widgets from 'containers/Widgets/Loadable';
 
+// Shop
+import Shop from './containers/shop/index';
+import Item from './containers/shop/itemdetail';
+
+// Radio
+import RadioHome from './containers/radio/index';
+import Stream from './containers/radio/stream';
+
+// Boards
+import BoardsHome from './containers/boards/index';
+import Board from './containers/boards/board';
+import Thread from './containers/boards/thread';
+
+// Discovery
+import DiscoveryHome from './containers/discovery/index';
+
+
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
   authenticatedSelector: state => state.auth.user !== null,
@@ -32,6 +49,14 @@ const routes = [
       { path: '/', exact: true, component: Home },
       { path: '/about', component: About },
       { path: '/chat', component: Chat },
+      { path: '/shop', component: Shop },
+      { path: '/shop/:itemid', component: Item },
+      { path: '/radio', component: RadioHome },
+      { path: '/radio/:channelname', component: Stream },
+      { path: '/boards', component: BoardsHome },
+      { path: '/boards/:boardtag', component: Board },
+      { path: '/boards/:boardtag/:threadid', component: Thread },
+      { path: '/discovery', component: DiscoveryHome },
       { path: '/chat-feathers', component: isAuthenticated(ChatFeathers) },
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },

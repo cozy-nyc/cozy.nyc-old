@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
 
@@ -25,35 +23,35 @@ import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 
-export default function createReducers(asyncReducers){
-  return{
-   categories: CategoryReducer,
-   items: ItemReducer,
-   cart: cartReducer,
+export default function createReducers(asyncReducers) {
+  return {
+    categories: CategoryReducer,
+    items: ItemReducer,
+    cart: cartReducer,
 
-   // Users/auth
-   activeUser: activeUserReducer,
-   users: usersReducer,
+    // Users/auth
+    activeUser: activeUserReducer,
+    users: usersReducer,
 
-   // Radio
-   channels: ChannelsReducer,
+    // Radio
+    channels: ChannelsReducer,
 
-   // Boards
-   boards: BoardReducer,
-   activeBoard: ActiveBoard,
-   activeThread: ActiveThread,
+    // Boards
+    boards: BoardReducer,
+    activeBoard: ActiveBoard,
+    activeThread: ActiveThread,
 
 
-   router: routerReducer,
-   online: (v = true) => v,
-   notifs,
-   auth,
-   counter: multireducer({
-     counter1: counter,
-     counter2: counter,
-     counter3: counter
-   }),
-   info,
-   ...asyncReducers
- };
+    router: routerReducer,
+    online: (v = true) => v,
+    notifs,
+    auth,
+    counter: multireducer({
+      counter1: counter,
+      counter2: counter,
+      counter3: counter
+    }),
+    info,
+    ...asyncReducers
+  };
 }
