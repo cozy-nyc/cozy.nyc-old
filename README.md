@@ -7,78 +7,6 @@
 
 ---
 
-## About
-
-This is a starter boilerplate app I've put together using the following technologies:
-
-* ~~Isomorphic~~ [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering
-* Both client and server make calls to load data from separate API server
-* [React](https://github.com/facebook/react)
-* [React Router](https://github.com/reactjs/react-router)
-* [Express](http://expressjs.com)
-* [Feathers](http://feathersjs.com/)
-* [Passport](http://passportjs.org), [feathers-authentication](https://github.com/feathersjs/feathers-authentication) and [redux-auth-wrapper](https://github.com/mjrussell/redux-auth-wrapper) for authentication
-* [Babel](http://babeljs.io) for ES6 and ES7 magic
-* [Webpack](https://webpack.js.org/) for bundling
-* [Webpack Dev Middleware](http://webpack.github.io/docs/webpack-dev-middleware.html)
-* [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware)
-* [Redux](https://github.com/reactjs/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
-* [Redux Dev Tools](https://github.com/reactjs/redux-devtools) for next generation DX (developer experience). Watch [Dan Abramov's talk](https://www.youtube.com/watch?v=xsSnOQynTHs).
-* [React Router Redux](https://github.com/reactjs/react-router-redux) Redux/React Router bindings.
-* [ESLint](http://eslint.org) to maintain a consistent code style
-* [redux-form](http://redux-form.com/) to manage form state in Redux
-* [lru-memoize](https://github.com/erikras/lru-memoize) to speed up form validation
-* [multireducer](https://github.com/erikras/multireducer) to combine single reducers into one key-based reducer
-* [style-loader](https://github.com/webpack/style-loader), [sass-loader](https://github.com/jtangelder/sass-loader) and [less-loader](https://github.com/webpack/less-loader) to allow import of stylesheets in plain css, sass and less,
-* [bootstrap-loader](https://github.com/shakacode/bootstrap-loader) to customize Bootstrap
-* [font-awesome](https://github.com/FortAwesome/Font-Awesome)
-* [react-helmet](https://github.com/nfl/react-helmet) to manage title and meta tag information on both server and client
-* [webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools) to allow require() work for statics both on client and server
-* [Jest](https://facebook.github.io/jest/) to allow writing unit tests for the project.
-
-I cobbled this together from a wide variety of similar "starter" repositories. As I post this in June 2015, all of these libraries are right at the bleeding edge of web development. They may fall out of fashion as quickly as they have come into it, but I personally believe that this stack is the future of web development and will survive for several years. I'm building my new projects like this, and I recommend that you do, too.
-
-## Features
-
-<dl>
-  <dt>Hot reload</dt>
-  <dd>Enjoy the developer experience! Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page ! On the server as on the client.
-  Preserving the state of application on the client.</dd>
-
-  <dt>Next generation JavaScript</dt>
-  <dd>Use JSX syntax with all ES6 features, and some of ES7 (see <a href=".babelrc">.babelrc</a>).</dd>
-
-  <dt>CSS in modules</dt>
-  <dd>Write composable, modular and maintenable CSS with your components.</dd>
-
-  <dt>Predictable state management</dt>
-  <dd>Unidirectional data flow with <a href="http://redux.js.org">Redux</a> helps you write applications that behave consistently and are easy to test. On top of that, it provides a great developer experience.</dd>
-
-  <dt>Backend API oriented services</dt>
-  <dd>With <a href="http://feathersjs.com">Feathers</a> it's easy to create scalable real-time applications with services and hooks.
-  <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">Cross cutting concerns</a> are an extremely powerful part of aspect oriented programming. They are a very good fit for web and mobile applications since the majority are primarily CRUD applications with lots of shared functionality. You can create before and after hooks and chain them together to create very complex processes while still maintaining modularity and flexibility.</dd>
-
-  <dt>Authentication</dt>
-  <dd><a href="http://passportjs.org">Passport</a> authentication allows you to use all the desired strategies. The connections in REST and in real time are protected in the same way with the hooks. React-router, redux and <a href="https://github.com/mjrussell/redux-auth-wrapper">redux-auth-wrapper</a> allow you to keep control in your React app.</dd>
-
-  <dt>Progressive wep app & Offline-first</dt>
-  <dd>Progressive Web Apps are user experiences that have the reach of the web, and are:<br>
-Reliable - Load instantly and never show the downasaur, even in uncertain network conditions.<br>
-Fast - Respond quickly to user interactions with silky smooth animations and no janky scrolling.<br>
-Engaging - Feel like a natural app on the device, with an immersive user experience.<br><br>
-This new level of quality allows Progressive Web Apps to earn a place on the user's home screen.</dd>
-
-  <dt>Lazy loading & dynamic routing</dt>
-  <dd>The code splitting makes the size of your main bundle almost fixed, and with react-router you can load application pieces on demand. You can send bundles to people who are only trained, such as administration.</dd>
-
-  <dt>Universal rendering</dt>
-  <dd>With the help of server side rendering the first rendering is never empty and performance is better. This is the time for example to prefetch the data.
-<a href="https://github.com/halt-hammerzeit/webpack-isomorphic-tools">Webpack-isomorphic-tools</a> to allow require() work for statics both on client and server.</dd>
-
-  <dt>SEO</dt>
-  <dd>This project supports SEO for search engines even without support indexing of JavaScript content, thanks to server-side rendering.</dd>
-</dl>
-
 ## Installation
 
 ```bash
@@ -159,7 +87,77 @@ To understand how the data and action bindings get into the components – there
 
 #### Images
 
-Now it's possible to render the image both on client and server. Please refer to issue [#39](https://github.com/erikras/react-redux-universal-hot-example/issues/39) for more detail discussion, the usage would be like below (super easy):
+Now it's possible to render the image both on client and server. Please refer to issue [#39](https://githubThis project uses [local styles](https://medium.com/seek-ui-engineering/the-end-of-global-css-90d2a4a06284) using [css-loader](https://github.com/webpack/css-loader). The way it works is that you import your stylesheet at the top of the `render()` function in your React Component, and then you use the classnames returned from that import. Like so:
+
+```javascript
+render() {
+const styles = require('./App.scss');
+...
+```
+
+Then you set the `className` of your element to match one of the CSS classes in your SCSS file, and you're good to go!
+
+```jsx
+<div className={styles.mySection}> ... </div>
+```
+
+#### Alternative to Local Styles
+
+If you'd like to use plain inline styles this is possible with a few modifications to your webpack configuration.
+
+**1. Configure Isomorphic Tools to Accept CSS**
+
+In `webpack-isomorphic-tools.js` add **css** to the list of style module extensions
+
+```javascript
+    style_modules: {
+      extensions: ['less','scss','css'],
+```
+
+**2. Add a CSS loader to webpack dev config**
+
+In `dev.config.js` modify **module loaders** to include a test and loader for css
+
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+```
+
+**3. Add a CSS loader to the webpack prod config**
+
+You must use the **ExtractTextPlugin** in this loader. In `prod.config.js` modify **module loaders** to include a test and loader for css
+
+```javascript
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
+```
+
+**Now you may simply omit assigning the `required` stylesheet to a variable and keep it at the top of your `render()` function.**
+
+```javascript
+render() {
+require('./App.css');
+require('aModule/dist/style.css');
+...
+```
+
+**NOTE** In order to use this method with **scss or less** files one more modification must be made. In both `dev.config.js` and `prod.config.js` in the loaders for less and scss files remove
+
+1. `modules`
+2. `localIdentName...`
+
+Before:
+```javascript
+{ test: /\.less$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
+```
+After:
+```javascript
+{ test: /\.less$/, loader: 'style!css?importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap' },
+```
+
+After this modification to both loaders you will be able to use scss and less files in the same way as css files..com/erikras/react-redux-universal-hot-example/issues/39) for more detail discussion, the usage would be like below (super easy):
 
 ```javascript
 let logoImage = require('./logo.png');
@@ -244,42 +242,3 @@ After this modification to both loaders you will be able to use scss and less fi
 The project uses [Jest](https://facebook.github.io/jest/) to run your unit tests.
 
 To run the tests in the project, just simply run `npm test` if you have `Chrome` installed, it will be automatically launched as a test service for you.
-
-## Deployment on Heroku
-
-To get this project to work on Heroku, you need to:
-
-1. Remove the `"PORT": 8080` line from the `betterScripts` / `start-prod` section of `package.json`.
-2. `heroku config:set NODE_ENV=production`
-3. `heroku config:set NODE_PATH=./src`
-4. `heroku config:set NPM_CONFIG_PRODUCTION=false`
-  * This is to enable webpack to run the build on deploy.
-
-The first deploy might take a while, but after that your `node_modules` dir should be cached.
-
-## FAQ
-
-This project moves fast and has an active community, so if you have a question that is not answered below please file an issue.
-
-
-## Roadmap
-
-Although this isn't a library, we recently started versioning to make it easier to track breaking changes and emerging best practices.
-
-* [Inline Styles](docs/InlineStyles.md) - CSS is dead
-
-## Contributing
-
-I am more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :)
-
-If you would like to submit a pull request, please make an effort to follow the guide in [CONTRIBUTING.md](CONTRIBUTING.md).
-
----
-Thanks for checking this out.
-
-Created by:
-– Erik Rasmussen, [@erikras](https://twitter.com/erikras)
-
-Maintened by:
-– Kévin Berthommier, [@bertho-zero](https://github.com/bertho-zero)
-# cozy.nyc

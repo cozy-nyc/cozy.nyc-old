@@ -1,6 +1,5 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
 import ThreadList from 'components/boards/thread-list';
 
@@ -9,7 +8,7 @@ import ThreadList from 'components/boards/thread-list';
  * List active threads in current board
  */
 class Board extends Component {
-  render(){
+  render() {
     return (
       <div id="feed">
         <ThreadList />

@@ -1,6 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
 
 /**
  * Stream Page
@@ -8,18 +6,18 @@ import {Provider} from 'react-redux';
  *
  */
 class Stream extends Component {
-  render(){
+  render() {
     return (
-      <div id='stream'>
-        <div id="stream-feed" className='eight columns'>
+      <div id="stream">
+        <div id="stream-feed" className="eight columns">
           video goes here
         </div>
 
-        <div id='stream-chat' className='four columns'>
+        <div id="stream-chat" className="four columns">
           chat goes here
         </div>
       </div>
-    )
+    );
   }
 }
 
