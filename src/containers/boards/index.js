@@ -1,6 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import React, { Component } from 'react';
 
 import BoardList from 'components/boards/board-list';
 
@@ -9,14 +7,14 @@ import BoardList from 'components/boards/board-list';
  * List active boards on the site
  */
 class BoardsHome extends Component {
-  render(){
+  render() {
     return (
       <div id="home-content">
         <div id="home-featured">
           <BoardList />
         </div>
       </div>
-    )
+    );
   }
 }
 

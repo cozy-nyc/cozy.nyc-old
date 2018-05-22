@@ -1,5 +1,4 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 /**
@@ -11,7 +10,7 @@ class ThreadStats extends Component {
   createListImages() {
     return this.props.posts.map((post) => {
       return (
-        <div className='min-image' key={ post.id }>
+        <div className="min-image" key= {post.id}>
 
         </div>
       );
@@ -21,15 +20,15 @@ class ThreadStats extends Component {
 
   render(){
     return (
-      <div id='thread-sidebar' className='four columns'>
+      <div id="thread-sidebar" className="four columns">
 
       <h4>Stats:</h4>
-        <p>replies: { this.props.thread.replyCount }</p>
-        <p>images: { this.props.thread.imageCount }</p>
-        <p>views: { this.props.thread.views }</p>
+        <p>replies: {this.props.thread.replyCount}</p>
+        <p>images: {this.props.thread.imageCount}</p>
+        <p>views: {this.props.thread.views}</p>
 
       </div>
-    )
+    );
   }
 }
 

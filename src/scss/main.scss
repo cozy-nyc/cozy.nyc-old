@@ -18,6 +18,13 @@
 @import "modules/spacing";
 @import "modules/media-queries";
 
+/* Pages */
+@import "pages/home.scss";
+@import "pages/discovery.scss";
+@import "pages/boards.scss";
+@import "pages/radio.scss";
+@import "pages/profile.scss";
+
 #content,
 #root,
 body,

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 
 import ThreadList from 'components/boards/thread-list';
 
@@ -13,7 +12,7 @@ class Board extends Component {
       <div id="feed">
         <ThreadList />
       </div>
-    )
+    );
   }
 }
 

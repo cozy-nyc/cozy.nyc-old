@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {Link} from 'react-router';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 
 class ChannelList extends Component {
+  static propTypes = {
+    channels: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
+
   createListItems() {
-    return this.props.channels.map((channel) => {
-      return (
-        <li key={ channel.id }><Link to={{
-          pathname: '/radio/' + channel.slug
-        }} activeClassName="active">
+    return this.props.channels.map(channel =>
+      (<li key={channel.id}>
+        <Link
+          to={{
+            pathname: '/radio/' + channel.slug
+          }}
+          ClassName="active"
+        >
           {channel.name}
-        </Link></li>
-      );
-    });
+        </Link>
+      </li>));
   }
 
   render() {

@@ -24,7 +24,7 @@ module.exports = Object.assign(
           { name: 'description', content: 'A site for neets...' },
           { charset: 'utf-8' },
           { property: 'og:site_name', content: 'cozy.nyc' },
-          { property: 'og:image', content: 'https://github.com/cozy-nyc/cozy-nyc-frontend/blob/master/dist/img/cube.svg' },
+          { property: 'og:image', content: 'assets/img/cube.svg' },
           { property: 'og:locale', content: 'en_US' },
           { property: 'og:title', content: 'cozy.' },
           { property: 'og:description', content: 'A site for neets...' },

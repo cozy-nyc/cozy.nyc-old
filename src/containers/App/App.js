@@ -8,7 +8,7 @@ import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { Notifs, InfoBar } from 'components';
+import { Notifs } from 'components';
 import config from 'config';
 import NavBar from 'components/NavBar/NavBar';
 
@@ -45,7 +45,7 @@ export default class App extends Component {
   };
 
   static defaultProps = {
-    user: null
+    user: ''
   };
 
   static contextTypes = {
@@ -75,7 +75,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { user, notifs, route } = this.props;
+    const { notifs, route } = this.props;
     const styles = require('scss/main.scss');
 
     return (
@@ -88,7 +88,7 @@ export default class App extends Component {
               <Notifs
                 className={styles.notifs}
                 namespace="global"
-                NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>}
+                NotifComponent={props => <div>{props.message}</div>}
               />
             </div>
           )}

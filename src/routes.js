@@ -1,6 +1,6 @@
 import { routerActions } from 'react-router-redux';
 import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { App, Home, NotFound } from 'containers';
+import { App, NotFound } from 'containers';
 import About from 'containers/About/Loadable';
 import Chat from 'containers/Chat/Loadable';
 import ChatFeathers from 'containers/ChatFeathers/Loadable';
@@ -9,6 +9,8 @@ import LoginSuccess from 'containers/LoginSuccess/Loadable';
 import Register from 'containers/Register/Loadable';
 import Survey from 'containers/Survey/Loadable';
 import Widgets from 'containers/Widgets/Loadable';
+
+import Home from './containers/home/home';
 
 // Shop
 import Shop from './containers/shop/index';

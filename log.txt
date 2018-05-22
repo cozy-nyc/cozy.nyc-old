@@ -1,0 +1,29 @@
+
+> cozy.nyc@0.1.0 dev /home/rantahu/cozy/react-redux-universal-hot-example
+> concurrently --kill-others "npm run watch-client" "npm run start-dev" "npm run start-dev-api"
+
+[1] 
+[1] > cozy.nyc@0.1.0 start-dev /home/rantahu/cozy/react-redux-universal-hot-example
+[1] > cross-env NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=3030 WEBPACK_DLLS=1 node ./bin/server.js
+[1] 
+[0] 
+[0] > cozy.nyc@0.1.0 watch-client /home/rantahu/cozy/react-redux-universal-hot-example
+[0] > cross-env UV_THREADPOOL_SIZE=100 NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=3030 WEBPACK_DLLS=1 node webpack/webpack-dev-server.js
+[0] 
+[2] 
+[2] > cozy.nyc@0.1.0 start-dev-api /home/rantahu/cozy/react-redux-universal-hot-example
+[2] > cross-env NODE_PATH=api NODE_ENV=development APIPORT=3030 node ./bin/api.js
+[2] 
+[0] webpack dlls disabled
+[0] ==> 🚧  Webpack development server listening on port 3001
+[1] undefined
+[2] ----
+[2] ==> 🌎  API is running on port 3030
+[2] ==> 💻  Send requests to http://localhost:3030
+[1] ----
+[1] ==> ✅  React Redux Example is running, talking to API server on 3030.
+[1] ==> 💻  Open http://localhost:3000 in a browser to view the app.
+[2] npm run start-dev-api exited with code null
+--> Sending SIGTERM to other processes..
+[1] npm run start-dev exited with code null
+[0] npm run watch-client exited with code null

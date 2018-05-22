@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {IndexLink, Link} from 'react-router'
 import {connect} from 'react-redux';
 
-import ProfileButton from '../ProfileButton/ProfileButton';
+import ProfileButton from '../profilebutton/profile-button';
 
 
 class NavBar extends Component {
