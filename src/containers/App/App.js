@@ -10,7 +10,7 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { Notifs } from 'components';
 import config from 'config';
-import NavBar from 'components/NavBar/NavBar';
+import NavBar from 'components/navbar/navbar';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {

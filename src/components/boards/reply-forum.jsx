@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import {Link} from 'react-router';
 
-class PopupForum extends Component {
-  render() {
-    return (
-      <div id='reply-forum-popup'>
-        <div className='popup_inner'>
-          <input name="image" type="file" /> <button>enter</button>
-          <textarea name="message" placeholder=">sample text." />
-        </div>
-      </div>
-    );
-  }
-}
+const PopupForum = () => (
+  <div id="reply-forum-popup">
+    <div className="popup_inner">
+      <input name="image" type="file" /> <button>enter</button>
+      <textarea name="message" placeholder=">sample text." />
+    </div>
+  </div>
+);
+
 
 class ReplyForum extends Component {
   constructor() {
@@ -27,7 +21,7 @@ class ReplyForum extends Component {
   togglePopup() {
     console.log('noot');
     this.setState({
-      showPopupForum:!this.state.showPopupForum
+      showPopupForum: !this.state.showPopupForum
     });
     console.log(this.state);
   }
@@ -35,12 +29,11 @@ class ReplyForum extends Component {
   render() {
     const popup = (this.state.showPopupForum ? <PopupForum /> : null);
     return (
-      <div id='reply-forum'>
-        { popup }
-        <button id="reply-button" onClick={() => this.togglePopup() }> reply </button>
+      <div id="reply-forum">
+        {popup}
+        <button id="reply-button" onClick={() => this.togglePopup()}> reply </button>
       </div>
-    )
-
+    );
   }
 }
 

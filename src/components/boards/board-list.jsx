@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 import { fetchBoards } from 'actions/boards/get-boards';
 
+@connect(
+  state => ({
+    boards: state.boards.boards
+  }),
+  fetchBoards
+)
 class BoardList extends Component {
-  componentWillMount() {
-     this.props.dispatch(fetchBoards())
+  static get propTypes() {
+    return {
+      boards: PropTypes.arrayOf(PropTypes.object).isRequired,
+      // dispatch: PropTypes.func
+    };
   }
 
   createListItems() {
-    return this.props.boards.map((board) => {
-      return (
-        <span className='row' key={ board.id }><Link to={{
-          pathname: '/boards/' + board.tag
-        }} activeClassName="active">
-          /{board.tag}/ - {board.name}
-        </Link></span>
-      );
-    });
+    return this.props.boards.map(board => (
+      <span
+        className="row"
+        key={board.id}
+      >
+        <Link
+          to={{ pathname: '/boards/' + board.tag }}
+          activeClassName="active"
+        >
+            /{board.tag}/ - {board.name}
+        </Link>
+      </span>
+    ));
   }
 
   render() {
@@ -31,10 +44,4 @@ class BoardList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    boards: state.boards.boards
-  };
-}
-
-export default connect(mapStateToProps)(BoardList);
+export default (BoardList);

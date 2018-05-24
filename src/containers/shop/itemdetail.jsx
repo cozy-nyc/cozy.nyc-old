@@ -18,7 +18,6 @@ export default class Item extends Component {
   static get propTypes() {
     return {
       item: PropTypes.any.arrayOf(PropTypes.object).isRequired,
-      // dispatch: PropTypes.func
     };
   }
 
