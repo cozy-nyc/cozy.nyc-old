@@ -43,5 +43,4 @@ env:
   - TRAVIS=travis CXX=g++-4.8
 
 notifications:
-  webhooks: https://discordapp.com/api/webhooks/451242161212489728/DLsRzVqMA6Km09EsXPyvNfaYnhJjWhPjl3dugH2cWXMaMsUQ0HY4JWcdY1-0CxXds6fA
-
+  webhooks: https://discordapp.com/api/webhooks/451242161212489728/DLsRzVqMA6Km09EsXPyvNfaYnhJjWhPjl3dugH2cWXMaMsUQ0HY4JWcdY1-0CxXds6fA/travisci
