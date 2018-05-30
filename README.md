@@ -6,7 +6,7 @@
 [![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
 
 ### Join Our Discord
-*_Discord_* - https://discord.gg/3WSA2SG
+__Discord__ - https://discord.gg/3WSA2SG
 
 ---
 
