@@ -1,10 +1,6 @@
 import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
 
-// Auth/User Reducers
-import activeUserReducer from './user/active-user';
-import usersReducer from './user/user-list';
-
 // Boards Reducers
 import BoardReducer from './boards/board-list';
 import ActiveBoard from './boards/active-board';
@@ -29,10 +25,6 @@ export default function createReducers(asyncReducers) {
     items: ItemReducer,
     cart: cartReducer,
 
-    // Users/auth
-    activeUser: activeUserReducer,
-    users: usersReducer,
-
     // Radio
     channels: ChannelsReducer,
 
@@ -40,7 +32,6 @@ export default function createReducers(asyncReducers) {
     boards: BoardReducer,
     activeBoard: ActiveBoard,
     activeThread: ActiveThread,
-
 
     router: routerReducer,
     online: (v = true) => v,
