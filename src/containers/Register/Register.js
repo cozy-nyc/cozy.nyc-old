@@ -6,7 +6,10 @@ import RegisterForm from 'components/RegisterForm/RegisterForm';
 import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
 
-@connect(() => ({}), { ...notifActions, ...authActions })
+@connect(
+  () => ({}),
+  { ...notifActions, ...authActions }
+)
 export default class Register extends Component {
   static propTypes = {
     location: PropTypes.shape({
@@ -37,8 +40,8 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="container">
-        <Helmet title="Register" />
+      <div className="auth-container">
+        <Helmet title="register" />
         <h1>Register</h1>
         <RegisterForm onSubmit={this.register} initialValues={this.getInitialValues()} />
       </div>
