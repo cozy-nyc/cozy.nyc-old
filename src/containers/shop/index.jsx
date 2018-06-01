@@ -34,12 +34,12 @@ export default class Shop extends Component {
         className="three columns"
         key={item.id}
       >
-        (<ItemBox
+        <ItemBox
           id={item.id}
           image={item.image}
           name={item.name}
           price={item.price}
-        />)
+        />
       </div>));
 
     return (

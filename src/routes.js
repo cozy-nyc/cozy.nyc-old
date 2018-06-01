@@ -50,7 +50,7 @@ const routes = [
       { path: '/', exact: true, component: Home },
       { path: '/about', component: About },
       { path: '/chat', component: Chat },
-      { path: '/shop', component: Shop },
+      { path: '/shop', exact: true, component: Shop },
       { path: '/shop/:itemid', component: Item },
       { path: '/radio', component: RadioHome },
       { path: '/radio/:channelname', component: Stream },

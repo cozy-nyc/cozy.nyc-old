@@ -12,21 +12,18 @@ import { getItem } from 'actions/items/get';
   state => ({
     item: state.items.activeitem,
   }),
-  getItem
+  getItem(1)
 )
 export default class Item extends Component {
   static get propTypes() {
     return {
-      item: PropTypes.any.arrayOf(PropTypes.object).isRequired,
+      item: PropTypes.arrayOf(PropTypes.object).isRequired,
     };
   }
 
   render() {
     const { item } = this.props;
 
-    if (!item) {
-      return getItem(item);
-    }
     return (
       <div>
         <div className="six columns">
