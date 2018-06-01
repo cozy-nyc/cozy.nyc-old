@@ -8,7 +8,6 @@ import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
-import { Notifs } from 'components';
 import config from 'config';
 import NavBar from 'components/navbar/navbar';
 
@@ -24,7 +23,6 @@ import NavBar from 'components/navbar/navbar';
 })
 @connect(
   state => ({
-    notifs: state.notifs,
     user: state.auth.user
   }),
   { logout, pushState: push }
@@ -35,11 +33,8 @@ export default class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string
+      username: PropTypes.string
     }),
-    notifs: PropTypes.shape({
-      global: PropTypes.array
-    }).isRequired,
     logout: PropTypes.func.isRequired,
     pushState: PropTypes.func.isRequired
   };
@@ -75,26 +70,14 @@ export default class App extends Component {
   };
 
   render() {
-    const { notifs, route } = this.props;
-    const styles = require('scss/main.scss');
+    const { route } = this.props;
+    const styles = require('assets/scss/main.scss');
 
     return (
-      <div className={styles.app}>
+      <div id="container">
         <Helmet {...config.app.head} />
         <NavBar />
-        <div className={styles.appContent}>
-          {notifs.global && (
-            <div className="container">
-              <Notifs
-                className={styles.notifs}
-                namespace="global"
-                NotifComponent={props => <div>{props.message}</div>}
-              />
-            </div>
-          )}
-
-          {renderRoutes(route.routes)}
-        </div>
+        {renderRoutes(route.routes)}
       </div>
     );
   }
