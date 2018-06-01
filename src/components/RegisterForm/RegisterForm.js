@@ -38,6 +38,7 @@ export default class RegisterForm extends Component {
 
     return (
       <form className="form-horizontal" onSubmit={handleSubmit}>
+        <Field name="username" type="text" component={Input} label="Username" />
         <Field name="email" type="text" component={Input} label="Email" />
         <Field name="password" type="password" component={Input} label="Password" />
         <Field name="password_confirmation" type="password" component={Input} label="Password confirmation" />

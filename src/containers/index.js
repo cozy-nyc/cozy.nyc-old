@@ -1,2 +1,2 @@
-export App from './App/App';
+export App from './app/app';
 export NotFound from './NotFound/NotFound';

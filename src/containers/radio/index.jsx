@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ChannelList from '../../components/radio/channel-list';
+import ChannelList from 'components/radio/channel-list';
 
 /**
  * Radio Home Page
