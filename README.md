@@ -9,6 +9,8 @@
 [![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
 
 ---
+This is only the frontend for (cozy.nyc)[https://cozy.nyc] the backend can be found
+here (cozy-nyc-backend)[https://github.com/cozy-nyc/cozy-nyc-backend]
 
 ## Installation
 
@@ -54,4 +56,4 @@ To run the tests in the project, just simply run `npm test` if you have `Chrome`
 ## Join Our Discord
 __Discord__ - https://discord.gg/3WSA2SG
 
-Special Thanks to @bertho-zero for providing https://github.com/bertho-zero/react-redux-universal-hot-example
+Special Thanks to [@bertho-zero](https://github.com/bertho-zero) for providing https://github.com/bertho-zero/react-redux-universal-hot-example
