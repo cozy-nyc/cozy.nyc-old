@@ -28,6 +28,8 @@ import Thread from './containers/boards/thread';
 // Discovery
 import DiscoveryHome from './containers/discovery/index';
 
+import BlogHome from './containers/blog/index';
+
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
   authenticatedSelector: state => state.auth.user !== null,
@@ -58,6 +60,7 @@ const routes = [
       { path: '/boards/:boardtag', component: Board },
       { path: '/boards/:boardtag/:threadid', component: Thread },
       { path: '/discovery', component: DiscoveryHome },
+      { path: '/blog', component: BlogHome },
       { path: '/chat-feathers', component: isAuthenticated(ChatFeathers) },
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },

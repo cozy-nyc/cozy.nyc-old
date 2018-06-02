@@ -45,7 +45,7 @@ export default class Item extends Component {
         </div>
 
         <div id="itemdetail-info" className="six columns">
-          <h3>{item.name}</h3>
+          <h2>{item.name}</h2>
           <h3>${item.price}</h3>
           <h3>Designer</h3>
           <h3>{item.description}</h3>

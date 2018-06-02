@@ -25,7 +25,7 @@ const Home = () => (
         <Link to="shop">shop</Link>
         <Link to="about">about</Link>
         <br />
-        <Link to="contact">contact</Link>
+        <Link to="blog">blog</Link>
       </div>
     </div>
 
