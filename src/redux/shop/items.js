@@ -4,12 +4,15 @@ export default function Reducer(
       fetching: false,
       fetched: false,
       id: -1,
-      slug: 'n'
+      name: '',
+      image: '',
+      price: '',
+      description: ''
     },
     fetching: false,
     fetched: false,
     items: [],
-    error: null,
+    error: null
   },
   action
 ) {
@@ -28,7 +31,21 @@ export default function Reducer(
         ...state,
         fecthing: false,
         fetched: true,
-        items: action.payload,
+        items: action.payload
+      };
+    }
+    case 'FETCH_ITEM_PENDING': {
+      return { ...state, fetching: true };
+    }
+    case 'FETCH_ITEM_REJECTED': {
+      return { ...state, fecthing: false, error: action.payload };
+    }
+    case 'FETCH_ITEM_FULFILLED': {
+      return {
+        ...state,
+        fecthing: false,
+        fetched: true,
+        activeitem: action.payload
       };
     }
   }

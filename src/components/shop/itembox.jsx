@@ -12,7 +12,7 @@ class ItemBox extends Component {
 
   render() {
     const id = parseInt(this.props.id, 10);
-    const url = '/shops/' + id;
+    const url = '/shop/' + id;
 
     return (
       <div className="item-block visible">

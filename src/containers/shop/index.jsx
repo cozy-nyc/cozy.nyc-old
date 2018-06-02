@@ -43,7 +43,7 @@ export default class Shop extends Component {
       </div>));
 
     return (
-      <div className="row">
+      <div id="shop-container" className="row">
         {mappedItems}
       </div>
     );
