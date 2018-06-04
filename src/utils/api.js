@@ -1,10 +1,9 @@
 import axios from 'axios';
 import * as cookie from './cookie';
 
-
 const api = axios.create({
-  baseURL: 'http://api-dev.cozy.nyc',
-  timeout: 1000,
+  baseURL: process.env.API,
+  timeout: 1000
 });
 
 // CRSF token is needed in all requests that can make a change server side

@@ -5,6 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 var helpers = require('./helpers');
+const Dotenv = require('dotenv-webpack');
 
 var assetsPath = path.resolve(__dirname, '../static/dist');
 var host = (process.env.HOST || 'localhost');
@@ -58,6 +59,9 @@ var webpackConfig = module.exports = {
   },
   performance: {
     hints: false
+  },
+  node: {
+   fs: "empty"
   },
   module: {
     rules: [
@@ -121,6 +125,7 @@ var webpackConfig = module.exports = {
     extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
+    new Dotenv(),
     new webpack.LoaderOptionsPlugin({
       test: /\.(less|scss)/,
       options: {
