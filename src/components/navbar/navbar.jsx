@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
@@ -36,7 +36,7 @@ class NavBar extends Component {
 
   render() {
     const cube = require('assets/img/cube.svg');
-    if ( window.location.pathname != '/' ){
+    if ( window.location.pathname != '/about' && window.location.pathname != '/'){
       return (
         <div id="navbar">
           <div id="navbar-logo" className="dropdown">
@@ -45,7 +45,9 @@ class NavBar extends Component {
               role="button"
               tabIndex={0}
             >
-              <img id="brand-img" src={cube} alt="cube" />
+              <Link to="/">
+                <img id="brand-img" src={cube} alt="cube" />
+              </Link>
             </span>
           </div>
           <div id="navbar-profile">
