@@ -1,16 +1,14 @@
-
 # cozy.nyc
-### A site for NEETs...
 
-![Home](docs/homepage.png)
+## A site for NEETs...
 
-[![Build Status](https://travis-ci.org/cozy-nyc/cozy.nyc.svg?branch=master&style=flat-square)](https://travis-ci.org/cozy-nyc/cozy.nyc)
-[![Dependency Status](https://david-dm.org/cozy-nyc/cozy.nyc.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc)
-[![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
+![Home](docs/design/desktop/Homepage-Desktop.png)
 
----
-This is only the frontend for (cozy.nyc)[https://cozy.nyc] the backend can be found
-here (cozy-nyc-backend)[https://github.com/cozy-nyc/cozy-nyc-backend]
+[![Build Status](https://travis-ci.org/cozy-nyc/cozy.nyc.svg?branch=master&style=flat-square)](https://travis-ci.org/cozy-nyc/cozy.nyc) [![Dependency Status](https://david-dm.org/cozy-nyc/cozy.nyc.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc) [![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
+
+--------------------------------------------------------------------------------
+
+This is only the frontend for [cozy.nyc](https://cozy.nyc )the backend can be found here [cozy-nyc-backend](https://github.com/cozy-nyc/cozy-nyc-backend)
 
 ## Installation
 
@@ -30,13 +28,25 @@ The first time it may take a little while to generate the first `webpack-assets.
 
 [Redux Devtools](https://github.com/gaearon/redux-devtools) are enabled by default in development.
 
-- <kbd>CTRL</kbd>+<kbd>H</kbd> Toggle DevTools Dock
-- <kbd>CTRL</kbd>+<kbd>Q</kbd> Move DevTools Dock Position
+- <kbd>CTRL</kbd>
+
+  +
+
+  <kbd>H</kbd>
+
+   Toggle DevTools Dock
+- <kbd>CTRL</kbd>
+
+  +
+
+  <kbd>Q</kbd>
+
+   Move DevTools Dock Position
 - see [redux-devtools-dock-monitor](https://github.com/gaearon/redux-devtools-dock-monitor) for more detailed information.
 
 If you have the [Redux DevTools chrome extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) installed it will automatically be used on the client-side instead.
 
-If you want to disable the dev tools during development, set `__DEVTOOLS__` to `false` in `/webpack/dev.config.js`.  
+If you want to disable the dev tools during development, set `__DEVTOOLS__` to `false` in `/webpack/dev.config.js`.<br>
 DevTools are not enabled during production by default.
 
 ## Building and Running Production Server
@@ -46,14 +56,14 @@ npm run build
 npm run start
 ```
 
-#### Unit Tests
+### Unit Tests
 
 The project uses [Jest](https://facebook.github.io/jest/) to run your unit tests.
 
 To run the tests in the project, just simply run `npm test` if you have `Chrome` installed, it will be automatically launched as a test service for you.
 
-
 ## Join Our Discord
-__Discord__ - https://discord.gg/3WSA2SG
 
-Special Thanks to [@bertho-zero](https://github.com/bertho-zero) for providing https://github.com/bertho-zero/react-redux-universal-hot-example
+**Discord** - <https://discord.gg/3WSA2SG>
+
+Special Thanks to [@bertho-zero](https://github.com/bertho-zero) for providing <https://github.com/bertho-zero/react-redux-universal-hot-example>
