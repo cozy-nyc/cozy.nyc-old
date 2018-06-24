@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 
 import { getItem } from 'actions/items/get';
 
@@ -37,9 +38,13 @@ export default class Item extends Component {
 
   render() {
     const { item } = this.props;
+    const title = "shop - " + item.name.toLowerCase();
+
+    console.log(title)
 
     return (
       <div id="itemdetail-container">
+        <Helmet title={title} />
         <div id="itemdetail-display" className="six columns">
           <img src={item.image} alt="item preview" />
         </div>

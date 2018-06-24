@@ -2,10 +2,8 @@
 #navbar {
   position: fixed;
   width: 100%;
-  float: left;
   left: 0px;
   top: 0px;
-  z-index: 40;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
@@ -25,6 +23,7 @@
   position: fixed;
   right: 0;
   top: 0;
+  padding: 0 20px;
 }
 
 .sidebar-exit {

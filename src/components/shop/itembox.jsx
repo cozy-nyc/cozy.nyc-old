@@ -15,7 +15,7 @@ class ItemBox extends Component {
     const url = '/shop/' + id;
 
     return (
-      <div className="item-block visible">
+      <div className="itembox visible">
         <Link
           to={{ pathname: url }}
           className="active"

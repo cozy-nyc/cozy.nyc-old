@@ -33,7 +33,6 @@ class ProfileButton extends Component {
     return (
       <div id="profile-button">
         <Link to="login">login</Link>
-        <br />
         <Link to="register">sign up</Link>
         <div className="u-cf" />
       </div>

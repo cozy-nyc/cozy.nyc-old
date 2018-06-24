@@ -25,15 +25,15 @@ export default class ItemQuery extends Component {
     const items = this.props;
     fetchItems(items)
 
-  const mappedItems = items.map(item =>
-    <div className="three columns"
-       key={ item.id }>
-       <ItemBox
-       id={ item.id }
-       image={ item.image }
-       name={ item.name }
-       price={ item.price }
-    /></div>)
+    const mappedItems = items.map(item =>
+      <div className="three columns"
+         key={ item.id }>
+         <ItemBox
+         id={ item.id }
+         image={ item.image }
+         name={ item.name }
+         price={ item.price }
+      /></div>)
 
     return (
       <div className="row">

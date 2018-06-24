@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Helmet from 'react-helmet';
 
 import { fetchItems } from 'actions/items/get';
 import ItemBox from 'components/shop/itembox';
@@ -31,7 +32,7 @@ export default class Shop extends Component {
 
     const mappedItems = items.map(item =>
       (<div
-        className="three columns"
+        className="col-xs-12 col-sm-6 col-md-4 col-lg-3"
         key={item.id}
       >
         <ItemBox
@@ -44,6 +45,7 @@ export default class Shop extends Component {
 
     return (
       <div id="shop-container" className="row">
+        <Helmet title="shop" />
         {mappedItems}
       </div>
     );

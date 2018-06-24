@@ -8,17 +8,7 @@ import React from 'react';
  */
 const DiscoveryHome = () => (
   <div id="container">
-    <section id="section0" className="discovery-section">
-      <h1>Hi there!</h1>
-    </section>
-
-    <section id="section1" className="discovery-section">
-      <h1>Hello there!</h1>
-    </section>
-
-    <section id="section2" className="discovery-section">
-      <h1>Hey there!</h1>
-    </section>
+    <h1>NOOT NOOT!</h1>
   </div>
 );
 
