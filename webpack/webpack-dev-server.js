@@ -4,9 +4,10 @@ var webpack = require('webpack');
 var config = require('../src/config');
 var webpackConfig = require('./dev.config');
 var compiler = webpack(webpackConfig);
+const Dotenv = require('dotenv-webpack');
 
-var host = config.host || 'localhost';
-var port = (Number(config.port) + 1) || 3001;
+var host = process.env.HOST || 'localhost';
+var port = (Number(process.env.PORT) + 1) || 3001;
 var serverOptions = {
   contentBase: 'http://' + host + ':' + port,
   quiet: true,

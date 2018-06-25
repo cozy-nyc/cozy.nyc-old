@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import serialize from 'serialize-javascript';
 import Helmet from 'react-helmet';
 import config from 'config';
 
@@ -77,12 +76,7 @@ export default class Html extends Component {
         </head>
         <body>
           <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
-          {store && (
-            <script
-              dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(store.getState())};` }}
-              charSet="UTF-8"
-            />
-          )}
+          {store && <script charSet="UTF-8" />}
           {__DLLS__ && <script key="dlls__vendor" src="/dist/dlls/dll__vendor.js" charSet="UTF-8" />}
           {assets.javascript && <script src={assets.javascript.main} charSet="UTF-8" />}
           {bundles.map(bundle => bundle && <script src={config.assetsPath + bundle.file} key={bundle.id} />)}
