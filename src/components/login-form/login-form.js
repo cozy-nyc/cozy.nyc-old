@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, propTypes, fieldPropTypes } from 'redux-form';
-import loginValidation from './loginValidation';
+import loginValidation from './login-validation';
 
 const Input = ({
   input, label, type, meta: { touched, error }

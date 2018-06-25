@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import LoginForm from 'components/LoginForm/LoginForm';
+import LoginForm from 'components/login-form/login-form';
 import * as authActions from 'redux/modules/auth';
 import * as notifActions from 'redux/modules/notifs';
 
