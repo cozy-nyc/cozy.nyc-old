@@ -15,7 +15,7 @@ import CategoryReducer from './shop/categories';
 import ItemReducer from './shop/items';
 import cartReducer from './shop/cart';
 
-import auth from './modules/auth';
+import auth from './auth';
 import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';

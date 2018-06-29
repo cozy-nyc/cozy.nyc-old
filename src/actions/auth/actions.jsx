@@ -1,7 +1,6 @@
-import api from '../../utils/api'
+import api from 'utils/api'
 import {browserHistory} from 'react-router';
-import Cookies from 'universal-cookie';
-import {AUTH_USER, AUTH_ERROR, UNAUTH_USER, PROTECTED_TEST} from './types';
+import { csrftoken, cookies } from 'utils/cookie';
 
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
@@ -22,43 +21,44 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
-export function loginUser({username, password}) {
+export function login({username, password}) {
   return function(dispatch) {
-    api.post(`http://dev.cozy.exchange/api-token-auth/`, {username, password}).then(response => {
-      cookie.set('token', response.data.token, {path: '/'});
-      dispatch({type: AUTH_USER});
-      window.location.href = 'dev.cozy.exchange';
+    console.log({username, password});
+    api.post(`/api-token-auth/`, {username, password}).then(response => {
+      cookies.set('token', response.data.token, {path: '/'});
+      dispatch({type: 'LOGIN_SUCCESS', payload: response.data });
+      // window.location.href = '/';
     }).catch((error) => {
       console.log(error)
-      // errorHandler(dispatch, error.response, AUTH_ERROR)
+      errorHandler(dispatch, error.response, 'LOGIN_FAIL')
     });
   }
 }
 
-export function registerUser({username, firstName, lastName, password}) {
+export function register({username, firstName, lastName, password}) {
   return function(dispatch) {
-    api.post(`${API_URL}/auth/register`, {username, firstName, lastName, password}).then(response => {
+    api.post(`/auth/register`, {username, firstName, lastName, password}).then(response => {
       cookie.set('token', response.data.token, {path: '/'});
-      dispatch({type: AUTH_USER});
-      window.location.href = CLIENT_ROOT_URL + '/dashboard';
+      dispatch({type: 'REGISTER_SUCCESS', payload: response.data });
+      window.location.href = '/';
     }).catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
+      errorHandler(dispatch, error.response, 'REGISTER_FAIL')
     });
   }
 }
 
-export function logoutUser() {
+export function logout() {
   return function(dispatch) {
-    dispatch({type: UNAUTH_USER});
+    dispatch({type: 'LOGOUT_SUCCESS'});
     cookie.remove('token', {path: '/'});
 
-    window.location.href = CLIENT_ROOT_URL + '/login';
+    window.location.href =  '/';
   }
 }
 
 export function protectedTest() {
   return function(dispatch) {
-    api.get(`${API_URL}/api-token-verify`, {
+    api.get(`/api-token-verify`, {
       headers: {
         'Authorization': cookie.get('token')
       }

@@ -10,10 +10,9 @@ const cookies = new Cookies();
 const csrftoken = cookies.get('token');
 console.log(csrftoken);
 
-
 // JWT is going to be saved into cookie
 // cookies.save('jwt', response.data.token, { secure: true, httpOnly: true });
 // Therefore it will automatically be sent in the header of all API requests
 // JWT will NOT be accessible to JavaScript because it is httpOnly :)
 
-export default { csrftoken };
+export default { csrftoken, cookies };
