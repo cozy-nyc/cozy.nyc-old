@@ -1,5 +1,4 @@
-import api from 'utils/api'
-import {browserHistory} from 'react-router';
+import api from 'utils/api';
 import cookies from 'utils/cookie';
 
 export function errorHandler(dispatch, error, type) {
@@ -14,67 +13,77 @@ export function errorHandler(dispatch, error, type) {
   }
 
   if (error.status === 401) {
-    dispatch({type: type, payload: 'You are not authorized to do this. Please login and try again.'});
-    logoutUser();
+    dispatch({ type: type, payload: 'You are not authorized to do this. Please login and try again.' });
+    logout();
   } else {
-    dispatch({type: type, payload: errorMessage});
+    dispatch({ type: type, payload: errorMessage });
   }
 }
 
-export function login({username, password}) {
-  return function(dispatch) {
-    api.post(`/api-token-auth/`, {username, password}).then(response => {
-      cookies.set('token', response.data.token, {path: '/'});
-      dispatch({type: 'LOGIN_SUCCESS', payload: response.data });
+export function login({ username, password }) {
+  return function (dispatch) {
+    api.post('/api-token-auth/', { username, password }).then(response => {
+      cookies.set('token', response.data.token, { path: '/' });
+      dispatch({ type: 'LOGIN_SUCCESS', payload: response.data });
       window.location.href = '/';
-    }).catch((error) => {
-      errorHandler(dispatch, error.response, 'LOGIN_FAIL')
+    }).catch(error => {
+      errorHandler(dispatch, error.response, 'LOGIN_FAIL');
     });
-  }
+  };
 }
 
-export function register({username, email, password1, password2}) {
-  return function(dispatch) {
-    api.post(`/register`, {username, email, password1, password2}).then(response => {
-      cookies.set('token', response.data.token, {path: '/'});
-      dispatch({type: 'REGISTER_SUCCESS', payload: response.data });
+export function register({
+  username,
+  email,
+  password1,
+  password2
+}) {
+  return function (dispatch) {
+    api.post('/register', {
+      username,
+      email,
+      password1,
+      password2
+    }).then(response => {
+      cookies.set('token', response.data.token, { path: '/' });
+      dispatch({ type: 'REGISTER_SUCCESS', payload: response.data });
       window.location.href = '/';
-    }).catch((error) => {
-      errorHandler(dispatch, error.response, 'REGISTER_FAIL')
+    }).catch(error => {
+      errorHandler(dispatch, error.response, 'REGISTER_FAIL');
     });
-  }
+  };
 }
 
 export function logout() {
-  return function(dispatch) {
-    dispatch({type: 'LOGOUT_SUCCESS'});
-    cookies.remove('token', {path: '/'});
-    window.location.href =  '/';
+  return function (dispatch) {
+    dispatch({ type: 'LOGOUT_SUCCESS' });
+    cookies.remove('token', { path: '/' });
+    window.location.href = '/';
   }
 }
 
 export function verifyToken() {
-  const token = {'token': cookies.get('token')};
+  const token = { token: cookies.get('token') };
   console.log(token);
-  return function(dispatch) {
-    api.post(`/api-token-verify/`, token).then(response => {
-      dispatch({type: 'VERIFY_SUCCESS', payload: response.data });
-    }).catch((error) => {
-      errorHandler(dispatch, error.response, 'VERIFY_FAIL')
+  return function (dispatch) {
+    api.post('/api-token-verify/', token).then(response => {
+      dispatch({ type: 'VERIFY_SUCCESS', payload: response.data });
+    }).catch(error => {
+      errorHandler(dispatch, error.response, 'VERIFY_FAIL');
     });
-  }
+  };
 }
 
 export function protectedTest() {
-  return function(dispatch) {
-    api.get(`/protected-test`, {
+  return function (dispatch) {
+    api.get('/protected-test', {
       headers: {
-        'Authorization': cookies.get('token')
+        Authorization: cookies.get('token')
       }
     }).then(response => {
-      dispatch({type: PROTECTED_TEST, payload: response.data.content});
-    }).catch((error) => {
-      errorHandler(dispatch, error.response, AUTH_ERROR)
+      dispatch({ type: 'PROTECTED_TEST', payload: response.data.content });
+    }).catch(error => {
+      errorHandler(dispatch, error.response, 'AUTH_ERROR');
     });
-  }
+  };
 }

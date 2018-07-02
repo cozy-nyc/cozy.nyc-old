@@ -10,8 +10,12 @@ import PropTypes from 'prop-types';
 class ProfileButton extends Component {
   static propTypes = {
     user: PropTypes.shape({
-      username: PropTypes.string
+      username: PropTypes.string,
+      id: PropTypes.number
     }),
+    auth: PropTypes.shape({
+      isLogin: PropTypes.bool.isRequired
+    })
   };
 
   render() {

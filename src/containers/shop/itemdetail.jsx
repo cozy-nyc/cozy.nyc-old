@@ -38,9 +38,7 @@ export default class Item extends Component {
 
   render() {
     const { item } = this.props;
-    const title = "shop - " + item.name.toLowerCase();
-
-    console.log(title)
+    const title = 'shop - ' + item.name.toLowerCase();
 
     return (
       <div id="itemdetail-container">

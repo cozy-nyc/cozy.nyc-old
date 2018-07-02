@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchItems } from '../../actions/items/get';
+import { fetchItems } from 'actions/items/get';
 
 import ItemBox from './itembox';
 
@@ -23,7 +23,7 @@ export default class ItemQuery extends Component {
 
   render(){
     const items = this.props;
-    fetchItems(items)
+    fetchItems(items);
 
     const mappedItems = items.map(item =>
       <div className="three columns"

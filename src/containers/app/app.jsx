@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
-import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
 import { verifyToken, logout } from 'actions/auth/actions';
 import config from 'config';
 import NavBar from 'components/navbar/navbar';
-import cookies from 'utils/cookie'
+import cookies from 'utils/cookie';
 
 @connect(
   state => ({
@@ -40,6 +39,13 @@ export default class App extends Component {
     store: PropTypes.object.isRequired
   };
 
+
+  componentWillMount() {
+    if (cookies.get('token') && !this.props.isLogin) {
+      this.props.verifyToken();
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {
       // login
@@ -61,12 +67,6 @@ export default class App extends Component {
     event.preventDefault();
     this.props.logout();
   };
-
-  componentWillMount() {
-    if (cookies.get('token') && !this.props.isLogin) {
-      this.props.verifyToken();
-    }
-  }
 
   render() {
     const { route } = this.props;
