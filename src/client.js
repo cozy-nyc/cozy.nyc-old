@@ -93,18 +93,6 @@ const providers = { client };
     }
   }
 
-  if (__DEVTOOLS__ && !window.devToolsExtension) {
-    const devToolsDest = document.createElement('div');
-    window.document.body.insertBefore(devToolsDest, null);
-    const DevTools = require('./containers/DevTools/DevTools');
-    ReactDOM.hydrate(
-      <Provider store={store}>
-        <DevTools />
-      </Provider>,
-      devToolsDest
-    );
-  }
-
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {
     try {
       await navigator.serviceWorker.register('/dist/service-worker.js', { scope: '/' });
