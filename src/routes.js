@@ -28,14 +28,14 @@ import BlogHome from './containers/blog/index';
 
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
-  authenticatedSelector: state => state.auth.user !== null,
+  authenticatedSelector: state => state.auth.isLogin === true,
   redirectAction: routerActions.replace,
   wrapperDisplayName: 'UserIsAuthenticated'
 });
 
 const isNotAuthenticated = connectedReduxRedirect({
   redirectPath: '/',
-  authenticatedSelector: state => state.auth.user === null,
+  authenticatedSelector: state => state.auth.isLogin === false,
   redirectAction: routerActions.replace,
   wrapperDisplayName: 'UserIsAuthenticated',
   allowRedirectBack: false

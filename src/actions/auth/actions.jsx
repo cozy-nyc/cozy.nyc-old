@@ -1,6 +1,6 @@
 import api from 'utils/api'
 import {browserHistory} from 'react-router';
-import { csrftoken, cookies } from 'utils/cookie';
+import cookies from 'utils/cookie';
 
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
@@ -23,22 +23,20 @@ export function errorHandler(dispatch, error, type) {
 
 export function login({username, password}) {
   return function(dispatch) {
-    console.log({username, password});
     api.post(`/api-token-auth/`, {username, password}).then(response => {
       cookies.set('token', response.data.token, {path: '/'});
       dispatch({type: 'LOGIN_SUCCESS', payload: response.data });
-      // window.location.href = '/';
+      window.location.href = '/';
     }).catch((error) => {
-      console.log(error)
       errorHandler(dispatch, error.response, 'LOGIN_FAIL')
     });
   }
 }
 
-export function register({username, firstName, lastName, password}) {
+export function register({username, email, password1, password2}) {
   return function(dispatch) {
-    api.post(`/auth/register`, {username, firstName, lastName, password}).then(response => {
-      cookie.set('token', response.data.token, {path: '/'});
+    api.post(`/register`, {username, email, password1, password2}).then(response => {
+      cookies.set('token', response.data.token, {path: '/'});
       dispatch({type: 'REGISTER_SUCCESS', payload: response.data });
       window.location.href = '/';
     }).catch((error) => {
@@ -50,17 +48,28 @@ export function register({username, firstName, lastName, password}) {
 export function logout() {
   return function(dispatch) {
     dispatch({type: 'LOGOUT_SUCCESS'});
-    cookie.remove('token', {path: '/'});
-
+    cookies.remove('token', {path: '/'});
     window.location.href =  '/';
+  }
+}
+
+export function verifyToken() {
+  const token = {'token': cookies.get('token')};
+  console.log(token);
+  return function(dispatch) {
+    api.post(`/api-token-verify/`, token).then(response => {
+      dispatch({type: 'VERIFY_SUCCESS', payload: response.data });
+    }).catch((error) => {
+      errorHandler(dispatch, error.response, 'VERIFY_FAIL')
+    });
   }
 }
 
 export function protectedTest() {
   return function(dispatch) {
-    api.get(`/api-token-verify`, {
+    api.get(`/protected-test`, {
       headers: {
-        'Authorization': cookie.get('token')
+        'Authorization': cookies.get('token')
       }
     }).then(response => {
       dispatch({type: PROTECTED_TEST, payload: response.data.content});

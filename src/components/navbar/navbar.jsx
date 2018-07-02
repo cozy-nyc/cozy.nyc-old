@@ -36,7 +36,31 @@ class NavBar extends Component {
 
   render() {
     const cube = require('assets/img/cube.svg');
-    if ( window.location.pathname != '/about' && window.location.pathname != '/'){
+    if (window.location.pathname == '/'){
+      return (
+        <div className='u-cf'></div>
+      );
+    } else if (window.location.pathname == '/about') {
+      return (
+        <div id="navbar">
+          <div id="navbar-logo" className="dropdown">
+            <span
+              className="dropdown-btn"
+              role="button"
+              tabIndex={0}
+            >
+              <Link to="/">
+                >back
+              </Link>
+            </span>
+          </div>
+          <div id="navbar-profile">
+            <ProfileButton />
+          </div>
+          <div className="u-cf" />
+        </div>
+      );
+    } else {
       return (
         <div id="navbar">
           <div id="navbar-logo" className="dropdown">
@@ -55,10 +79,6 @@ class NavBar extends Component {
           </div>
           <div className="u-cf" />
         </div>
-      );
-    } else {
-      return (
-        <div className='u-cf'></div>
       )
     }
   }

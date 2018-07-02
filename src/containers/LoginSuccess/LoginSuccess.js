@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as authActions from 'redux/modules/auth';
+import * as authActions from 'actions/auth/actions';
 
-@connect(state => ({ user: state.auth.user }), authActions)
+@connect(
+  state => ({ user: state.auth.user }),
+  authActions
+)
 export default class LoginSuccess extends Component {
   static propTypes = {
     user: PropTypes.shape({
@@ -27,7 +30,7 @@ export default class LoginSuccess extends Component {
             </p>
 
             <p>
-              The same function will forward you to <code>/</code> should you chose to log out. The choice is yours...
+              The same functiosn will forward you to <code>/</code> should you chose to log out. The choice is yours...
             </p>
 
             <div>

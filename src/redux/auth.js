@@ -1,15 +1,28 @@
 export default function Reducer(
   state = {
-    login: false,
-    user: null
+    isLogin: false,
+    user: {}
   },
   action
 ) {
   switch (action.type) {
+    case 'VERIFY_SUCCESS':
+      return {
+        ...state,
+        isLogin: true,
+        token: action.payload.token,
+        user: action.payload.user
+      };
+    case 'VERIFY_FAIL':
+      return {
+        ...state,
+        isLogin: false,
+        error: action.error
+      };
     case 'LOGIN_SUCCESS':
       return {
         ...state,
-        login: true,
+        isLogin: true,
         token: action.payload.token,
         user: action.payload.user
       };
@@ -32,9 +45,9 @@ export default function Reducer(
     case 'LOGOUT_SUCCESS':
       return {
         ...state,
-        login: false,
+        isLogin: false,
         token: null,
-        user: null
+        user: {}
       };
     case 'LOGOUT_FAIL':
       return {
