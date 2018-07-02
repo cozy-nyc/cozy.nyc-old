@@ -43,16 +43,6 @@ export default function createStore({
 
   const enhancers = [applyMiddleware(...middleware)];
 
-  if (__CLIENT__ && __DEVTOOLS__) {
-    const { persistState } = require('redux-devtools');
-    const DevTools = require('../containers/DevTools/DevTools');
-
-    Array.prototype.push.apply(enhancers, [
-      window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
-      persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
-    ]);
-  }
-
   const finalCreateStore = compose(...enhancers)(_createStore);
   const reducers = createReducers();
   const noopReducers = getNoopReducers(reducers, data);
