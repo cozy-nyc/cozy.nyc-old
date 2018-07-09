@@ -21,10 +21,7 @@ import BoardsHome from './containers/boards/index';
 import Board from './containers/boards/board';
 import Thread from './containers/boards/thread';
 
-// Discovery
-import DiscoveryHome from './containers/discovery/index';
-
-import BlogHome from './containers/blog/index';
+import UserProfile from './containers/profile/index';
 
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
@@ -54,8 +51,7 @@ const routes = [
       { path: '/boards', component: BoardsHome },
       { path: '/boards/:boardtag', component: Board },
       { path: '/boards/:boardtag/:threadid', component: Thread },
-      { path: '/discovery', component: DiscoveryHome },
-      { path: '/blog', component: BlogHome },
+      { path: '/u/:username', component: UserProfile },
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
