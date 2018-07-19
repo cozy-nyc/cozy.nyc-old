@@ -8,22 +8,21 @@ import ItemBox from './itembox';
 
 @connect(
   state => ({
-      items: store.items.items,
-      itemsFetched: store.items.fetched,
+      items: state.items.items,
+      // itemsFetched: state.items.fetched,
    }),
    fetchItems
 )
 export default class ItemQuery extends Component {
   static get propTypes() {
     return {
-      item: PropTypes.any.arrayOf(PropTypes.object).isRequired,
+      items: PropTypes.arrayOf(PropTypes.object).isRequired,
       // dispatch: PropTypes.func
     };
   }
 
-  render(){
-    const items = this.props;
-    fetchItems(items);
+  render() {
+    const items = this.props.items;
 
     const mappedItems = items.map(item =>
       <div className="three columns"

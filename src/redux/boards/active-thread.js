@@ -1,10 +1,14 @@
 export default function Reducer(
   state = {
     id: -1,
+    name: '',
+    views: -1,
+    replyCount: -1,
+    imageCount: -1,
     fetching: false,
     fetched: false,
     posts: [],
-    error: null,
+    error: null
   },
   action
 ) {
@@ -24,6 +28,9 @@ export default function Reducer(
         fetched: true,
         id: action.payload.id,
         posts: action.payload.posts,
+        views: action.payload.views,
+        replyCount: action.payload.replyCount,
+        imageCount: action.payload.imageCount
       };
     }
   }

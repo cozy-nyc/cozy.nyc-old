@@ -1,6 +1,6 @@
 import api from 'utils/api';
 
-export default function fetchBoards() {
+export function fetchBoards() {
   return function (dispatch) {
     api.get('/board/')
       .then(response => {

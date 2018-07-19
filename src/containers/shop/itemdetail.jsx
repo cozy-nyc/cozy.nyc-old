@@ -22,13 +22,7 @@ export default class Item extends Component {
         image: PropTypes.string.isRequired,
         price: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
-      }),
-      match: PropTypes.shape({
-        params: PropTypes.shape({
-          itemid: PropTypes.string.isRequired
-        })
-      }),
-      dispatch: PropTypes.func.isRequired
+      })
     };
   }
 
