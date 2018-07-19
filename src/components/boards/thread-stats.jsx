@@ -8,25 +8,19 @@ import PropTypes from 'prop-types';
  * ToDo: Add stats for thread
  */
 @connect(state => ({
-  posts: state.activeThread.posts,
   thread: state.activeThread
 }))
-class ThreadStats extends Component {
+export default class ThreadStats extends Component {
   static get propTypes() {
     return {
-      posts: PropTypes.arrayOf(PropTypes.object).isRequired,
-      thread: PropTypes.arrayOf(PropTypes.object).isRequired,
+      thread: PropTypes.shape({
+        imageCount: PropTypes.number.isRequired,
+        replyCount: PropTypes.number.isRequired,
+        views: PropTypes.number.isRequired,
+      }),
       // dispatch: PropTypes.func
     };
   }
-
-  createListImages() {
-    return this.props.posts.map(post =>
-      (
-        <div className="min-image" key={post.id} />
-      ));
-  }
-
 
   render() {
     return (
@@ -41,6 +35,3 @@ class ThreadStats extends Component {
     );
   }
 }
-
-
-export default ThreadStats;

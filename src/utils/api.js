@@ -1,16 +1,15 @@
 import axios from 'axios';
-import * as cookie from './cookie';
-
+import csrftoken from './cookie';
 
 const api = axios.create({
-  baseURL: 'http://api-dev.cozy.nyc',
-  timeout: 1000,
+  baseURL: process.env.API,
+  timeout: 1000
 });
 
 // CRSF token is needed in all requests that can make a change server side
-api.defaults.headers.post['X-CSRFToken'] = cookie.token;
-api.defaults.headers.put['X-CSRFToken'] = cookie.token;
-api.defaults.headers.patch['X-CSRFToken'] = cookie.token;
+api.defaults.headers.post['X-CSRFToken'] = csrftoken;
+api.defaults.headers.put['X-CSRFToken'] = csrftoken;
+api.defaults.headers.patch['X-CSRFToken'] = csrftoken;
 // api.defaults.headers.delete['X-CSRFToken'] = cookie.csrftoken; // Currently axios can't set headers for DELETE
 
 // Since we will only be using JSON APIs, add Content-Type: application/json to header as default

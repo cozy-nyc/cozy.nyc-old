@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ThreadForum from './thread-forum';
@@ -17,7 +17,7 @@ class ThreadList extends Component {
   static get propTypes() {
     return {
       board: PropTypes.string.isRequired,
-      threads: PropTypes.any.arrayOf(PropTypes.object).isRequired,
+      threads: PropTypes.arrayOf(PropTypes.object).isRequired,
     };
   }
 
@@ -28,7 +28,6 @@ class ThreadList extends Component {
           <Link
             className="thread-box-content"
             to={{ pathname: '/boards/' + this.props.board.tag + '/' + thread.id }}
-            activeClassName="active"
           >
             <div>
               <img className="thread-opimage" src={thread.image} alt={thread.title} />

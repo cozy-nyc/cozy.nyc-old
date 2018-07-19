@@ -8,8 +8,9 @@
 #profile-button {
   position: relative;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 0;
   display: inline-block;
+  overflow: hidden;
 }
 
 #user-profile-status {

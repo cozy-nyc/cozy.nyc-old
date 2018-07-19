@@ -17,15 +17,12 @@ const Home = () => (
 
       <div className="main-links">
         <Link to="radio">radio</Link>
-        <Link to="discovery">discovery</Link>
         <Link to="boards">boards</Link>
+        <Link to="shop">exchange</Link>
       </div>
 
       <div className="sub-links">
-        <Link to="shop">shop</Link>
         <Link to="about">about</Link>
-        <br />
-        <Link to="contact">contact</Link>
       </div>
     </div>
 

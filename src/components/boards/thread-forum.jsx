@@ -29,7 +29,7 @@ class ThreadForum extends Component {
     return (
       <div id="thread-forum">
         {popup}
-        <button id="thread-forum-button" onClick={() => this.togglePopup()}> reply </button>
+        <button id="thread-forum-button" onClick={() => this.togglePopup()}> create </button>
       </div>
     );
   }

@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 
-import LoginForm from 'components/LoginForm/LoginForm';
-import * as authActions from 'redux/modules/auth';
+import LoginForm from 'components/login-form/login-form';
+import * as authActions from 'actions/auth/actions';
 import * as notifActions from 'redux/modules/notifs';
 
 @connect(
-  state => ({ user: state.auth.user }),
+  state => ({
+    user: state.auth.user,
+    isLogin: state.auth.isLogin
+  }),
   { ...notifActions, ...authActions }
 )
 export default class Login extends Component {
@@ -16,6 +19,7 @@ export default class Login extends Component {
     user: PropTypes.shape({
       username: PropTypes.string
     }),
+    isLogin: PropTypes.bool.isRequired,
     login: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
     notifSend: PropTypes.func.isRequired
@@ -30,7 +34,7 @@ export default class Login extends Component {
   };
 
   login = async data => {
-    const result = await this.props.login('local', data);
+    const result = await this.props.login(data);
     this.successLogin();
     return result;
   };
@@ -44,17 +48,16 @@ export default class Login extends Component {
   };
 
   render() {
-    const { user, logout } = this.props;
+    const { user, logout, isLogin } = this.props;
     return (
       <div className="auth-container">
         <Helmet title="login" />
         <h1>Login</h1>
-        {!user && (
+        {!isLogin ? (
           <div>
             <LoginForm onSubmit={this.login} />
           </div>
-        )}
-        {user && (
+        ) : (
           <div>
             <p>You are currently logged in as {user.username}.</p>
 

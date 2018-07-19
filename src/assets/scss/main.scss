@@ -27,13 +27,19 @@
 @import "pages/profile.scss";
 @import "pages/auth.scss";
 @import "pages/about.scss";
+@import "pages/shop.scss";
 
 #content,
 #root,
 body,
 html {
+  width: 100%;
   height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
+
 
 body {
   -webkit-user-select: none;
@@ -81,8 +87,7 @@ h2 {
   font-size: 60px;
 }
 
-a,
-a:visited {
+a {
   color: #F8F5EB;
   // line-height: 30px;
   display: block;

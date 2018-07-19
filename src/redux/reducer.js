@@ -1,5 +1,6 @@
 import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
+import { reducer as reducerForm } from 'redux-form';
 
 // Boards Reducers
 import BoardReducer from './boards/board-list';
@@ -14,13 +15,14 @@ import CategoryReducer from './shop/categories';
 import ItemReducer from './shop/items';
 import cartReducer from './shop/cart';
 
-import auth from './modules/auth';
+import auth from './auth';
 import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 
 export default function createReducers(asyncReducers) {
   return {
+    form: reducerForm,
     categories: CategoryReducer,
     items: ItemReducer,
     cart: cartReducer,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { fetchBoards } from 'actions/boards/get-boards';
@@ -11,7 +11,7 @@ import { fetchBoards } from 'actions/boards/get-boards';
   }),
   fetchBoards
 )
-class BoardList extends Component {
+export default class BoardList extends Component {
   static get propTypes() {
     return {
       boards: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -19,29 +19,25 @@ class BoardList extends Component {
     };
   }
 
-  createListItems() {
-    return this.props.boards.map(board => (
-      <span
+  render() {
+    const boards = this.props.boards;
+
+    const mappedBoards =  boards.map(board =>
+      <div
         className="row"
         key={board.id}
       >
         <Link
-          to={{ pathname: '/boards/' + board.tag }}
-          activeClassName="active"
+          to={{ pathname: "/boards/" + board.tag }}
         >
             /{board.tag}/ - {board.name}
         </Link>
-      </span>
-    ));
-  }
+      </div>)
 
-  render() {
     return (
       <ul>
-        { this.createListItems() }
+        {mappedBoards}
       </ul>
     );
   }
 }
-
-export default (BoardList);

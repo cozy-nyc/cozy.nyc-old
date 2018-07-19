@@ -4,39 +4,31 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
-import { provideHooks } from 'redial';
 import Helmet from 'react-helmet';
-import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
-import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
+import { verifyToken, logout } from 'actions/auth/actions';
 import config from 'config';
 import NavBar from 'components/navbar/navbar';
+import cookies from 'utils/cookie';
 
-@provideHooks({
-  fetch: async ({ store: { dispatch, getState } }) => {
-    if (!isAuthLoaded(getState())) {
-      await dispatch(loadAuth()).catch(() => null);
-    }
-    if (!isInfoLoaded(getState())) {
-      await dispatch(loadInfo()).catch(() => null);
-    }
-  }
-})
 @connect(
   state => ({
-    user: state.auth.user
+    user: state.auth.user,
+    isLogin: state.auth.isLogin
   }),
-  { logout, pushState: push }
+  { logout, pushState: push, verifyToken }
 )
 @withRouter
 export default class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
+    isLogin: PropTypes.bool.isRequired,
     user: PropTypes.shape({
       username: PropTypes.string
     }),
     logout: PropTypes.func.isRequired,
-    pushState: PropTypes.func.isRequired
+    pushState: PropTypes.func.isRequired,
+    verifyToken: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -46,6 +38,13 @@ export default class App extends Component {
   static contextTypes = {
     store: PropTypes.object.isRequired
   };
+
+
+  componentWillMount() {
+    if (cookies.get('token') && !this.props.isLogin) {
+      this.props.verifyToken();
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
     if (!this.props.user && nextProps.user) {

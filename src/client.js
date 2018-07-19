@@ -12,7 +12,6 @@ import Loadable from 'react-loadable';
 import { AppContainer as HotEnabler } from 'react-hot-loader';
 import { getStoredState } from 'redux-persist';
 import localForage from 'localforage';
-import { socket, createApp } from 'app';
 import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import routes from 'routes';
@@ -28,33 +27,12 @@ const persistConfig = {
 
 const dest = document.getElementById('content');
 
-const app = createApp();
-const restApp = createApp('rest');
 const client = apiClient();
-const providers = { app, restApp, client };
-
-function initSocket() {
-  socket.on('news', data => {
-    console.log(data);
-    socket.emit('my other event', { my: 'data from client' });
-  });
-  socket.on('msg', data => {
-    console.log(data);
-  });
-
-  return socket;
-}
-
-global.socket = initSocket();
+const providers = { client };
 
 (async () => {
   const storedData = await getStoredState(persistConfig);
   const online = await (window.__data ? true : isOnline());
-
-  if (online) {
-    socket.open();
-    await app.authenticate().catch(() => null);
-  }
 
   const history = createBrowserHistory();
   const data = !online ? { ...storedData, ...window.__data, online } : { ...window.__data, online };
@@ -113,18 +91,6 @@ global.socket = initSocket();
       console.error('Server-side React render was discarded.\n' +
           'Make sure that your initial render does not contain any client-side code.');
     }
-  }
-
-  if (__DEVTOOLS__ && !window.devToolsExtension) {
-    const devToolsDest = document.createElement('div');
-    window.document.body.insertBefore(devToolsDest, null);
-    const DevTools = require('./containers/DevTools/DevTools');
-    ReactDOM.hydrate(
-      <Provider store={store}>
-        <DevTools />
-      </Provider>,
-      devToolsDest
-    );
   }
 
   if (!__DEVELOPMENT__ && 'serviceWorker' in navigator) {

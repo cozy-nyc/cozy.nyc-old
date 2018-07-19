@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 
 class ItemBox extends Component {
   static propTypes = {
-    id: PropTypes.string.isRequired,
-    imageurl: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired
   };
@@ -16,19 +15,17 @@ class ItemBox extends Component {
     const url = '/shop/' + id;
 
     return (
-
-      <div className="item-block visible">
+      <div className="itembox visible">
         <Link
           to={{ pathname: url }}
           className="active"
         >
-          <img src={this.props.imageurl} alt={this.props.name} />
+          <img src={this.props.image} alt={this.props.name} />
           <h3>{this.props.name}</h3>
           <h3>Designer</h3>
           <h3>${this.props.price}</h3>
         </Link>
       </div>
-
     );
   }
 }
