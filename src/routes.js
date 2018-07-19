@@ -43,18 +43,18 @@ const routes = [
     component: App,
     routes: [
       { path: '/', exact: true, component: Home },
-      { path: '/about', component: About },
+      { path: '/about', exact: true, component: About },
       { path: '/shop', exact: true, component: Shop },
       { path: '/shop/:itemid', component: Item },
-      { path: '/radio', component: RadioHome },
-      { path: '/radio/:channelname', component: Stream },
+      { path: '/radio', exact: true, component: RadioHome },
+      { path: '/radio/:channelname', exact: true, component: Stream },
       { path: '/boards', exact: true, component: BoardsHome },
       { path: '/boards/:boardtag', exact: true, component: Board },
       { path: '/boards/:boardtag/:threadid', exact: true, component: Thread },
-      { path: '/u/:username', component: UserProfile },
-      { path: '/login', component: Login },
-      { path: '/login-success', component: isAuthenticated(LoginSuccess) },
-      { path: '/register', component: isNotAuthenticated(Register) },
+      { path: '/u/:username', exact: true, component: UserProfile },
+      { path: '/login', exact: true, component: Login },
+      { path: '/login-success', exact: true, component: isAuthenticated(LoginSuccess) },
+      { path: '/register', exact: true, component: isNotAuthenticated(Register) },
       { component: NotFound }
     ]
   }
