@@ -43,7 +43,6 @@ export function register({
       username,
       email,
       password1,
-      password2
     }).then(response => {
       cookies.set('token', response.data.token, { path: '/' });
       dispatch({ type: 'REGISTER_SUCCESS', payload: response.data });
