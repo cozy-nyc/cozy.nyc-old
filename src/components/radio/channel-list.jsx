@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
-
-class ChannelList extends Component {
+@connect(state => ({
+  channels: state.channels,
+}))
+export default class ChannelList extends Component {
   static propTypes = {
     channels: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
@@ -16,7 +18,7 @@ class ChannelList extends Component {
           to={{
             pathname: '/radio/' + channel.slug
           }}
-          ClassName="active"
+          className="active"
         >
           {channel.name}
         </Link>
@@ -31,11 +33,3 @@ class ChannelList extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    channels: state.channels
-  };
-}
-
-export default connect(mapStateToProps)(ChannelList);
