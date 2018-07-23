@@ -5,9 +5,10 @@ export default function Reducer(
       fetched: false,
       id: -1,
       name: '',
-      image: '',
+      images: [],
       price: '',
-      description: ''
+      description: '',
+      seller_name: ''
     },
     fetching: false,
     fetched: false,
