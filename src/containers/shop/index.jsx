@@ -37,7 +37,7 @@ export default class Shop extends Component {
       >
         <ItemBox
           id={item.id}
-          image={item.image}
+          image={item.images[0].image}
           name={item.name}
           price={item.price}
         />

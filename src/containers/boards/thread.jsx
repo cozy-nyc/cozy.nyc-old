@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { fetchPosts } from 'actions/boards/get-posts';
+import { fetchPosts } from 'actions/boards/get';
 import Post from 'components/boards/post';
 import ReplyForum from 'components/boards/reply-forum';
 

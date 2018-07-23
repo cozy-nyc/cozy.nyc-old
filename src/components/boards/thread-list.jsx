@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ThreadForum from './thread-forum';
-import { fetchBoard } from '../../actions/boards/get-threads';
+import { fetchBoard } from '../../actions/boards/get';
 
 @connect(
   state => ({

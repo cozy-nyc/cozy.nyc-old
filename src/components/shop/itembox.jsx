@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class ItemBox extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired
   };

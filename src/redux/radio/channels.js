@@ -6,7 +6,7 @@ export default function () {
       slug: 'classics',
       image: 'image.gif',
       preview: 'video.mp4',
-      listeners: 10,
+      listeners: 10
     },
     {
       id: 2,
@@ -14,15 +14,15 @@ export default function () {
       slug: 'classics',
       image: 'image.gif',
       preview: 'video.mp4',
-      listeners: 10,
+      listeners: 10
     },
     {
-      id: 1,
+      id: 3,
       name: 'podcasts',
       slug: 'classics',
       image: 'image.gif',
       preview: 'video.mp4',
-      listeners: 10,
-    },
+      listeners: 10
+    }
   ];
 }
