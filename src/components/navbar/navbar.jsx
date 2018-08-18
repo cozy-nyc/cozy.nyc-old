@@ -20,7 +20,7 @@ class NavBar extends Component {
               tabIndex={0}
             >
               <Link to="/">
-                >back
+                back
               </Link>
             </span>
           </div>
@@ -40,7 +40,7 @@ class NavBar extends Component {
             tabIndex={0}
           >
             <Link to="/">
-              <img id="brand-img" src={cube} alt="cube" />
+              <img id="brand-img" src={cube} alt="cube"/>
             </Link>
           </span>
         </div>

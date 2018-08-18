@@ -27,7 +27,6 @@ export default class Shop extends Component {
   }
 
   render() {
-    fetchItems();
     const { items } = this.props;
 
     const mappedItems = items.map(item =>
@@ -39,12 +38,13 @@ export default class Shop extends Component {
           id={item.id}
           image={item.images[0].image}
           name={item.name}
+          seller_name={item.seller_name}
           price={item.price}
         />
       </div>));
 
     return (
-      <div id="shop-container" className="row">
+      <div id="shop-container" className="row center-xs">
         <Helmet title="shop" />
         {mappedItems}
       </div>

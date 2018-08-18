@@ -1,10 +1,8 @@
+// Exchange Home Page
 #shop-container {
   height: 100%;
   display: flex;
-  justify-content: flex-start;
-  justify-content: space;
   align-items: center;
-  margin: 50;
 }
 
 .itembox {
@@ -19,17 +17,28 @@
 
 .itembox img {
   background-color: white;
-  display: block;
   height: 300px;
-  width: 100%;
+  width: auto;
 }
 
+
+// Item Detail Page
 #itemdetail-container {
   height: 100%;
   display: flex;
-  justify-content: flex-start;
-  justify-content: center;
   align-items: center;
+}
+
+#itemdetail-display {
+  height: 100%;
+  width: 100%;
+  padding-top: 10%;
+}
+
+#itemdetail-display img {
+  padding: 40px 0;
+  max-height: 80%;
+  max-width: 100%;
 }
 
 #itemdetail-info {

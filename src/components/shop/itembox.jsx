@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class ItemBox extends Component {
+export default class ItemBox extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
     image: PropTypes.string,
     name: PropTypes.string.isRequired,
+    seller_name: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired
   };
 
@@ -22,12 +23,10 @@ class ItemBox extends Component {
         >
           <img src={this.props.image} alt={this.props.name} />
           <h3>{this.props.name}</h3>
-          <h3>Designer</h3>
-          <h3>${this.props.price}</h3>
+          <h4>@{this.props.seller_name}</h4>
+          <h4>${this.props.price}</h4>
         </Link>
       </div>
     );
   }
 }
-
-export default ItemBox;

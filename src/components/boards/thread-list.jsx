@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import ThreadForum from './thread-forum';
 import { fetchBoard } from '../../actions/boards/get';
 
 @connect(
   state => ({
-    board: state.activeBoard,
+    board: state.activeBoard.tag,
     threads: state.activeBoard.threads
   }),
   fetchBoard
@@ -24,19 +23,17 @@ class ThreadList extends Component {
   createListItems() {
     return this.props.threads.map(thread =>
       (
-        <div className="three columns thread-box" key={thread.id}>
+        <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3" key={thread.id}>
           <Link
-            className="thread-box-content"
+            className="thread-box"
             to={{ pathname: '/boards/' + this.props.board.tag + '/' + thread.id }}
           >
-            <div>
-              <img className="thread-opimage" src={thread.image} alt={thread.title} />
-              <div className="thread-oppost">
-                <h4>{thread.title}</h4>
-                <p>{thread.blurb}</p>
-                <br />
-                  views: {thread.views} replies: {thread.replyCount} images: {thread.imageCount}
-              </div>
+            <img src={thread.image} alt={thread.title} />
+            <div className="thread-oppost">
+              <h4>{thread.title}</h4>
+              <p>{thread.blurb}</p>
+              <br />
+                views: {thread.views} replies: {thread.replyCount} images: {thread.imageCount}
             </div>
           </Link>
         </div>
@@ -45,10 +42,9 @@ class ThreadList extends Component {
 
   render() {
     return (
-      <ul>
+      <div id="board-feed">
         {this.createListItems()}
-        <ThreadForum />
-      </ul>
+      </div>
     );
   }
 }

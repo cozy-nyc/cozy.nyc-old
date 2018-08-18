@@ -1,27 +1,32 @@
-#feed {
-  margin: 0 auto;
-  min-height: 100%;
+#board-container {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+#board-feed {
+  margin: 0 auto;
   text-align: center;
-  padding: 120px 50px;
 }
 
 // Thread Feed
 .thread-box {
+  display: block;
+  background-color: grey;
+  margin: 20px;
+  border-radius: 5px;
   height: 500px;
+  overflow: hidden;
+  width: 300px;
 }
 
-.thread-box-content {
-  background-color: #555555;
-  height: 95%;
-  margin: 15px;
-}
-
-.thread-opimage {
-  width: 100%;
-}
-
-.thread-oppost {
+.thread-box img {
+  background-color: white;
+  height: 300px;
+  width: auto;
 }
 
 #thread-forum {

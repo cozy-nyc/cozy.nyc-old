@@ -9,8 +9,6 @@ import { getItem } from 'actions/items/get';
  * Individual Item page
  *
  */
-
-
 @connect(state => ({
   item: state.items.activeitem,
 }))
@@ -29,7 +27,6 @@ export default class Item extends Component {
 
   componentWillMount() {
     this.props.dispatch(getItem(this.props.match.params.itemid));
-    console.log(this.props.item);
   }
 
   render() {
@@ -43,11 +40,11 @@ export default class Item extends Component {
     return (
       <div id="itemdetail-container">
         <Helmet title={title} />
-        <div id="itemdetail-display" className="six columns">
+        <div id="itemdetail-display" className="col-xs-6 ">
           {mappedImages}
         </div>
 
-        <div id="itemdetail-info" className="six columns">
+        <div id="itemdetail-info" className="col-xs-6 ">
           <h2>{item.name}</h2>
           <h3>${item.price}</h3>
           <h4>@{item.seller_name}</h4>

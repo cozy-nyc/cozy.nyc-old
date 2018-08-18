@@ -13,9 +13,9 @@ class About extends Component {
     const musicmp3 = require('assets/audio/lake-zurich.mp3');
     const musicogg = require('assets/audio/lake-zurich.ogg');
 
-    console.log(window.location.pathname);
     return (
       <div className="about-container">
+        <canvas className="about-backgroundGif"/>
         <Helmet title="about" />
         <img src={cube} alt="cube" />
         <audio autoPlay loop>
