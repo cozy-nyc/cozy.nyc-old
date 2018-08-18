@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
 class NavBar extends Component {
+  goBack(){
+    window.history.back();
+  }
+
   render() {
     const cube = require('assets/img/cube.svg');
     if (window.location.pathname === '/') {
@@ -19,9 +23,9 @@ class NavBar extends Component {
               role="button"
               tabIndex={0}
             >
-              <Link to="/">
-                back
-              </Link>
+            <button onClick={this.goBack}>
+              back
+            </button>
             </span>
           </div>
           <div id="navbar-profile">
@@ -39,9 +43,12 @@ class NavBar extends Component {
             role="button"
             tabIndex={0}
           >
-            <Link to="/">
-              <img id="brand-img" src={cube} alt="cube"/>
-            </Link>
+          <button onClick={this.goBack}>
+            back
+          </button>
+          <Link to="/">
+            <img id="brand-img" src={cube} alt="cube"/>
+          </Link>
           </span>
         </div>
         <div id="navbar-profile">
