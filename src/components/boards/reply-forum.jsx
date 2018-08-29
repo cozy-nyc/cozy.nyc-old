@@ -27,11 +27,14 @@ class ReplyForum extends Component {
   }
 
   render() {
+    const pencil = require('assets/img/pencil.svg');
     const popup = (this.state.showPopupForum ? <PopupForum /> : null);
     return (
       <div id="reply-forum">
         {popup}
-        <button id="reply-button" onClick={() => this.togglePopup()}> reply </button>
+        <a id="reply-button" onClick={() => this.togglePopup()}>
+          <img src={pencil} alt="create post" />
+        </a>
       </div>
     );
   }

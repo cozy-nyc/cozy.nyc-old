@@ -10,6 +10,7 @@ class NavBar extends Component {
 
   render() {
     const cube = require('assets/img/cube.svg');
+    const backbutton = require('assets/img/left-arrow.svg');
     if (window.location.pathname === '/') {
       return (
         <div className="u-cf" />
@@ -17,16 +18,10 @@ class NavBar extends Component {
     } else if (window.location.pathname === '/about') {
       return (
         <div id="navbar">
-          <div id="navbar-logo" className="dropdown">
-            <span
-              className="dropdown-btn"
-              role="button"
-              tabIndex={0}
-            >
-            <button onClick={this.goBack}>
-              back
-            </button>
-            </span>
+          <div id="navbar-nav" className="dropdown">
+            <a href="#" id="navbar-backbutton" onClick={this.goBack}>
+              <img src={backbutton} alt="backbutton" />
+            </a>
           </div>
           <div id="navbar-profile">
             <ProfileButton />
@@ -37,18 +32,32 @@ class NavBar extends Component {
     }
     return (
       <div id="navbar">
-        <div id="navbar-logo" className="dropdown">
+        <div id="navbar-nav">
+          <a href="#" id="navbar-backbutton" onClick={this.goBack}>
+            <img src={backbutton} alt="backbutton" />
+          </a>
           <span
+            id="navbar-logo"
             className="dropdown-btn"
             role="button"
             tabIndex={0}
           >
-          <button onClick={this.goBack}>
-            back
-          </button>
-          <Link to="/">
-            <img id="brand-img" src={cube} alt="cube"/>
-          </Link>
+            <Link id="navbar-button" to="/">
+              <img id="brand-img" src={cube} alt="cube"/>
+            </Link>
+            <div id="navbar-dropdown">
+              <div id="navbar-menu">
+                <div className="main-links">
+                  <Link to="/radio">radio</Link>
+                  <Link to="/boards">boards</Link>
+                  <Link to="/shop">exchange</Link>
+                </div>
+
+                <div className="sub-links">
+                  <Link to="/about">about</Link>
+                </div>
+              </div>
+              </div>
           </span>
         </div>
         <div id="navbar-profile">

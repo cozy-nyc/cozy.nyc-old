@@ -7,16 +7,20 @@
 
 .itembox {
   display: block;
-  background-color: grey;
+  background-color: #F8F5EB;
   margin: 20px;
+  border-color: #272727;
   border-radius: 5px;
   height: 500px;
   overflow: hidden;
   width: 300px;
 }
 
+.itembox a {
+  color: #272727
+}
 .itembox img {
-  background-color: white;
+  background-color: #F8F5EB;
   height: 300px;
   width: auto;
 }

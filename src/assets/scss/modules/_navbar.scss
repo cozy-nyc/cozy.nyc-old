@@ -10,16 +10,72 @@
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-#navbar-logo {
+#navbar-nav {
   position: fixed;
   left: 1%;
   top: 1%;
+}
+
+#navbar-backbutton {
+  display: inline-block;
+}
+
+#navbar-backbutton img {
+  height: 50px;
+}
+
+#navbar-button {
+  display: inline-block;
+}
+
+
+#navbar-menu {
+  position: inherit;
+  background-color: #F8F5EB;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: #F8F5EB;
+  border-style: solid;
+}
+
+#navbar-menu a {
+  color: #272727;
+}
+
+#navbar-menu .main-links {
+  text-align: left;
+}
+
+#navbar-menu .main-links a {
+  font-size: 30px;
+}
+
+#navbar-menu .sub-links {
+  text-align: left;
+}
+
+#navbar-menu .sub-links a {
+  font-size: 20px;
+}
+
+#navbar-logo {
+  border: 5px ;
 }
 
 #brand-img {
   height: 50px;
 }
 
+
+#navbar-dropdown {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+#navbar-nav:hover #navbar-dropdown{
+  display: block;
+}
 
 .sidebar-exit {
   display: block;
@@ -41,14 +97,14 @@
   top: 0;
   min-height: 100vh;
   padding: 100px 20px;
-  color: #000;
+  color: #272727;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 #sidebar-menu a {
-  color: #000;
+  color: #272727;
 }
 
 #sidebar-menu .sub-links {
