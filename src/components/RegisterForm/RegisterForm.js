@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { reduxForm, Field, propTypes, fieldPropTypes } from 'redux-form';
 import registerValidation from './registerValidation';
 
+/*
+  Input Component
+
+  Input element used for RegisterForm().
+*/
 const Input = ({
   input, label, type, meta: { touched, error }
 }) => (
@@ -24,6 +29,12 @@ const Input = ({
 
 Input.propTypes = fieldPropTypes;
 
+/*
+  Register Forum Component
+
+  Provides inputs for username, email, password, and password confirmation to create
+  a new user.
+*/
 @reduxForm({
   form: 'register',
   validate: registerValidation

@@ -20,6 +20,12 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+/*
+  Login Action
+
+  Sends/posts username and password to get auth token if user credentials have
+  been verifed or an error message if credentials where invaild.
+*/
 export function login({ username, password }) {
   return function (dispatch) {
     api.post('/api-token-auth/', { username, password }).then(response => {
@@ -32,6 +38,12 @@ export function login({ username, password }) {
   };
 }
 
+/*
+  Register Action
+
+  Sends/posts username, password, and email to create a user with those credentials
+  and info.
+*/
 export function register({
   username,
   email,
@@ -53,6 +65,14 @@ export function register({
   };
 }
 
+/*
+  Logout Action
+
+  Removes token from cookies.
+
+  NOTE:
+    Need to change to session and remove data from redux store. -Rantahu
+*/
 export function logout() {
   return function (dispatch) {
     dispatch({ type: 'LOGOUT_SUCCESS' });
@@ -61,6 +81,11 @@ export function logout() {
   }
 }
 
+/*
+  Verify Token Action
+
+  Checks token from cookies with API if vaild.
+*/
 export function verifyToken() {
   const token = { token: cookies.get('token') };
   console.log(token);
@@ -73,6 +98,10 @@ export function verifyToken() {
   };
 }
 
+/*
+  NOTE:
+    I don't know what the fuck this does. Might remove in the future. -Rantahu
+*/
 export function protectedTest() {
   return function (dispatch) {
     api.get('/protected-test', {

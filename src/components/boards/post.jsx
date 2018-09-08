@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/*
+  Post Component
+
+  Bubble/Text box for posts.
+*/
 export default class Post extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,

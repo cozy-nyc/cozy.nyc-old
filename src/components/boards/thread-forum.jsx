@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/*
+  PopUp Forum Component
+
+  Forum for creating a thread on a board.
+*/
 const PopupForum = () => (
   <div id="thread-forum-popup">
     <div className="popup_inner">
@@ -10,6 +15,11 @@ const PopupForum = () => (
   </div>
 );
 
+{/*
+  Relpy Forum Component
+
+  Handles popup for the forum.
+*/}
 class ThreadForum extends Component {
   constructor() {
     super();

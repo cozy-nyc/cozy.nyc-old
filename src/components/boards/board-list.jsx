@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 
 import { fetchBoards } from 'actions/boards/get';
 
+/*
+  Board List Component
+
+  Displays list of boards.
+*/
 @connect(
   state => ({
     boards: state.boards.boards

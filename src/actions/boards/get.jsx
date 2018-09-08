@@ -1,5 +1,10 @@
 import api from 'utils/api';
 
+/*
+  Fetch Boards Action
+
+  Gets list of boards from the api.
+*/
 export function fetchBoards() {
   return function (dispatch) {
     api.get('/board/')
@@ -12,6 +17,11 @@ export function fetchBoards() {
   };
 }
 
+/*
+  Fetch Board/Threads
+
+  Gets list of threads from a given board.
+*/
 export function fetchBoard() {
   return function (dispatch) {
     api.get('/board/1/')
@@ -24,7 +34,13 @@ export function fetchBoard() {
   };
 }
 
+/*
+  Fecth THread/Posts Token Action
 
+  GEts info and posts from a thread.
+
+  NOTE: Should be renamed to fetchThread
+*/
 export function fetchPosts(id) {
    return function(dispatch) {
      api.get('/thread/'+id )

@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
+/*
+  NavBar Component
+
+  Navigation bar used for site.
+
+  TODO:
+    Add background when user scrolls down from the top of a page.
+*/
 class NavBar extends Component {
   goBack(){
     window.history.back();
@@ -12,10 +20,19 @@ class NavBar extends Component {
     const cube = require('assets/img/cube.svg');
     const backbutton = require('assets/img/left-arrow.svg');
     if (window.location.pathname === '/') {
+      {/*
+        IF at Home page:
+          Don't display NavBar.
+
+      */}
       return (
         <div className="u-cf" />
       );
     } else if (window.location.pathname === '/about') {
+      {/*
+        If at About page:
+          Display NavBar without the brand logo.
+      */}
       return (
         <div id="navbar">
           <div id="navbar-nav" className="dropdown">
@@ -30,6 +47,10 @@ class NavBar extends Component {
         </div>
       );
     }
+    {/*
+      Else:
+        Display basic NavBar.
+    */}
     return (
       <div id="navbar">
         <div id="navbar-nav">

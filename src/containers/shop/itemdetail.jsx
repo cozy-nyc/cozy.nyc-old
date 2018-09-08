@@ -5,10 +5,12 @@ import Helmet from 'react-helmet';
 
 import { getItem } from 'actions/items/get';
 
-/**
- * Individual Item page
- *
- */
+
+/*
+  Individual Item page
+
+  Displays information of an item and allows user to purchase item if available.
+*/
 @connect(state => ({
   item: state.items.activeitem,
 }))

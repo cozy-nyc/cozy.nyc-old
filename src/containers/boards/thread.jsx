@@ -9,10 +9,11 @@ import ReplyForum from 'components/boards/reply-forum';
 import ThreadStats from 'components/boards/thread-stats';
 
 
-/**
-* Thread Page
-*
-* ToDo: Add stats for thread
+/*
+  Thread Page
+
+  TODO:
+    Add stats for thread
 */
 @connect(state => ({
   posts: state.activeThread.posts,

@@ -6,6 +6,15 @@ import RegisterForm from 'components/RegisterForm/RegisterForm';
 import * as authActions from 'actions/auth/actions';
 import * as notifActions from 'redux/modules/notifs';
 
+/*
+  Register Page
+
+  User can create a account here.
+
+  TODO:
+    Page should redirct user if they're already logged in.
+
+*/
 @connect(
   () => ({}),
   { ...notifActions, ...authActions }

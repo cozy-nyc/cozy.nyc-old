@@ -4,6 +4,11 @@ import Helmet from 'react-helmet';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
+/*
+  Home Page
+
+  HOME OF NEET
+*/
 const Home = () => (
   <div id="home-content" className="row">
     <Helmet title="home" />

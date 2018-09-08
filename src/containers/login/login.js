@@ -7,6 +7,14 @@ import LoginForm from 'components/login-form/login-form';
 import * as authActions from 'actions/auth/actions';
 import * as notifActions from 'redux/modules/notifs';
 
+/*
+  Login Page
+
+  Page for user to login with there username and password.
+
+  TODO:
+    Page should redirct if a user is already login.
+*/
 @connect(
   state => ({
     user: state.auth.user,

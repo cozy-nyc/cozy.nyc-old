@@ -7,10 +7,12 @@ import { fetchItems } from 'actions/items/get';
 import ItemBox from 'components/shop/itembox';
 
 
-/**
- * Main/home page for cozy.nyc shop
- *
- */
+/*
+  Shop Home Page
+
+  Main/home page for cozy.nyc shop
+
+*/
 @connect(
   state => ({
     items: state.items.items,

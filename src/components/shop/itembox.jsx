@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+
+/*
+  Item Box Component
+
+  ELement that displays an items image, name, price, and seller name.
+*/
 export default class ItemBox extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,

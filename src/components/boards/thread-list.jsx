@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 
 import { fetchBoard } from '../../actions/boards/get';
 
+/*
+  Thread List Component
+
+  Displays list of threads for a given board.
+*/
 @connect(
   state => ({
     board: state.activeBoard.tag,

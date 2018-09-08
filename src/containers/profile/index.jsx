@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-/**
- * User Profile Page
- * Displays information about the user
- *
- * ToDo: Add edit options when the current user is on their own page.
- */
+
+/*
+  User Profile Page
+  Displays information about the user
+
+  TODO:
+    Add edit options when the current user is on their own page.
+*/
  @connect(state => ({
    auth: state.auth
  }))

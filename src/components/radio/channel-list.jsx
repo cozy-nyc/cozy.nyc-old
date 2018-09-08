@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+/*
+  Channel List Component
+
+  Display active radio streams.
+*/
 @connect(state => ({
   channels: state.channels,
 }))

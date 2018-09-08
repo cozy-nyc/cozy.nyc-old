@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-/**
- * About Page
- * Display a the cozy logo.
- *
- * ToDo: Add pause/mute button
- */
+
+/*
+  About Page
+
+  Display a the cozy logo.
+
+  TODO:
+    Add pause/mute button
+*/
 class About extends Component {
   render() {
     const cube = require('assets/img/cube.svg');
