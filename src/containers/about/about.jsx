@@ -18,7 +18,7 @@ class About extends Component {
 
     return (
       <div className="about-container">
-        <canvas className="about-backgroundGif"/>
+        <canvas className="about-backgroundGif" />
         <Helmet title="about" />
         <img src={cube} alt="cube" />
         <audio autoPlay loop>

@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
   'register' links.
 
   TODO:
-    Display current User's Rank/Title
+    - Display current User's Rank/Title
+    - Use current user's profile image
 */
 @connect(state => ({
   auth: state.auth,

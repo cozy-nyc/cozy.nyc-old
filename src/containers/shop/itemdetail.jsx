@@ -36,8 +36,7 @@ export default class Item extends Component {
     const title = 'shop - ' + item.name.toLowerCase();
 
     const mappedImages = item.images.map(image =>
-      <img src={image.image} alt={image.item_name} key={image.id} />
-    )
+      <img src={image.image} alt={image.item_name} key={image.id} />);
 
     return (
       <div id="itemdetail-container">

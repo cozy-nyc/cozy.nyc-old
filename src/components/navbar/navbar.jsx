@@ -12,7 +12,7 @@ import ProfileButton from 'components/profilebutton/profile-button.jsx';
     Add background when user scrolls down from the top of a page.
 */
 class NavBar extends Component {
-  goBack(){
+  goBack() {
     window.history.back();
   }
 
@@ -20,23 +20,23 @@ class NavBar extends Component {
     const cube = require('assets/img/cube.svg');
     const backbutton = require('assets/img/left-arrow.svg');
     if (window.location.pathname === '/') {
-      {/*
+      /*
         IF at Home page:
           Don't display NavBar.
 
-      */}
+      */
       return (
         <div className="u-cf" />
       );
     } else if (window.location.pathname === '/about') {
-      {/*
+      /*
         If at About page:
           Display NavBar without the brand logo.
-      */}
+      */
       return (
         <div id="navbar">
           <div id="navbar-nav" className="dropdown">
-            <a href="#" id="navbar-backbutton" onClick={this.goBack}>
+            <a id="navbar-backbutton" onClick={this.goBack}>
               <img src={backbutton} alt="backbutton" />
             </a>
           </div>
@@ -47,14 +47,14 @@ class NavBar extends Component {
         </div>
       );
     }
-    {/*
+    /*
       Else:
         Display basic NavBar.
-    */}
+    */
     return (
       <div id="navbar">
         <div id="navbar-nav">
-          <a href="#" id="navbar-backbutton" onClick={this.goBack}>
+          <a id="navbar-backbutton" onClick={this.goBack}>
             <img src={backbutton} alt="backbutton" />
           </a>
           <span
@@ -78,7 +78,7 @@ class NavBar extends Component {
                   <Link to="/about">about</Link>
                 </div>
               </div>
-              </div>
+            </div>
           </span>
         </div>
         <div id="navbar-profile">

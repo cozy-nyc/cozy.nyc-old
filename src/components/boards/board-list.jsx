@@ -27,17 +27,17 @@ export default class BoardList extends Component {
   render() {
     const boards = this.props.boards;
 
-    const mappedBoards =  boards.map(board =>
+    const mappedBoards = boards.map(board =>
       <div
         className="row"
         key={board.id}
       >
         <Link
-          to={{ pathname: "/boards/" + board.tag }}
+          to={{ pathname: '/boards/' + board.tag }}
         >
             /{board.tag}/ - {board.name}
         </Link>
-      </div>)
+      </div>);
 
     return (
       <ul>

@@ -15,11 +15,11 @@ const PopupForum = () => (
   </div>
 );
 
-{/*
+/*
   Relpy Forum Component
 
   Handles popup for the forum.
-*/}
+*/
 class ThreadForum extends Component {
   constructor() {
     super();

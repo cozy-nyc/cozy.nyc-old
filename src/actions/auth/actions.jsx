@@ -1,6 +1,22 @@
 import api from 'utils/api';
 import cookies from 'utils/cookie';
 
+/*
+  Logout Action
+
+  Removes token from cookies.
+
+  NOTE:
+    Need to change to session and remove data from redux store. -Rantahu
+*/
+export function logout() {
+  return function (dispatch) {
+    dispatch({ type: 'LOGOUT_SUCCESS' });
+    cookies.remove('token', { path: '/' });
+    window.location.href = '/';
+  };
+}
+
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
@@ -63,22 +79,6 @@ export function register({
       errorHandler(dispatch, error.response, 'REGISTER_FAIL');
     });
   };
-}
-
-/*
-  Logout Action
-
-  Removes token from cookies.
-
-  NOTE:
-    Need to change to session and remove data from redux store. -Rantahu
-*/
-export function logout() {
-  return function (dispatch) {
-    dispatch({ type: 'LOGOUT_SUCCESS' });
-    cookies.remove('token', { path: '/' });
-    window.location.href = '/';
-  }
 }
 
 /*
