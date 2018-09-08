@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+/*
+  Notification Component
+
+  TODO:
+    Needs to be redone.
+*/
 @connect((state, props) => ({ notifs: state.notifs[props.namespace] || [] }))
 export default class Notifs extends Component {
   static propTypes = {

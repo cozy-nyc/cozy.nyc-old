@@ -10,21 +10,71 @@
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-#navbar-logo {
+#navbar-nav {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 1%;
+  top: 1%;
+}
+
+#navbar-backbutton {
+  display: inline-block;
+}
+
+#navbar-backbutton img {
+  height: 50px;
+}
+
+#navbar-button {
+  display: inline-block;
+}
+
+
+#navbar-menu {
+  position: inherit;
+  background-color: #F8F5EB;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: #F8F5EB;
+  border-style: solid;
+}
+
+#navbar-menu a {
+  color: #272727;
+}
+
+#navbar-menu .main-links {
+  text-align: left;
+}
+
+#navbar-menu .main-links a {
+  font-size: 30px;
+}
+
+#navbar-menu .sub-links {
+  text-align: left;
+}
+
+#navbar-menu .sub-links a {
+  font-size: 20px;
+}
+
+#navbar-logo {
+  border: 5px ;
 }
 
 #brand-img {
   height: 50px;
 }
 
-#navbar-profile {
-  position: fixed;
-  right: 0;
-  top: 0;
-  padding: 0 20px;
+
+#navbar-dropdown {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+#navbar-nav:hover #navbar-dropdown{
+  display: block;
 }
 
 .sidebar-exit {
@@ -47,14 +97,14 @@
   top: 0;
   min-height: 100vh;
   padding: 100px 20px;
-  color: #000;
+  color: #272727;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 #sidebar-menu a {
-  color: #000;
+  color: #272727;
 }
 
 #sidebar-menu .sub-links {
@@ -62,18 +112,54 @@
   bottom: 100px;
 }
 
-#profile-menu {
-  background-color: #fff;
+
+// Profile
+#navbar-profile {
   position: fixed;
-  z-index: 100;
+  right: 1%;
+  top: 1%;
+}
+
+#profile-button {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.profile-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+#user-profile-status {
+  float:left;
+  text-align: right;
+  padding-top: 5px;
+}
+
+#user-profile-status p {
+  padding: 3px;
+  margin: 0;
+}
+
+#user-profile-avatar {
   float: right;
-  right: 0;
-  top: 0;
-  min-width: 160px;
-  min-height: 100vh;
-  padding: 100px 20px;
-  color: #000;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
+  text-align: left;
+  padding-left: 10px;
+}
+
+//Conditions for Home Page
+#home-sidebar #user-profile-status {
+  float: right;
+  text-align: left;
+}
+
+#home-sidebar #user-profile-avatar {
+  float: left;
+  padding-left: 0;
+  padding-right: 10px;
 }

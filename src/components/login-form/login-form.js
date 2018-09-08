@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { reduxForm, Field, propTypes, fieldPropTypes } from 'redux-form';
 import loginValidation from './login-validation';
 
+/*
+  Input Component
+
+  Input element used for LoginForm().
+*/
 const Input = ({
   input, label, type, meta: { touched, error }
 }) => (
@@ -24,6 +29,11 @@ const Input = ({
 
 Input.propTypes = fieldPropTypes;
 
+/*
+  Login Forum Component
+
+  Provides inputs for username and password for loginValidation().
+*/
 @reduxForm({
   form: 'login',
   validate: loginValidation

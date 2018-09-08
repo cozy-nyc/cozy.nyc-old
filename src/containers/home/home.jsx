@@ -4,15 +4,20 @@ import Helmet from 'react-helmet';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
+/*
+  Home Page
+
+  HOME OF NEET
+*/
 const Home = () => (
-  <div id="home-content">
+  <div id="home-content" className="row">
     <Helmet title="home" />
 
-    <div id="home-featured" className="eight columns">
+    <div id="home-featured" className="col-xs-12 col-md-8 ">
       <h1 id="brand-tag">cozy.</h1>
     </div>
 
-    <div id="home-sidebar" className="four columns">
+    <div id="home-sidebar" className="col-xs-12 col-md-4">
       <ProfileButton />
 
       <div className="main-links">

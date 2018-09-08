@@ -2,12 +2,14 @@ import React from 'react';
 
 import ChannelList from 'components/radio/channel-list';
 
-/**
- * Radio Home Page
- * List current streams featured by cozy.nyc
- *
- * ToDo: div id 'radio-featured' should display image or preview of stream.
- */
+
+/*
+  Radio Home Page
+  List current streams featured by cozy.nyc
+
+  TODO:
+    div id 'radio-featured' should display image or preview of stream.
+*/
 const RadioHome = () => (
   <div id="radio-content">
     <div id="radio-featured" className="eight columns">

@@ -5,12 +5,12 @@ import Helmet from 'react-helmet';
 
 import { getItem } from 'actions/items/get';
 
-/**
- * Individual Item page
- *
- */
 
+/*
+  Individual Item page
 
+  Displays information of an item and allows user to purchase item if available.
+*/
 @connect(state => ({
   item: state.items.activeitem,
 }))
@@ -29,7 +29,6 @@ export default class Item extends Component {
 
   componentWillMount() {
     this.props.dispatch(getItem(this.props.match.params.itemid));
-    console.log(this.props.item);
   }
 
   render() {
@@ -37,17 +36,16 @@ export default class Item extends Component {
     const title = 'shop - ' + item.name.toLowerCase();
 
     const mappedImages = item.images.map(image =>
-      <img src={image.image} alt={image.item_name} key={image.id} />
-    )
+      <img src={image.image} alt={image.item_name} key={image.id} />);
 
     return (
       <div id="itemdetail-container">
         <Helmet title={title} />
-        <div id="itemdetail-display" className="six columns">
+        <div id="itemdetail-display" className="col-xs-6 ">
           {mappedImages}
         </div>
 
-        <div id="itemdetail-info" className="six columns">
+        <div id="itemdetail-info" className="col-xs-6 ">
           <h2>{item.name}</h2>
           <h3>${item.price}</h3>
           <h4>@{item.seller_name}</h4>

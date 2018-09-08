@@ -9,10 +9,11 @@ import ReplyForum from 'components/boards/reply-forum';
 import ThreadStats from 'components/boards/thread-stats';
 
 
-/**
-* Thread Page
-*
-* ToDo: Add stats for thread
+/*
+  Thread Page
+
+  TODO:
+    Add stats for thread
 */
 @connect(state => ({
   posts: state.activeThread.posts,
@@ -49,15 +50,15 @@ export default class Thread extends Component {
           date={post.date}
         />
         <div className="u-cf" />
-      </div>)
+      </div>);
 
     return (
       <div id="thread-wrapper">
-      <div id="thread-content" className="eight columns">
-        {mappedPost}
-        <ReplyForum />
-      </div>
-      <ThreadStats />
+        <div id="thread-content" className="eight columns">
+          {mappedPost}
+          <ReplyForum />
+        </div>
+        <ThreadStats />
       </div>
     );
   }

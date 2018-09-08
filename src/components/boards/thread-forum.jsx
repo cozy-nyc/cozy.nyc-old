@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/*
+  PopUp Forum Component
+
+  Forum for creating a thread on a board.
+*/
 const PopupForum = () => (
   <div id="thread-forum-popup">
     <div className="popup_inner">
@@ -10,6 +15,11 @@ const PopupForum = () => (
   </div>
 );
 
+/*
+  Relpy Forum Component
+
+  Handles popup for the forum.
+*/
 class ThreadForum extends Component {
   constructor() {
     super();
@@ -25,11 +35,14 @@ class ThreadForum extends Component {
   }
 
   render() {
+    const pencil = require('assets/img/pencil.svg');
     const popup = (this.state.showPopupForum ? <PopupForum /> : null);
     return (
       <div id="thread-forum">
         {popup}
-        <button id="thread-forum-button" onClick={() => this.togglePopup()}> create </button>
+        <a id="thread-forum-button" onClick={() => this.togglePopup()}>
+          <img src={pencil} alt="create post" />
+        </a>
       </div>
     );
   }

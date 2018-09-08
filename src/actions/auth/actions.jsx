@@ -1,6 +1,22 @@
 import api from 'utils/api';
 import cookies from 'utils/cookie';
 
+/*
+  Logout Action
+
+  Removes token from cookies.
+
+  NOTE:
+    Need to change to session and remove data from redux store. -Rantahu
+*/
+export function logout() {
+  return function (dispatch) {
+    dispatch({ type: 'LOGOUT_SUCCESS' });
+    cookies.remove('token', { path: '/' });
+    window.location.href = '/';
+  };
+}
+
 export function errorHandler(dispatch, error, type) {
   let errorMessage = '';
 
@@ -20,6 +36,12 @@ export function errorHandler(dispatch, error, type) {
   }
 }
 
+/*
+  Login Action
+
+  Sends/posts username and password to get auth token if user credentials have
+  been verifed or an error message if credentials where invaild.
+*/
 export function login({ username, password }) {
   return function (dispatch) {
     api.post('/api-token-auth/', { username, password }).then(response => {
@@ -32,6 +54,12 @@ export function login({ username, password }) {
   };
 }
 
+/*
+  Register Action
+
+  Sends/posts username, password, and email to create a user with those credentials
+  and info.
+*/
 export function register({
   username,
   email,
@@ -53,14 +81,11 @@ export function register({
   };
 }
 
-export function logout() {
-  return function (dispatch) {
-    dispatch({ type: 'LOGOUT_SUCCESS' });
-    cookies.remove('token', { path: '/' });
-    window.location.href = '/';
-  }
-}
+/*
+  Verify Token Action
 
+  Checks token from cookies with API if vaild.
+*/
 export function verifyToken() {
   const token = { token: cookies.get('token') };
   console.log(token);
@@ -73,6 +98,10 @@ export function verifyToken() {
   };
 }
 
+/*
+  NOTE:
+    I don't know what the fuck this does. Might remove in the future. -Rantahu
+*/
 export function protectedTest() {
   return function (dispatch) {
     api.get('/protected-test', {

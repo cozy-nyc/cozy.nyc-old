@@ -10,6 +10,11 @@ import config from 'config';
 import NavBar from 'components/navbar/navbar';
 import cookies from 'utils/cookie';
 
+
+/*
+  TODO:
+    Need to go through
+*/
 @connect(
   state => ({
     user: state.auth.user,

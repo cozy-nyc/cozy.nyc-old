@@ -6,6 +6,14 @@ import { fetchItems } from 'actions/items/get';
 
 import ItemBox from './itembox';
 
+/*
+  Item Query Component
+
+  Creates a list <ItemBox>s that displays an items image, name, and price
+
+  TODO:
+    Display seller's name
+*/
 @connect(
   state => ({
       items: state.items.items,
@@ -32,6 +40,7 @@ export default class ItemQuery extends Component {
          image={ item.image }
          name={ item.name }
          price={ item.price }
+         {/* TODO: Display seller's name */}
       /></div>)
 
     return (

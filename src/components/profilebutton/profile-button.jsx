@@ -3,6 +3,16 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+/*
+  Profile Button Component
+
+  Display current logged in user. If user isn't logged in then it displays 'login' and
+  'register' links.
+
+  TODO:
+    - Display current User's Rank/Title
+    - Use current user's profile image
+*/
 @connect(state => ({
   auth: state.auth,
   user: state.auth.user
@@ -28,7 +38,7 @@ class ProfileButton extends Component {
             <NavLink to={{ pathname: profileURL }}>
               <p>{this.props.user.username}</p>
             </NavLink>
-            <p>something here!</p>
+            <p>something here!</p> {/* TODO: Users Rank/Title */}
           </div>
           <div id="user-profile-avatar">
             <NavLink to={{ pathname: profileURL }}>

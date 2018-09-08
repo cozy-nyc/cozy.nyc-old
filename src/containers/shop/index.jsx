@@ -7,10 +7,12 @@ import { fetchItems } from 'actions/items/get';
 import ItemBox from 'components/shop/itembox';
 
 
-/**
- * Main/home page for cozy.nyc shop
- *
- */
+/*
+  Shop Home Page
+
+  Main/home page for cozy.nyc shop
+
+*/
 @connect(
   state => ({
     items: state.items.items,
@@ -27,7 +29,6 @@ export default class Shop extends Component {
   }
 
   render() {
-    fetchItems();
     const { items } = this.props;
 
     const mappedItems = items.map(item =>
@@ -39,12 +40,13 @@ export default class Shop extends Component {
           id={item.id}
           image={item.images[0].image}
           name={item.name}
+          seller_name={item.seller_name}
           price={item.price}
         />
       </div>));
 
     return (
-      <div id="shop-container" className="row">
+      <div id="shop-container" className="row center-xs">
         <Helmet title="shop" />
         {mappedItems}
       </div>

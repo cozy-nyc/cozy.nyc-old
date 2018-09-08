@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as authActions from 'actions/auth/actions';
 
+/*
+  Login Success Page
+
+  A user is redircted to this page after they login.
+
+  TODO:
+    Move this file to login container dirctory
+*/
 @connect(
   state => ({ user: state.auth.user }),
   authActions

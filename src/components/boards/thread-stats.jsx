@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-/**
- * Thread Stats
- *
- * ToDo: Add stats for thread
- */
+
+/*
+  Thread Stats Component
+
+  Displays infomation about the current thread.
+*/
 @connect(state => ({
   thread: state.activeThread
 }))
