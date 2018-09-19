@@ -63,14 +63,19 @@ export function login({ username, password }) {
 export function register({
   username,
   email,
-  password1,
-  password2
+  password
 }) {
   return function (dispatch) {
-    api.post('/register', {
+    // let data = JSON.stringify ({
+    //   username: username,
+    //   password: password,
+    //   email: email
+    // })
+    // console.log(data);
+    api.post( '/register', {
       username,
-      email,
-      password1,
+      password,
+      email
     }).then(response => {
       cookies.set('token', response.data.token, { path: '/' });
       dispatch({ type: 'REGISTER_SUCCESS', payload: response.data });
