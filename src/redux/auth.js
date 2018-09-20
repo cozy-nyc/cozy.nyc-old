@@ -34,6 +34,7 @@ export default function Reducer(
     case 'REGISTER_SUCCESS':
       return {
         ...state,
+        token: action.payload.token,
         registeringIn: false
       };
     case 'REGISTER_FAIL':
