@@ -15,7 +15,7 @@ export default class Post extends Component {
   };
 
   render() {
-    return(
+    return (
       <div className="message-wrapper">
         <div className="message-poster">
           <img className="profile-image" src={this.props.user.avatarUrl} alt={this.props.user.username} />

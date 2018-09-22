@@ -32,20 +32,7 @@
     "start-prod-api": "cross-env NODE_PATH=api NODE_ENV=production APIPORT=3030 node ./bin/api.js",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
     "start-dev": "cross-env NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node ./bin/server.js",
-    "watch-client": "cross-env UV_THREADPOOL_SIZE=100 NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node webpack/webpack-dev-server.js",
-    "build": "cross-env NODE_ENV=production webpack --colors --display-error-details --config=webpack/prod.config.js",
-    "build-dlls": "webpack --colors --display-error-details --config webpack/vendor.config.js",
-    "postinstall": "concurrently \"npm run build\" \"npm run build-dlls\"",
-    "precommit": "lint-staged",
-    "prettier": "prettier-eslint --write --eslint-config-path .eslintrc './+(src|api)/**/*.js'",
-    "lint": "eslint -c .eslintrc api src",
-    "test": "cross-env NODE_PATH=src jest src",
-    "test-node": "cross-env NODE_PATH=api jest api",
-    "lighthouse-report": "lighthouse http://localhost:8080 --view",
-    "docker-build": "docker-compose build",
-    "docker-dev": "cross-env NGINX_HOST=localhost NGINX_PORT=3000 PORT=3000 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --no-deps",
-    "docker-up": "cross-env NGINX_HOST=localhost NGINX_PORT=80 PORT=8080 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --no-deps -d",
-    "docker-down": "docker-compose down"
+    "watch-client": "cross-env UV_THREADPOOL_SIZE=100 NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node webpack/webpack-dev-server.js"
   },
   "lint-staged": {
     "+(src|api)/**/*.js": [
