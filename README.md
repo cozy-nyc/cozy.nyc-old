@@ -24,6 +24,21 @@ npm run dev
 
 The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
 
+## Setup Env File
+
+1. `touch .env` in terminal to create environment file with the following value filled
+
+```
+NODE_ENV='development'
+
+HOST='0.0.0.0'
+POST='3000'
+
+API='http://0.0.0.0:8000'
+APIHOST='0.0.0.0'
+APIPORT='8000'
+
+```
 
 ## Building and Running Production Server
 
@@ -31,6 +46,7 @@ The first time it may take a little while to generate the first `webpack-assets.
 npm run build
 npm run start
 ```
+
 
 ### Unit Tests
 
