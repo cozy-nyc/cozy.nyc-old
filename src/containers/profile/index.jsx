@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { getProfile } from 'actions/profile/get'
 
 /*
   User Profile Page
@@ -11,7 +12,8 @@ import PropTypes from 'prop-types';
     Add edit options when the current user is on their own page.
 */
 @connect(state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.activeProfile
 }))
 class Profile extends Component {
   static propTypes = {
@@ -24,13 +26,15 @@ class Profile extends Component {
       })
     }),
   };
-
+  componentWillMount() {
+    this.props.dispatch(getProfile(this.props.match.params.username));
+  }
   render() {
     return (
       <div id="container">
         <img
           id="profile-page-avatar"
-          src="https://avatars3.githubusercontent.com/u/2263236?s=400&u=b08c40e215bdaf416f6fecc4016add2b3182f824&v=4"
+          src={this.props.profile.profileImg}
           alt={this.props.match.params.username}
         />
         <h1>{this.props.match.params.username}</h1>
