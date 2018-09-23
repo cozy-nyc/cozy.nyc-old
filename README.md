@@ -16,15 +16,8 @@ This is only the frontend for [cozy.nyc](https://cozy.nyc )the backend can be fo
 npm install
 ```
 
-## Running Dev Server
 
-```bash
-npm run dev
-```
-
-The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
-
-## Setup Env File
+### Setup Env File
 
 1. `touch .env` in terminal to create environment file with the following value filled
 
@@ -39,6 +32,15 @@ APIHOST='0.0.0.0'
 APIPORT='8000'
 
 ```
+
+## Running Dev Server
+
+```bash
+npm run dev
+```
+
+The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
+
 
 ## Building and Running Production Server
 
