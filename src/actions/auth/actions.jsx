@@ -10,11 +10,10 @@ import cookies from 'utils/cookie';
     Need to change to session and remove data from redux store. -Rantahu
 */
 export function logout() {
-  return function (dispatch) {
-    dispatch({ type: 'LOGOUT_SUCCESS' });
-    cookies.remove('token', { path: '/' });
-    window.location.href = '/';
-  };
+  console.log("noot");
+  cookies.remove('token', { path: '/' });
+  // dispatch({ type: 'LOGOUT_SUCCESS' });
+  window.location.href = '/';
 }
 
 export function errorHandler(dispatch, error, type) {
