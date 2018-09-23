@@ -22,9 +22,9 @@ export function fetchBoards() {
 
   Gets list of threads from a given board.
 */
-export function fetchBoard() {
+export function fetchBoard(tag) {
   return function (dispatch) {
-    api.get('/board/1/')
+    api.get('/board/' + tag)
       .then(response => {
         dispatch({ type: 'FETCH_THREADS_FULFILLED', payload: response.data });
       })

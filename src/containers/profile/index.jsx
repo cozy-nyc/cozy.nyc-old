@@ -26,9 +26,11 @@ class Profile extends Component {
       })
     }),
   };
+
   componentWillMount() {
     this.props.dispatch(getProfile(this.props.match.params.username));
   }
+
   render() {
     return (
       <div id="container">
