@@ -47,7 +47,7 @@ class ProfileButton extends Component {
             <NavLink to={{ pathname: profileURL }}>
               <img
                 className="profile-image"
-                src="https://avatars3.githubusercontent.com/u/2263236?s=400&u=b08c40e215bdaf416f6fecc4016add2b3182f824&v=4"
+                src={this.props.user.profile.profileImg}
                 alt={this.props.user.username}
               />
             </NavLink>
