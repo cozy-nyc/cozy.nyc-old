@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { fetchBoard } from '../../actions/boards/get';
 
 /*
   Thread List Component
@@ -12,15 +11,13 @@ import { fetchBoard } from '../../actions/boards/get';
 */
 @connect(
   state => ({
-    board: state.activeBoard.tag,
+    tag: state.activeBoard.tag,
     threads: state.activeBoard.threads
-  }),
-  fetchBoard
-)
+}))
 class ThreadList extends Component {
   static get propTypes() {
     return {
-      board: PropTypes.string.isRequired,
+      tag: PropTypes.string.isRequired,
       threads: PropTypes.arrayOf(PropTypes.object).isRequired,
     };
   }
@@ -28,10 +25,10 @@ class ThreadList extends Component {
   createListItems() {
     return this.props.threads.map(thread =>
       (
-        <div className="four columns" key={thread.id}>
+        <div className="three columns" key={thread.id}>
           <Link
             className="thread-box"
-            to={{ pathname: '/boards/' + this.props.board.tag + '/' + thread.id }}
+            to={{ pathname: '/boards/' + this.props.tag + '/' + thread.id }}
           >
             <img src={thread.image} alt={thread.title} />
             <div className="thread-oppost">
