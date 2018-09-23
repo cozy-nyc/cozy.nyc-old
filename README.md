@@ -4,7 +4,7 @@
 
 ![Home](docs/design/desktop/Homepage-Desktop.png)
 
-[![Build Status](https://travis-ci.org/cozy-nyc/cozy.nyc.svg?branch=master&style=flat-square)](https://travis-ci.org/cozy-nyc/cozy-nyc) [![Dependency Status](https://david-dm.org/cozy-nyc/cozy.nyc.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc) [![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
+[![Build Status](https://travis-ci.org/cozy-nyc/cozy-nyc.svg?branch=master&style=flat-square)](https://travis-ci.org/cozy-nyc/cozy-nyc) [![Dependency Status](https://david-dm.org/cozy-nyc/cozy.nyc.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc) [![devDependency Status](https://david-dm.org/cozy-nyc/cozy.nyc/dev-status.svg?style=flat-square)](https://david-dm.org/cozy-nyc/cozy.nyc?type=dev)
 
 --------------------------------------------------------------------------------
 
