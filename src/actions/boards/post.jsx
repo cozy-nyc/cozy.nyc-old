@@ -6,11 +6,17 @@ import api from 'utils/api';
   Creates a thread on a board.
 
   TODO:
-    Everything!
+    User verify
 */
 export function createThread() {
   return function (dispatch) {
-    console.log('Noot!')
+    api.post('/post/create/',data)
+      .then(response => {
+        dispatch({ type: 'FETCH_THREADS_FULFILLED', payload: response.data });
+      })
+      .catch(err => {
+        dispatch({ type: 'FETCH_THREADS_ERROR', payload: err });
+      });
   };
 }
 
@@ -18,6 +24,9 @@ export function createThread() {
   Create Post Action
 
   Creates a post on a thread.
+
+  TODO:
+    User verify
 */
 export function createPost() {
   return function (dispatch) {
