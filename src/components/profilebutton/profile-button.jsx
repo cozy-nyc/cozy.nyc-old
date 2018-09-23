@@ -41,7 +41,7 @@ class ProfileButton extends Component {
               <p>{this.props.user.username}</p>
             </NavLink>
             {/* TODO: Users Rank/Title */}
-            <a onClick={logout}>logout</a>
+            <a href="#" onClick={logout}>logout</a>
           </div>
           <div id="user-profile-avatar">
             <NavLink to={{ pathname: profileURL }}>
@@ -58,8 +58,10 @@ class ProfileButton extends Component {
     }
     return (
       <div id="profile-button">
-        <Link to="/login">login</Link>
-        <Link to="/register">sign up</Link>
+        <div id="user-profile-status">
+          <Link to="/login">login</Link>
+          <Link to="/register">sign up</Link>
+        </div>
         <div className="u-cf" />
       </div>
     );

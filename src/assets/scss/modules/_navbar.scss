@@ -17,7 +17,7 @@
 }
 
 #navbar-backbutton {
-  display: inline-block;
+  display: inline;
 }
 
 #navbar-backbutton img {
@@ -60,6 +60,7 @@
 
 #navbar-logo {
   border: 5px ;
+  display: inline;
 }
 
 #brand-img {
@@ -141,8 +142,12 @@
   padding-top: 5px;
 }
 
+#user-profile-status a {
+  padding: 0 0 5px 0;
+  margin: 0;
+}
+
 #user-profile-status p {
-  padding: 3px;
   margin: 0;
 }
 
@@ -162,4 +167,8 @@
   float: left;
   padding-left: 0;
   padding-right: 10px;
+}
+
+#page-title {
+  display: inline;
 }
