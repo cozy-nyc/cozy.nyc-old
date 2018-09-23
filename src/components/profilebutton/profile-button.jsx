@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { logout } from 'actions/auth/actions';
+
 /*
   Profile Button Component
 
@@ -38,7 +40,8 @@ class ProfileButton extends Component {
             <NavLink to={{ pathname: profileURL }}>
               <p>{this.props.user.username}</p>
             </NavLink>
-            <p>something here!</p> {/* TODO: Users Rank/Title */}
+            {/* TODO: Users Rank/Title */}
+            <a href="#" onClick={logout}>logout</a>
           </div>
           <div id="user-profile-avatar">
             <NavLink to={{ pathname: profileURL }}>
@@ -55,8 +58,10 @@ class ProfileButton extends Component {
     }
     return (
       <div id="profile-button">
-        <Link to="/login">login</Link>
-        <Link to="/register">sign up</Link>
+        <div id="user-profile-status">
+          <Link to="/login">login</Link>
+          <Link to="/register">sign up</Link>
+        </div>
         <div className="u-cf" />
       </div>
     );

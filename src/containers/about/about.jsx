@@ -20,11 +20,16 @@ class About extends Component {
       <div className="about-container">
         <canvas className="about-backgroundGif" />
         <Helmet title="about" />
-        <img src={cube} alt="cube" />
+        <img id="about-cube" src={cube} alt="cube" />
         <audio autoPlay loop>
           <source src={musicogg} type="audio/ogg" />
           <source src={musicmp3} type="audio/mpeg" />
         </audio>
+        <span id="external-links">
+        <a href="http://dev.cozy.nyc" alt="">dev site</a>
+        <a href="http://api.cozy.nyc" alt="">api</a>
+        <a href="https://github.com/cozy-nyc/cozy-nyc" alt="">git repo</a>
+        </span>
       </div>
     );
   }
