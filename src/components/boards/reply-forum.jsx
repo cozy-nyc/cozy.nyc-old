@@ -29,7 +29,6 @@ class ReplyForum extends Component {
   }
 
   togglePopup() {
-    console.log('noot');
     this.setState({
       showPopupForum: !this.state.showPopupForum
     });
