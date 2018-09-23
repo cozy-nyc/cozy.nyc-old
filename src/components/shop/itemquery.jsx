@@ -33,7 +33,7 @@ export default class ItemQuery extends Component {
     const items = this.props.items;
 
     const mappedItems = items.map(item =>
-      <div className="three columns"
+      <div className="four columns"
          key={ item.id }>
          <ItemBox
          id={ item.id }

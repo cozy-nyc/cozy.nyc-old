@@ -28,7 +28,7 @@ class ThreadList extends Component {
   createListItems() {
     return this.props.threads.map(thread =>
       (
-        <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3" key={thread.id}>
+        <div className="four columns" key={thread.id}>
           <Link
             className="thread-box"
             to={{ pathname: '/boards/' + this.props.board.tag + '/' + thread.id }}
