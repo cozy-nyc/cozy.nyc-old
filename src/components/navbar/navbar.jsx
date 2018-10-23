@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
@@ -69,9 +69,9 @@ class NavBar extends Component {
             <div id="navbar-dropdown">
               <div id="navbar-menu">
                 <div className="main-links">
-                  <Link to="/radio">radio</Link>
-                  <Link to="/boards">boards</Link>
-                  <Link to="/shop">exchange</Link>
+                  <NavLink className="nav-hover-orange" to="radio">radio</NavLink>
+                  <NavLink className="nav-hover-blue" to="boards">boards</NavLink>
+                  <NavLink className="nav-hover-green" to="shop">exchange</NavLink>
                 </div>
 
                 <div className="sub-links">

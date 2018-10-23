@@ -31,15 +31,16 @@
 
 #navbar-menu {
   position: inherit;
-  background-color: #F8F5EB;
+  background-color: $foreground;
   padding: 20px;
   border-radius: 5px;
-  border-color: #F8F5EB;
+  border-color: $foreground;
   border-style: solid;
+  box-shadow: 1px 1px $background;
 }
 
 #navbar-menu a {
-  color: #272727;
+  color: $alt-text-color;
 }
 
 #navbar-menu .main-links {
@@ -98,14 +99,14 @@
   top: 0;
   min-height: 100vh;
   padding: 100px 20px;
-  color: #272727;
+  color: $alt-text-color;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 #sidebar-menu a {
-  color: #272727;
+  color: $alt-text-color;
 }
 
 #sidebar-menu .sub-links {
@@ -124,9 +125,16 @@
 #profile-button {
   position: relative;
   margin: 0 auto;
-  padding: 0;
+  margin: 0 0 10px 0;
   display: inline-block;
   overflow: hidden;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 25px;
+  border-color: $foreground;
+  width: 150px;
+  height: 50px;
+  background-color: $primary-text-color;
 }
 
 .profile-image {
@@ -134,15 +142,18 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  overflow: hidden;
 }
 
 #user-profile-status {
-  float:left;
+  position: absolute;
+  right: 55px;
   text-align: right;
   padding-top: 5px;
 }
 
 #user-profile-status a {
+  color: $alt-text-color;
   padding: 0 0 5px 0;
   margin: 0;
 }
@@ -152,19 +163,26 @@
 }
 
 #user-profile-avatar {
-  float: right;
+  position: absolute;
+  right: 0;
   text-align: left;
   padding-left: 10px;
 }
 
+#user-auth {
+  padding: 10px 0 10px 0;
+}
+
 //Conditions for Home Page
 #home-sidebar #user-profile-status {
-  float: right;
+  position: absolute;
+  left: 55px;
   text-align: left;
 }
 
 #home-sidebar #user-profile-avatar {
-  float: left;
+  position: absolute;
+  left: 0;
   padding-left: 0;
   padding-right: 10px;
 }

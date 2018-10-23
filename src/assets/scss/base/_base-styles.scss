@@ -13,18 +13,40 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: $font-family;
-  color: $font-color;
+  color: $primary-text-color;
 }
 
 // Links
 //––––––––––––––––––––––––––––––––––––––––––––––––––
 
 a {
-  color: $link-color;
+  color: $secondary-text-color;
   &:hover {
-    color: darken($link-color, 5%);
+    color: $cozy-pink !important;
   }
 }
+
+.link-color-blue {
+  color: $cozy-blue;
+  &:hover {
+    color: darken($cozy-blue, 40%) !important;
+  }
+}
+
+.link-color-orange {
+  color: $cozy-orange;
+  &:hover {
+    color: darken($cozy-orange, 40%) !important;
+  }
+}
+
+.link-color-green {
+  color: $cozy-green;
+  &:hover {
+    color: darken($cozy-green, 40%) !important;
+  }
+}
+
 
 // Misc
 //––––––––––––––––––––––––––––––––––––––––––––––––––

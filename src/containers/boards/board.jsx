@@ -36,8 +36,8 @@ export default class Board extends Component {
   render(){
     return(
       <div id="board-container">
-      <ThreadList />
-      <ThreadForum />
+        <ThreadList />
+        <ThreadForum />
       </div>
     )
   }

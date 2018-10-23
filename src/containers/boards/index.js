@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import BoardList from 'components/boards/board-list';
 
@@ -7,12 +7,12 @@ import BoardList from 'components/boards/board-list';
 
   List active boards on the site
 */
-const BoardsHome = () => (
-  <div id="home-content">
-    <div id="home-featured">
-      <BoardList />
-    </div>
-  </div>
-);
-
-export default BoardsHome;
+export default class BoardsHome extends Component {
+  render() {
+    return (
+      <div id="board-container">
+        <BoardList />
+      </div>
+    );
+  }
+}

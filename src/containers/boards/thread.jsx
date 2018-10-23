@@ -53,12 +53,14 @@ export default class Thread extends Component {
       </div>);
 
     return (
-      <div id="thread-wrapper">
-        <div id="thread-content" className="eight columns">
-          {mappedPost}
-          <ReplyForum />
+      <div id="board-container">
+        <div id="thread-wrapper">
+          <div id="thread-content" className="eight columns">
+            {mappedPost}
+            <ReplyForum />
+          </div>
+          <ThreadStats />
         </div>
-        <ThreadStats />
       </div>
     );
   }
