@@ -27,10 +27,10 @@
   ],
   "main": "bin/server.js",
   "scripts": {
-    "start": "concurrently --kill-others \"npm run start-prod\" \"npm run start-prod-api\"",
+    "start": "concurrently --kill-others \"yarn run start-prod\" \"yarn run start-prod-api\"",
     "start-prod": "cross-env NODE_PATH=src NODE_ENV=production PORT=8080 APIPORT=8000 node ./bin/server.js",
     "start-prod-api": "cross-env NODE_PATH=api NODE_ENV=production APIPORT=3030 node ./bin/api.js",
-    "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start-dev\"",
+    "dev": "concurrently --kill-others \"yarn run watch-client\" \"yarn run start-dev\"",
     "start-dev": "cross-env NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node ./bin/server.js",
     "watch-client": "cross-env UV_THREADPOOL_SIZE=100 NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node webpack/webpack-dev-server.js"
   },

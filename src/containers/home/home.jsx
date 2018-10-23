@@ -21,9 +21,9 @@ const Home = () => (
       <ProfileButton />
 
       <div className="main-links">
-        <Link to="radio">radio</Link>
-        <Link to="boards">boards</Link>
-        <Link to="shop">exchange</Link>
+        <Link className="nav-hover-orange" to="radio">radio</Link>
+        <Link className="nav-hover-blue" to="boards">boards</Link>
+        <Link className="nav-hover-green" to="shop">exchange</Link>
       </div>
 
       <div className="sub-links">

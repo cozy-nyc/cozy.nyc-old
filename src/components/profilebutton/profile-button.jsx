@@ -57,12 +57,9 @@ class ProfileButton extends Component {
       );
     }
     return (
-      <div id="profile-button">
-        <div id="user-profile-status">
-          <Link to="/login">login</Link>
-          <Link to="/register">sign up</Link>
-        </div>
-        <div className="u-cf" />
+      <div id="user-auth">
+        <Link to="/login">login</Link>
+        <Link to="/register">sign up</Link>
       </div>
     );
   }

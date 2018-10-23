@@ -13,7 +13,7 @@ This is only the frontend for [cozy.nyc](https://cozy.nyc )the backend can be fo
 ## Installation
 
 ```bash
-npm install
+yarn install
 ```
 
 
@@ -35,7 +35,7 @@ APIPORT='8000'
 ## Running Dev Server
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
@@ -44,8 +44,8 @@ The first time it may take a little while to generate the first `webpack-assets.
 ## Building and Running Production Server
 
 ```bash
-npm run build
-npm run start
+yarn run build
+yarn run start
 ```
 
 

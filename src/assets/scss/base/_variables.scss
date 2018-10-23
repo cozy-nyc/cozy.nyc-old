@@ -9,16 +9,28 @@ $bp-larger-than-desktop   : "min-width: 1000px" !default;
 $bp-larger-than-desktophd : "min-width: 1200px" !default;
 
 // Colors
+$background: #272727;
+$foreground: #F8F5EB;
+
+$primary-text-color: #F8F5EB;
+$secondary-text-color: #ffffff;
+$alt-text-color: #272727;
+
+$cozy-pink: #FFD8E7;
+$cozy-blue: #A7C5D6;
+$cozy-orange: #FDCE89;
+$cozy-green: #a7d6a8;
+
 $light-grey: #e1e1e1 !default;
 $dark-grey: #333 !default;
 $primary-color: #33c3f0 !default;
-$secondary-color: lighten($dark-grey, 13.5%) !default;
+$secondary-color: lighten($dark-grey, 60.5%) !default;
 $border-color: #bbb !default;
 $link-color: #1eaedb !default;
 $font-color: #222 !default;
 
 // Typography
-$font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family: 'Dosis', sans-serif !default;
 
 //Grid Variables
 // $container-width: 960px !default;
