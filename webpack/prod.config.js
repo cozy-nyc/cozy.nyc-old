@@ -30,7 +30,7 @@ module.exports = {
     path: assetsPath,
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].chunk.js',
-    publicPath: '/dist/',
+    publicPath: '/dist/'
   },
   performance: {
     hints: false
@@ -112,6 +112,9 @@ module.exports = {
       }, {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file-loader'
+      },{
+	  test: /\.(ogg|mp3|wav|mpe?g)$/i,
+	  loader: 'file-loader'
       }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader',
@@ -213,3 +216,4 @@ module.exports = {
     })
   ]
 };
+
