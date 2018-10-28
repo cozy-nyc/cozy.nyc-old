@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import ProfileButton from 'components/profilebutton/profile-button.jsx';
 
@@ -12,6 +13,8 @@ import ProfileButton from 'components/profilebutton/profile-button.jsx';
     Add background when user scrolls down from the top of a page.
 */
 class NavBar extends Component {
+
+
   goBack() {
     window.history.back();
   }
@@ -19,7 +22,7 @@ class NavBar extends Component {
   render() {
     const cube = require('assets/img/cube.svg');
     const backbutton = require('assets/img/left-arrow.svg');
-    if (window.location.pathname === '/') {
+    if (this.props.location.pathname === '/') {
       /*
         IF at Home page:
           Don't display NavBar.
@@ -28,7 +31,7 @@ class NavBar extends Component {
       return (
         <div className="u-cf" />
       );
-    } else if (window.location.pathname === '/about') {
+    } else if (this.props.location.pathname === '/about') {
       /*
         If at About page:
           Display NavBar without the brand logo.
@@ -91,4 +94,4 @@ class NavBar extends Component {
 }
 
 
-export default NavBar;
+export default withRouter(NavBar);
