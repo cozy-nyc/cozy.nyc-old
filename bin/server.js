@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+require('dotenv').config();
 require('../server.babel'); // babel registration (runtime transpilation for node)
+
 const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');

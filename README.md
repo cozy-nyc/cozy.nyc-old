@@ -24,12 +24,18 @@ yarn install
 ```
 NODE_ENV='development'
 
+UV_THREADPOOL_SIZE=100
+NODE_PATH='src'
+WEBPACK_DLLS=1
+
 HOST='0.0.0.0'
-POST='3000'
+PORT='3000'
 
 API='http://0.0.0.0:8000'
 APIHOST='0.0.0.0'
 APIPORT='8000'
+
+TITLE='cozy.nyc'
 ```
 
 ## Running Dev Server
