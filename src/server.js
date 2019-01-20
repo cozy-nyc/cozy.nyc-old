@@ -16,7 +16,6 @@ import createMemoryHistory from 'history/createMemoryHistory';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
 import { trigger } from 'redial';
-import config from 'config';
 import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import Html from 'helpers/Html';
@@ -24,12 +23,13 @@ import routes from 'routes';
 import { getChunks, waitChunks } from 'utils/chunks';
 import asyncMatchRoutes from 'utils/asyncMatchRoutes';
 import { ReduxAsyncConnect, Provider } from 'components';
+import dotenv from 'dotenv';
 
 const chunksPath = path.join(__dirname, '..', 'static', 'dist', 'loadable-chunks.json');
 
 process.on('unhandledRejection', error => console.error(error));
 
-const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
+const targetUrl = `http://${process.env.APIHOST}:${process.env.APIPORT}`;
 const pretty = new PrettyError();
 const app = express();
 const server = new http.Server(app);
@@ -153,7 +153,7 @@ app.use(async (req, res) => {
 });
 
 (async () => {
-  if (config.port) {
+  if (process.env.PORT) {
     try {
       await Loadable.preloadAll();
       await waitChunks(chunksPath);
@@ -161,12 +161,12 @@ app.use(async (req, res) => {
       console.log('Server preload error:', error);
     }
 
-    server.listen(config.port, err => {
+    server.listen(process.env.PORT, err => {
       if (err) {
         console.error(err);
       }
-      console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort);
-      console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
+      console.info('----\n==> ✅  %s is running, talking to API server on %s.', process.env.TITLE, process.env.API);
+      console.info('==> 💻  Open http://%s:%s in a browser to view the app.', process.env.HOST, process.env.PORT);
     });
   } else {
     console.error('==>     ERROR: No PORT environment variable has been specified');

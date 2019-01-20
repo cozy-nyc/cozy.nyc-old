@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var projectRootPath = path.resolve(__dirname, '../');
+var Dotenv = require('dotenv-webpack');
 
 module.exports = {
   devtool: process.env.NODE_ENV === 'production' ? false : 'inline-source-map',
@@ -77,10 +78,12 @@ module.exports = {
   },
 
   plugins: [
+    new Dotenv({
+      path: '../.env',
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     }),
-
     new webpack.DllPlugin({
       path: path.join(projectRootPath, 'webpack/dlls/[name].json'),
       name: 'DLL_[name]_[hash]'

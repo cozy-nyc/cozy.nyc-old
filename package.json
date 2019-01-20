@@ -27,12 +27,9 @@
   ],
   "main": "bin/server.js",
   "scripts": {
-    "start": "concurrently --kill-others \"yarn run start-prod\"",
-    "build": "cross-env NODE_ENV=production webpack --colors --display-error-details --config=webpack/prod.config.js",
-    "start-prod": "cross-env NODE_PATH=src NODE_ENV=production PORT=8080 APIPORT=80 node ./bin/server.js",
     "dev": "concurrently --kill-others \"yarn run watch-client\" \"yarn run start-dev\"",
-    "start-dev": "cross-env NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node ./bin/server.js",
-    "watch-client": "cross-env UV_THREADPOOL_SIZE=100 NODE_PATH=src NODE_ENV=development PORT=3000 APIPORT=8000 WEBPACK_DLLS=1 node webpack/webpack-dev-server.js"
+    "start-dev": "node ./bin/server.js",
+    "watch-client": "node webpack/webpack-dev-server.js"
   },
   "lint-staged": {
     "+(src|api)/**/*.js": [
@@ -180,5 +177,3 @@
     "node": ">=6.9.0"
   }
 }
-
-
