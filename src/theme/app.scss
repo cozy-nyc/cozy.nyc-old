@@ -1,0 +1,109 @@
+@import '~font-awesome/scss/font-awesome.scss';
+@import url('https://fonts.googleapis.com/css?family=Dosis:700');
+@import './nprogress.scss';
+@import './variables.scss';
+
+/**
+ * Override Bootstrap styles that you can't modify via variables here.
+ *
+*/
+
+.navbar-brand {
+  position: relative;
+  padding-left: 50px;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #33e0ff;
+  background-color: transparent;
+}
+
+#content,
+#root,
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  line-height: 1;
+  background-color: #272727;
+  color: #F8F5EB;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:after,
+blockquote:before,
+q:after,
+q:before {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: 'Dosis', sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+a {
+  color: $primary-text-color;
+  // line-height: 30px;
+  display: inline-block;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+a:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  color: $cozy-pink;
+  text-decoration: none;
+}
+
+/* Containers */
+.container {
+  margin: 0 auto;
+  min-height: 100%;
+  height: 100%;
+  padding: 5%;
+}
+
+
+@media screen and (max-width: 992px) {
+  .container {
+    padding: 10%;
+  }
+}

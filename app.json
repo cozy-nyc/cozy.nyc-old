@@ -1,8 +1,8 @@
 {
-  "name": "cozy.",
-  "description": "A website for neets...",
-  "repository": "https://github.com/cozy-nyc/cozy.nyc",
-  "logo": "https://github.com/cozy-nyc/cozy-nyc-frontend/blob/master/dist/img/cube.svg",
+  "name": "react-redux-universal-hot-example",
+  "description": "Example of an isomorphic (universal) webapp using react redux and hot reloading",
+  "repository": "https://github.com/erikras/react-redux-universal-hot-example",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
   "keywords": [
     "react",
     "isomorphic",

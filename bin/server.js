@@ -1,5 +1,7 @@
 #!/usr/bin/env node
+require('dotenv').config();
 require('../server.babel'); // babel registration (runtime transpilation for node)
+
 const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
@@ -25,8 +27,9 @@ if (__DEVELOPMENT__) {
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 const WebpackIsomorphicTools = require('webpack-isomorphic-tools');
-global.webpackIsomorphicTools = new WebpackIsomorphicTools(
-  require('../webpack/webpack-isomorphic-tools')
-).server(rootDir, () => {
-  require('../src/server');
-});
+global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack/webpack-isomorphic-tools')).server(
+  rootDir,
+  () => {
+    require('../src/server');
+  }
+);

@@ -1,5 +1,6 @@
-import _ from 'lodash';
-import { createStore as _createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import {
+  createStore as _createStore, applyMiddleware, compose, combineReducers
+} from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { createPersistoid, persistCombineReducers, REGISTER } from 'redux-persist';
 import clientMiddleware from './middleware/clientMiddleware';
@@ -43,13 +44,24 @@ export default function createStore({
 
   const enhancers = [applyMiddleware(...middleware)];
 
+  if (__CLIENT__ && __DEVTOOLS__) {
+    const { persistState } = require('redux-devtools');
+    let DevTools = require('../containers/DevTools/DevTools');
+    DevTools = DevTools.__esModule ? DevTools.default : DevTools;
+
+    Array.prototype.push.apply(enhancers, [
+      window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),
+      persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+    ]);
+  }
+
   const finalCreateStore = compose(...enhancers)(_createStore);
   const reducers = createReducers();
   const noopReducers = getNoopReducers(reducers, data);
   const store = finalCreateStore(combine({ ...noopReducers, ...reducers }, persistConfig), data);
 
   store.asyncReducers = {};
-  store.inject = _.partial(inject, store, _, persistConfig);
+  store.inject = _reducers => inject(store, _reducers, persistConfig);
 
   if (persistConfig) {
     const persistoid = createPersistoid(persistConfig);

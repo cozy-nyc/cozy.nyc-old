@@ -1,8 +1,9 @@
 import axios from 'axios';
+import config from 'config';
 
 export default function apiClient(req) {
   const instance = axios.create({
-    baseURL: __SERVER__ ? `http://${process.env.APIHOST}:${process.env.APIHOST}` : '0.0.0.0:8000'
+    baseURL: __SERVER__ ? `http://${config.apiHost}:${config.apiPort}` : '/api'
   });
 
   let token;

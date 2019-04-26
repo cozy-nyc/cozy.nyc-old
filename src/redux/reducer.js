@@ -1,40 +1,12 @@
 import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
-import { reducer as reducerForm } from 'redux-form';
-
-// Boards Reducers
-import BoardReducer from './boards/board-list';
-import ActiveBoard from './boards/active-board';
-import ActiveThread from './boards/active-thread';
-
-// Radio Reducers
-import ChannelsReducer from './radio/channels';
-
-// Shop Reducers
-import CategoryReducer from './shop/categories';
-import ItemReducer from './shop/items';
-import cartReducer from './shop/cart';
-
-import auth from './auth';
+import auth from './modules/auth';
 import notifs from './modules/notifs';
 import counter from './modules/counter';
 import info from './modules/info';
 
 export default function createReducers(asyncReducers) {
   return {
-    form: reducerForm,
-    categories: CategoryReducer,
-    items: ItemReducer,
-    cart: cartReducer,
-
-    // Radio
-    channels: ChannelsReducer,
-
-    // Boards
-    boards: BoardReducer,
-    activeBoard: ActiveBoard,
-    activeThread: ActiveThread,
-
     router: routerReducer,
     online: (v = true) => v,
     notifs,
