@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as authActions from 'actions/auth/actions';
+import * as authActions from 'redux/modules/auth';
 
-/*
-  Login Success Page
-
-  A user is redircted to this page after they login.
-
-  TODO:
-    Move this file to login container dirctory
-*/
 @connect(
   state => ({ user: state.auth.user }),
   authActions
 )
-export default class LoginSuccess extends Component {
+class LoginSuccess extends Component {
   static propTypes = {
     user: PropTypes.shape({
       email: PropTypes.string
@@ -33,16 +25,17 @@ export default class LoginSuccess extends Component {
           <div>
             <p>
               Hi, {user.email}. You have just successfully logged in, and were forwarded here by{' '}
-              <code>componentWillReceiveProps()</code> in <code>App.js</code>, which is listening to the auth reducer
-              via redux <code>@connect</code>. How exciting!
+              <code>getDerivedStateFromProps()</code> in
+              <code>App.js</code>, which is listening to the auth reducer via redux
+              <code>@connect</code>. How exciting!
             </p>
 
             <p>
-              The same functiosn will forward you to <code>/</code> should you chose to log out. The choice is yours...
+              The same function will forward you to <code>/</code> should you chose to log out. The choice is yours...
             </p>
 
             <div>
-              <button className="btn btn-danger" onClick={logout}>
+              <button type="button" className="btn btn-danger" onClick={logout}>
                 <i className="fa fa-sign-out" /> Log Out
               </button>
             </div>
@@ -52,3 +45,5 @@ export default class LoginSuccess extends Component {
     );
   }
 }
+
+export default LoginSuccess;

@@ -16,22 +16,6 @@ This is only the frontend for [cozy.nyc](https://cozy.nyc )the backend can be fo
 yarn install
 ```
 
-
-### Setup Env File
-
-1. `touch .env` in terminal to create environment file with the following value filled
-
-```
-NODE_ENV='development'
-
-HOST='0.0.0.0'
-POST='3000'
-
-API='http://0.0.0.0:8000'
-APIHOST='0.0.0.0'
-APIPORT='8000'
-```
-
 ## Running Dev Server
 
 ```bash

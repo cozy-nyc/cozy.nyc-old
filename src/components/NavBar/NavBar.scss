@@ -1,0 +1,86 @@
+@import '../../theme/variables.scss';
+
+// Navbar
+.navbar {
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 100;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.navbarNav {
+  position: fixed;
+  left: 1%;
+  top: 1%;
+}
+
+.navbarBackbutton {
+  display: inline-block;
+}
+
+.navbarBackbutton:hover {
+  cursor: pointer;
+}
+
+.navbarBackbutton img {
+  height: 50px;
+}
+
+.navbarButton {
+  display: inline;
+}
+
+
+.navbarDropdownMenu {
+  position: inherit;
+  background-color: $foreground;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: $foreground;
+  border-style: solid;
+  box-shadow: 1px 1px $background;
+}
+
+.navbarMenu a {
+  color: $alt-text-color;
+}
+
+.navbarMenu .main-links {
+  text-align: left;
+}
+
+.navbarMenu .main-links a {
+  font-size: 30px;
+}
+
+.navbarMenu .sub-links {
+  text-align: left;
+}
+
+.navbarMenu .sub-links a {
+  font-size: 20px;
+}
+
+.navbarLogo {
+  border: 5px ;
+  display: inline;
+}
+
+.brandimg {
+  height: 50px;
+}
+
+
+.navbarDropdown {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+.navbarMenu:hover .navbarDropdown{
+  display: block;
+}

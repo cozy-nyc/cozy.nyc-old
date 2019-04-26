@@ -8,13 +8,6 @@ export function email(value) {
   }
 }
 
-export function username(value) {
-  // Not finished
-  if (isEmpty(value)) {
-    return 'Invalid Username';
-  }
-}
-
 export function required(value) {
   if (isEmpty(value)) {
     return 'Required';
