@@ -93,6 +93,22 @@ a:hover {
   text-decoration: none;
 }
 
+button {
+  margin: 10px;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: $foreground;
+  color: $alt-text-color;
+  transition: all .2s ease-in-out;
+  border-style: none;
+}
+
+button:hover {
+  background-color: $cozy-pink;
+  color: $primary-text-color;
+}
+
 /* Containers */
 .container {
   margin: 0 auto;

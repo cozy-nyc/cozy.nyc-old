@@ -62,6 +62,10 @@ module.exports = {
         exclude: /node_modules(\/|\\)(?!(@feathersjs))/
       },
       {
+        test: /\.(webm|mp4)$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',

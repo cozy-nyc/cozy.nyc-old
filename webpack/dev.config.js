@@ -107,6 +107,10 @@ const webpackConfig = {
         loader: 'file-loader'
       },
       {
+        test: /\.(webm|mp4)$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader',
         options: {
