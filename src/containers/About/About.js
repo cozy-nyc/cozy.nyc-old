@@ -9,24 +9,16 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
   fetch: ({ store: { dispatch, getState } }) => !isInfoLoaded(getState()) ? dispatch(loadInfo()).catch(() => null) : Promise.resolve()
 })
 class About extends Component {
-  state = {
-    showKitten: false
-  };
-
-  handleToggleKitten = () => {
-    const { showKitten } = this.state;
-
-    this.setState({ showKitten: !showKitten });
-  };
 
   render() {
-    const cube = require('./cube.svg');
+    const gif = require('./munchies.gif');
+    const styles = require('./About.scss');
 
     return (
-      <div className="about-container">
+      <div className={styles.aboutContainer}>
         <Helmet title="about" />
-        <canvas className="about-backgroundGif" />
-        <img id="about-cube" src={cube} alt="cube" />
+        <h1>A site for neets...</h1>
+        <img src={gif} alt="munchies"/>
       </div>
     );
   }
