@@ -1,0 +1,54 @@
+@import '../../theme/variables.scss';
+
+.mainLinks a {
+  display: block;
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+
+.subLinks a {
+  display: inline-block;
+  padding: 0 10px 10px 0;
+}
+
+.homeContent {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeFeatured {
+  text-align: center;
+  margin: 0 auto;
+}
+.brandTag{
+
+}
+
+.homeSidebar {
+  margin: 0 auto;
+  text-align: left;
+}
+
+.navHoverBlue:hover {
+  color: $cozy-blue !important;
+}
+
+.navHoverGreen:hover {
+  color: $cozy-green !important;
+}
+
+.navHoverOrange:hover {
+  color: $cozy-orange !important;
+}
+
+@media screen and (max-width: 992px) {
+  .homeFeatured {
+    padding-bottom: 50px;
+  }
+
+  .homeSidebar {
+    text-align: center;
+  }
+}

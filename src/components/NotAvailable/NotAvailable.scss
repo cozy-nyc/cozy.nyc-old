@@ -1,0 +1,21 @@
+.backgroundVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+  filter: brightness(60%);
+}
+
+.messageBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  padding-top: 200px;
+  text-align: center;
+}

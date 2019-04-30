@@ -1,164 +1,182 @@
-// require('babel-polyfill');
+// require('@babel/polyfill');
 
 // Webpack config for creating the production bundle.
-var path = require('path');
-var webpack = require('webpack');
-var CleanPlugin = require('clean-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
-
-var projectRootPath = path.resolve(__dirname, '../');
-var assetsPath = path.resolve(projectRootPath, './static/dist');
+const path = require('path');
+const webpack = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
+const WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
+const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
 
-var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const projectRootPath = path.resolve(__dirname, '../');
+const assetsPath = path.resolve(projectRootPath, './static/dist');
 
 module.exports = {
+  mode: 'production',
   devtool: 'source-map',
   context: path.resolve(__dirname, '..'),
   entry: {
-    main: [
-      './src/client.js'
-    ]
+    main: ['bootstrap-loader', './src/client.js']
   },
   output: {
     path: assetsPath,
     filename: '[name]-[chunkhash].js',
     chunkFilename: '[name]-[chunkhash].chunk.js',
-    publicPath: '/dist/',
+    publicPath: '/dist/'
   },
   performance: {
     hints: false
   },
+  optimization: {
+    // for MiniCssExtractPlugin:
+    //
+    // splitChunks: {
+    //   cacheGroups: {
+    //     styles: {
+    //       name: 'styles',
+    //       test: /\.(less|scss)$/,
+    //       chunks: 'all',
+    //       enforce: true
+    //     }
+    //   }
+    // },
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set to true if you want JS source maps
+      })
+    ]
+  },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules(\/|\\)(?!(@feathersjs))/
-    }, {
-      test: /\.less$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          options: {
-            modules: true,
-            importLoaders: 2,
-            sourceMap: true
-          }
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'less-loader',
-          options: {
-            outputStyle: 'expanded',
-            sourceMap: true,
-            sourceMapContents: true
-          }
-        }]
-      })
-    }, {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          options: {
-            modules: true,
-            importLoaders: 2,
-            sourceMap: true
-          }
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'sass-loader',
-          options: {
-            outputStyle: 'expanded',
-            sourceMap: true,
-            sourceMapContents: true
-          }
-        }]
-      })
-    }, {
-      test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10240,
-        mimetype: 'application/font-woff'
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules(\/|\\)(?!(@feathersjs))/
+      },
+      {
+        test: /\.(webm|mp4)$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 2,
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                config: {
+                  path: 'postcss.config.js'
+                }
+              }
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+                sourceMapContents: true
+              }
+            }
+          ]
+        })
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 2,
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+                config: {
+                  path: 'postcss.config.js'
+                }
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                outputStyle: 'expanded',
+                sourceMap: true,
+                sourceMapContents: true
+              }
+            }
+          ]
+        })
+      },
+      {
+        test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          mimetype: 'application/font-woff'
+        }
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          mimetype: 'application/octet-stream'
+        }
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10240,
+          mimetype: 'image/svg+xml'
+        }
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        loader: 'url-loader',
+        options: {
+          limit: 10240
+        }
       }
-    }, {
-      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10240,
-        mimetype: 'application/octet-stream'
-      }
-    }, {
-      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'file-loader'
-    }, {
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      loader: 'url-loader',
-      options: {
-        limit: 10240,
-        mimetype: 'image/svg+xml'
-      }
-    }, {
-      test: /\.(ogg|mp3|wav|mpe?g)$/i,
-      loader: 'file-loader'
-    }, {
-      test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-      loader: 'url-loader',
-      options: {
-        limit: 10240
-      }
-    }]
+    ]
   },
   resolve: {
-    modules: [
-      'src',
-      'node_modules'
-    ],
+    modules: ['src', 'node_modules'],
     extensions: ['.json', '.js', '.jsx']
   },
   plugins: [
-    new webpack.LoaderOptionsPlugin({
-      test: /\.(less|scss)/,
-      options: {
-        postcss: function(webpack) {
-          return [
-            require("postcss-import")({
-              addDependencyTo: webpack
-            }),
-            require("postcss-url")(),
-            require("postcss-cssnext")({
-              browsers: 'last 2 version'
-            }),
-            // add your "plugins" here
-            // ...
-            // and if you want to compress,
-            // just use css-loader option that already use cssnano under the hood
-            require("postcss-browser-reporter")(),
-            require("postcss-reporter")(),
-          ]
-        }
-      }
-    }),
+    /* wepack build status - show webpack build progress in terminal */
+    new webpack.ProgressPlugin(),
 
-    new CleanPlugin([assetsPath], {
-      root: projectRootPath
-    }),
+    new CleanPlugin([assetsPath], { root: projectRootPath }),
 
     // css files from the extract-text-plugin loader
     new ExtractTextPlugin({
@@ -180,9 +198,6 @@ module.exports = {
     // ignore dev config
     new webpack.IgnorePlugin(/\.\/dev/, /\/config$/),
 
-    // optimizations
-    new UglifyJsPlugin(),
-
     webpackIsomorphicToolsPlugin,
 
     new ReactLoadablePlugin({
@@ -200,19 +215,12 @@ module.exports = {
       maximumFileSizeToCacheInBytes: 8388608,
 
       // Ensure all our static, local assets are cached.
-      staticFileGlobs: [path.dirname(assetsPath) + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}'],
+      staticFileGlobs: [`${path.dirname(assetsPath)}/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}`],
       stripPrefix: path.dirname(assetsPath),
 
       directoryIndex: '/',
       verbose: true,
-      navigateFallback: '/dist/index.html',
-      runtimeCaching: [{
-        urlPattern: /\/api\/widget\/load(.*)/,
-        handler: 'networkFirst',
-        options: {
-          debug: true
-        }
-      }]
+      navigateFallback: '/dist/index.html'
     })
   ]
 };

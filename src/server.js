@@ -3,6 +3,7 @@ import path from 'path';
 import express from 'express';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
+import morgan from 'morgan';
 import favicon from 'serve-favicon';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -16,28 +17,34 @@ import createMemoryHistory from 'history/createMemoryHistory';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
 import { trigger } from 'redial';
+import { getStoredState } from 'redux-persist';
+import { CookieStorage, NodeCookiesWrapper } from 'redux-persist-cookie-storage';
+import Cookies from 'cookies';
+import config from 'config';
 import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import Html from 'helpers/Html';
 import routes from 'routes';
+import { createApp } from 'app';
 import { getChunks, waitChunks } from 'utils/chunks';
 import asyncMatchRoutes from 'utils/asyncMatchRoutes';
 import { ReduxAsyncConnect, Provider } from 'components';
-import dotenv from 'dotenv';
 
+const pretty = new PrettyError();
 const chunksPath = path.join(__dirname, '..', 'static', 'dist', 'loadable-chunks.json');
 
-process.on('unhandledRejection', error => console.error(error));
+process.on('unhandledRejection', (reason, p) => console.error('Unhandled Rejection at: Promise ', p, pretty.render(reason)));
 
-const targetUrl = `http://${process.env.APIHOST}:${process.env.APIPORT}`;
-const pretty = new PrettyError();
+const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
 const app = express();
 const server = new http.Server(app);
 const proxy = httpProxy.createProxyServer({
-  target: targetUrl
+  target: targetUrl,
+  ws: true
 });
 
 app
+  .use(morgan('dev', { skip: req => req.originalUrl.indexOf('/ws') !== -1 }))
   .use(cookieParser())
   .use(compression())
   .use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')))
@@ -64,6 +71,19 @@ app.use((req, res, next) => {
   return next();
 });
 
+// Proxy to API server
+app.use('/api', (req, res) => {
+  proxy.web(req, res, { target: targetUrl });
+});
+
+app.use('/ws', (req, res) => {
+  proxy.web(req, res, { target: `${targetUrl}/ws` });
+});
+
+server.on('upgrade', (req, socket, head) => {
+  proxy.ws(req, socket, head);
+});
+
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {
   if (error.code !== 'ECONNRESET') {
@@ -87,12 +107,31 @@ app.use(async (req, res) => {
     webpackIsomorphicTools.refresh();
   }
   const providers = {
+    app: createApp(req),
     client: apiClient(req)
   };
   const history = createMemoryHistory({ initialEntries: [req.originalUrl] });
+
+  const cookieJar = new NodeCookiesWrapper(new Cookies(req, res));
+
+  const persistConfig = {
+    key: 'root',
+    storage: new CookieStorage(cookieJar),
+    stateReconciler: (inboundState, originalState) => originalState,
+    whitelist: ['auth', 'info', 'chat']
+  };
+
+  let preloadedState;
+  try {
+    preloadedState = await getStoredState(persistConfig);
+  } catch (e) {
+    preloadedState = {};
+  }
+
   const store = createStore({
     history,
-    helpers: providers
+    helpers: providers,
+    data: preloadedState
   });
 
   function hydrate() {
@@ -105,7 +144,7 @@ app.use(async (req, res) => {
   }
 
   try {
-    const { components, match, params } = await asyncMatchRoutes(routes, req.originalUrl);
+    const { components, match, params } = await asyncMatchRoutes(routes, req.path);
     await trigger('fetch', components, {
       ...providers,
       store,
@@ -137,7 +176,7 @@ app.use(async (req, res) => {
     }
 
     const locationState = store.getState().router.location;
-    if (req.originalUrl !== locationState.pathname + locationState.search) {
+    if (decodeURIComponent(req.originalUrl) !== decodeURIComponent(locationState.pathname + locationState.search)) {
       return res.redirect(301, locationState.pathname);
     }
 
@@ -153,7 +192,7 @@ app.use(async (req, res) => {
 });
 
 (async () => {
-  if (process.env.PORT) {
+  if (config.port) {
     try {
       await Loadable.preloadAll();
       await waitChunks(chunksPath);
@@ -161,12 +200,12 @@ app.use(async (req, res) => {
       console.log('Server preload error:', error);
     }
 
-    server.listen(process.env.PORT, err => {
+    server.listen(config.port, err => {
       if (err) {
         console.error(err);
       }
-      console.info('----\n==> ✅  %s is running, talking to API server on %s.', process.env.TITLE, process.env.API);
-      console.info('==> 💻  Open http://%s:%s in a browser to view the app.', process.env.HOST, process.env.PORT);
+      console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort);
+      console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
     });
   } else {
     console.error('==>     ERROR: No PORT environment variable has been specified');
