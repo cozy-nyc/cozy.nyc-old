@@ -19,7 +19,7 @@ yarn install
 ## Running Dev Server
 
 ```bash
-yarn run dev
+yarn dev
 ```
 
 The first time it may take a little while to generate the first `webpack-assets.json` and complain with a few dozen `[webpack-isomorphic-tools] (waiting for the first Webpack build to finish)` printouts, but be patient. Give it 30 seconds.
@@ -28,8 +28,8 @@ The first time it may take a little while to generate the first `webpack-assets.
 ## Building and Running Production Server
 
 ```bash
-yarn run build
-yarn run start
+yarn build
+yarn start
 ```
 
 
