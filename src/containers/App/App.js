@@ -6,18 +6,18 @@ import { withRouter } from 'react-router';
 import { push } from 'react-router-redux';
 import { renderRoutes } from 'react-router-config';
 import { provideHooks } from 'redial';
-import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
+// import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
+// import Navbar from 'react-bootstrap/lib/Navbar';
+// import Nav from 'react-bootstrap/lib/Nav';
+// import NavItem from 'react-bootstrap/lib/NavItem';
 import Alert from 'react-bootstrap/lib/Alert';
 import Helmet from 'react-helmet';
 import qs from 'qs';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout as logoutAction } from 'redux/modules/auth';
-import { Notifs, InfoBar } from 'components';
+import { Notifs } from 'components';
 import config from 'config';
-import NavBar from 'components/NavBar/NavBar'
+import NavBar from 'components/NavBar/NavBar';
 
 @provideHooks({
   fetch: async ({ store: { dispatch, getState } }) => {
@@ -32,7 +32,7 @@ import NavBar from 'components/NavBar/NavBar'
 @connect(
   state => ({
     notifs: state.notifs,
-    user: state.auth.user
+    // user: state.auth.user
   }),
   { logout: logoutAction, pushState: push }
 )
@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   state = {
-    user: this.props.user, // eslint-disable-line react/destructuring-assignment
+    // user: this.props.user, // eslint-disable-line react/destructuring-assignment
     prevProps: this.props // eslint-disable-line react/no-unused-state
   };
 
@@ -101,24 +101,24 @@ class App extends Component {
 
   render() {
     const { notifs, route } = this.props;
-    const { user } = this.state;
+    // const { user } = this.state;
     const styles = require('./App.scss');
 
     return (
-        <div className={styles.appContent}>
-          <NavBar />
-          <Helmet {...config.app.head} />
-          {notifs.global && (
-              <Notifs
-                className={styles.notifs}
-                namespace="global"
-                NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>}
-              />
-          )}
-          <div className="container">
-            {renderRoutes(route.routes)}
-          </div>
+      <div className={styles.appContent}>
+        <NavBar />
+        <Helmet {...config.app.head} />
+        {notifs.global && (
+          <Notifs
+            className={styles.notifs}
+            namespace="global"
+            NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>}
+          />
+        )}
+        <div className="container">
+          {renderRoutes(route.routes)}
         </div>
+      </div>
     );
   }
 }

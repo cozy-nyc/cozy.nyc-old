@@ -12,16 +12,28 @@ import PropTypes from 'prop-types';
     Add background when user scrolls down from the top of a page.
 */
 class NavBar extends Component {
+  static propTypes = {
+    location: PropTypes.string.isRequired,
+    history: PropTypes.string.isRequired,
+  };
+
+  constructor(props) {
+    super(props);
+    this.goBack = this.goBack.bind(this);
+  }
+
   goBack() {
-    window.history.back();
+    const { history } = this.props;
+    history.goBack();
   }
 
   render() {
     const cube = require('./cube.svg');
     const backbutton = require('./left-arrow.svg');
     const styles = require('./NavBar.scss');
+    const { location } = this.props;
 
-    if (this.props.location.pathname === '/') {
+    if (location.pathname === '/') {
       /*
         IF at Home page:
           Don't display NavBar.
@@ -53,23 +65,23 @@ class NavBar extends Component {
     return (
       <div className={styles.navbar}>
         <div className={styles.navbarNav}>
-          <a className={styles.navbarBackbutton} onClick={this.goBack}>
+          <button type="button" className={styles.navbarBackbutton} onClick={this.goBack}>
             <img src={backbutton} alt="backbutton" />
-          </a>
+          </button>
           <span
             className={styles.navbarMenu}
             role="button"
             tabIndex={0}
           >
             <Link className={styles.navbarButton} to="/">
-              <img className={styles.brandimg} src={cube} alt="cube"/>
+              <img className={styles.brandimg} src={cube} alt="cube" />
             </Link>
             <div className={styles.navbarDropdown}>
               <div className={styles.navbarDropdownMenu}>
                 <div className="main-links">
-                  <NavLink className={styles.mainLink + ' nav-hover-orange'} to="stream">stream</NavLink>
-                  <NavLink className={styles.mainLink + ' nav-hover-blue'} to="boards">boards</NavLink>
-                  <NavLink className={styles.mainLink + ' nav-hover-green'} to="exchange">exchange</NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-orange`} to="stream">stream</NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-blue`} to="boards">boards</NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-green`} to="exchange">exchange</NavLink>
                 </div>
                 <br />
                 <div className="sub-links">

@@ -40,7 +40,7 @@
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc '**/*.js'",
     "lint": "eslint .",
     "test": "cross-env NODE_PATH=src jest src",
-    "lighthouse-report": "lighthouse http://localhost:8080 --view",
+    "lighthouse-report": "lighthouse http://localhost:8080 --view"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",

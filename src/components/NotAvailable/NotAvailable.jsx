@@ -15,8 +15,8 @@ export default function NotAvailable() {
       <div className={styles.messageBlock}>
         <span className={styles.message}>
           <h1>Still in the works...</h1>
-           <Link to="/"><button>Take me back home</button></Link>
-           <Link to="/contribute"><button>Help us out!!!</button></Link>
+          <Link to="/"><button type="button">Take me back home</button></Link>
+          <Link to="/contribute"><button type="button">Help us out!!!</button></Link>
         </span>
       </div>
     </div>
