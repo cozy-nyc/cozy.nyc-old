@@ -33,10 +33,10 @@ const Html = ({
         <link rel="manifest" href="/manifest.json" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="React Hot" />
+        <meta name="application-name" content="cozy.nyc" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <meta name="apple-mobile-web-app-title" content="React Hot" />
-        <meta name="theme-color" content="#3677dd" />
+        <meta name="apple-mobile-web-app-title" content="cozy.nyc" />
+        <meta name="theme-color" content="#272727" />
         {/* styles (will be present only in production with webpack extract text plugin) */}
         {assets.styles
           && Object.keys(assets.styles).map(style => (
