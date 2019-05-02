@@ -40,11 +40,7 @@
     "prettier": "prettier-eslint --write --eslint-config-path .eslintrc '**/*.js'",
     "lint": "eslint .",
     "test": "cross-env NODE_PATH=src jest src",
-    "lighthouse-report": "lighthouse http://localhost:8080 --view",
-    "docker-build": "docker-compose build",
-    "docker-dev": "cross-env NGINX_HOST=localhost NGINX_PORT=3000 PORT=3000 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --no-deps",
-    "docker-up": "cross-env NGINX_HOST=localhost NGINX_PORT=80 PORT=8080 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --no-deps -d",
-    "docker-down": "docker-compose down"
+    "lighthouse-report": "lighthouse http://localhost:8080 --view"
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
