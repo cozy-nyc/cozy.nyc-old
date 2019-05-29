@@ -30,8 +30,12 @@
   height: 50px;
 }
 
-.navbarButton {
-  display: inline;
+.navbarBackbutton {
+  border: none;
+  background: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 
