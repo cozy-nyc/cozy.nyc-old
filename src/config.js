@@ -12,8 +12,7 @@ const environment = {
 const config = {
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
+  apiHost: process.env.APIHOST || 'http://localhost:3030',
   app: {
     title: 'React Redux Example',
     description: 'All the modern best practices in one example.',
