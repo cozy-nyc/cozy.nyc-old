@@ -36,7 +36,7 @@ const LoginForm = ({ onSubmit }) => (
     validate={loginValidation}
     render={({ handleSubmit, submitError }) => (
       <form className="form-horizontal" onSubmit={handleSubmit}>
-        <Field name="email" type="text" component={Input} label="Email" />
+        <Field name="username" type="text" component={Input} label="username" />
         <Field name="password" type="password" component={Input} label="Password" />
         {submitError && (
           <p className="text-danger">

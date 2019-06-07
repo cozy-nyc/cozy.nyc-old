@@ -117,24 +117,17 @@ function setCookie({ app }) {
     const payload = await app.passport.verifyJWT(response.accessToken);
     const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
 
-    cookie.set('feathers-jwt', response.accessToken, options);
+    cookie.set('jwt', response.accessToken, options);rc
   };
 }
 
-function setToken({ client, app }) {
+function setToken({ client}) {
   return response => {
     const { accessToken } = response;
-
-    app.set('accessToken', accessToken);
     client.setJwtToken(accessToken);
   };
 }
 
-function setUser({ app }) {
-  return response => {
-    app.set('user', response.user);
-  };
-}
 
 /*
 * Actions
@@ -148,13 +141,12 @@ export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: async ({ app, client }) => {
-      const response = await app.authenticate();
-      await setCookie({ app })(response);
+      const token = { token: cookies.get('token') };
+      const response = await client.post('/api-token-verify/', token)
+      await setCookie(response);
       setToken({
-        client,
-        app
+        client
       })(response);
-      setUser({ app })(response);
       return response;
     }
   };
@@ -170,27 +162,19 @@ export function register(data) {
   };
 }
 
-export function login(strategy, data) {
+export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: async ({ client, app }) => {
+    promise: async ({ client }) => {
       try {
-        const response = await app.authenticate({
-          ...data,
-          strategy
-        });
-        await setCookie({ app })(response);
+        const response = await client.post('/api-token-auth/', data)
+        await setCookie((response))
         setToken({
-          client,
-          app
+          client
         })(response);
-        setUser({ app })(response);
         return response;
       } catch (error) {
-        if (strategy === 'local') {
           return catchValidation(error);
-        }
-        throw error;
       }
     }
   };
@@ -199,14 +183,8 @@ export function login(strategy, data) {
 export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
-    promise: async ({ client, app }) => {
-      await app.logout();
-      setToken({
-        client,
-        app
-      })({ accessToken: null });
-      setUser({ app })({ user: null });
-      cookie.set('feathers-jwt', '');
+    promise: async ({ client }) => {
+      cookie.set('token', '');
     }
   };
 }
