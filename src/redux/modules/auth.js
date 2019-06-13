@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        accessToken: action.result.accessToken,
+        token: action.result.token,
         user: action.result.user
       };
     case LOAD_FAIL:
@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loggingIn: false,
         loaded: true,
-        accessToken: action.result.accessToken,
+        token: action.result.token,
         user: action.result.user
       };
     case LOGIN_FAIL:
@@ -85,7 +85,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingOut: false,
-        accessToken: null,
+        token: null,
         user: null
       };
     case LOGOUT_FAIL:
@@ -114,17 +114,17 @@ const catchValidation = error => {
 
 function setCookie({ app }) {
   return async response => {
-    const payload = await app.passport.verifyJWT(response.accessToken);
+    const payload = await app.passport.verifyJWT(response.token);
     const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
 
-    cookie.set('jwt', response.accessToken, options);rc
+    cookie.set('jwt', response.token, options);
   };
 }
 
-function setToken({ client}) {
+function setToken({ client }) {
   return response => {
-    const { accessToken } = response;
-    client.setJwtToken(accessToken);
+    const { token } = response;
+    client.setJwtToken(token);
   };
 }
 
@@ -184,7 +184,7 @@ export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async ({ client }) => {
-      cookie.set('token', '');
+      cookie.remove('token');
     }
   };
 }

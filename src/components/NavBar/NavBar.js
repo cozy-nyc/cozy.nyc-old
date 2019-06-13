@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ProfileButton from 'components/ProfileButton/ProfileButton';
 
 
 /*
@@ -92,6 +93,10 @@ class NavBar extends Component {
             </div>
           </span>
         </div>
+        <div className={styles.profileButton}>
+          <ProfileButton />
+        </div>
+        <div className="u-cf" />
       </div>
     );
   }
