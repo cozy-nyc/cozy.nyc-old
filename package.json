@@ -1,29 +1,23 @@
 {
-  "name": "react-redux-universal-hot-example",
-  "description": "Example of an isomorphic (universal) webapp using react redux and hot reloading",
-  "author": "Kévin Berthommier <kevin.bertho@gmail.com> (http://github.com/bertho-zero)",
+  "name": "cozy.nyc",
+  "description": "a site for neets...",
+  "author": "cozy.nyc <hello@cozy.nyc> (http://github.com/cozy-nyc)",
   "contributors": [
+    "Rokney Rosemie <s1mb10t3@pm.me> (http://github.com/s1mb10t3)",
+    "Kévin Berthommier <kevin.bertho@gmail.com> (http://github.com/bertho-zero)",
     "Erik Rasmussen <rasmussenerik@gmail.com> (http://github.com/erikras)"
   ],
   "license": "GPL-3.0",
-  "version": "0.9.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bertho-zero/react-redux-universal-hot-example"
+    "url": "https://github.com/cozy-nyc/cozy-nyc"
   },
-  "homepage": "https://github.com/bertho-zero/react-redux-universal-hot-example",
+  "homepage": "https://github.com/cozy-nyc/cozy-nyc",
   "keywords": [
     "react",
-    "isomorphic",
-    "universal",
-    "webpack",
-    "express",
-    "hot reloading",
-    "react-hot-reloader",
     "redux",
-    "starter",
-    "boilerplate",
-    "babel"
+    "neets"
   ],
   "main": "bin/server.js",
   "scripts": {
