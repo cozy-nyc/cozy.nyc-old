@@ -32,7 +32,7 @@ import NavBar from 'components/NavBar/NavBar';
 @connect(
   state => ({
     notifs: state.notifs,
-    // user: state.auth.user
+    user: state.auth.user
   }),
   { logout: logoutAction, pushState: push }
 )
@@ -42,7 +42,7 @@ class App extends Component {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
     user: PropTypes.shape({
-      email: PropTypes.string
+      username: PropTypes.string
     }),
     notifs: PropTypes.shape({
       global: PropTypes.array
@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   state = {
-    // user: this.props.user, // eslint-disable-line react/destructuring-assignment
+    user: this.props.user, // eslint-disable-line react/destructuring-assignment
     prevProps: this.props // eslint-disable-line react/no-unused-state
   };
 

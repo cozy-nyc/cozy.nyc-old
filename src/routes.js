@@ -9,6 +9,7 @@ import Contribute from 'containers/Contribute/Loadable';
 import Login from 'containers/Login/Loadable';
 import LoginSuccess from 'containers/LoginSuccess/Loadable';
 import Register from 'containers/Register/Loadable';
+import Profile from 'containers/Profile/Loadable';
 
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
@@ -38,6 +39,7 @@ const routes = [
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
+      { path: '/u/:username', exact: true, component: Profile },
       { component: NotFound }
     ]
   }

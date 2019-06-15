@@ -155,10 +155,14 @@ export function load() {
 export function register(data) {
   return {
     types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
-    promise: ({ app }) => app
-      .service('users')
-      .create(data)
-      .catch(catchValidation)
+    promise: async ({ client }) => {
+      try {
+        const response = await client.post('/register/', data)
+        await setCookie((response))
+      } catch (error) {
+        return catchValidation(error);
+      }
+    }
   };
 }
 
@@ -184,7 +188,10 @@ export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async ({ client }) => {
-      cookie.remove('token');
+      setToken({
+        client
+      })({ accessToken: null });
+      cookie.set('jwt', '');
     }
   };
 }
