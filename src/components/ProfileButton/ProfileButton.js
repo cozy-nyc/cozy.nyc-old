@@ -24,7 +24,7 @@ class ProfileButton extends Component {
   static propTypes = {
     user: PropTypes.shape({
       username: PropTypes.string,
-      profile: PropTypes.string
+      profile: PropTypes.object
     }),
     auth: PropTypes.shape({
       loaded: PropTypes.bool.isRequired

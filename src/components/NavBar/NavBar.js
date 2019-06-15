@@ -14,8 +14,8 @@ import ProfileButton from 'components/ProfileButton/ProfileButton';
 */
 class NavBar extends Component {
   static propTypes = {
-    location: PropTypes.string.isRequired,
-    history: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
   };
 
   constructor(props) {
