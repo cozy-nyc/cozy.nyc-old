@@ -10,17 +10,20 @@
 
 
 // Colors
-$background: #272727;
-$foreground: #F8F5EB;
-
-$primary-text-color: #F8F5EB;
-$secondary-text-color: #ffffff;
-$alt-text-color: #272727;
-
-$cozy-pink: #FFD8E7;
+$cozy-pink: #ffd8e7;
 $cozy-blue: #A7C5D6;
 $cozy-orange: #FDCE89;
 $cozy-green: #a7d6a8;
+
+$background: #272727;
+$foreground: #F8F5EB;
+$accent: $cozy-pink;
+
+$primary-text-color: #F8F5EB;
+$secondary-text-color: $cozy-pink;
+$alt-text-color: #272727;
+
+
 
 $font-size-base: 14px;
 $font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;

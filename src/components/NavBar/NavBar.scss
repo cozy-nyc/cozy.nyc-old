@@ -1,5 +1,14 @@
 @import '../../theme/variables.scss';
 
+// Resets
+.navbar button {
+  box-shadow: none;
+}
+
+.navbar button:hover {
+  box-shadow: none;
+}
+
 // Navbar
 .navbar {
   // position: fixed;

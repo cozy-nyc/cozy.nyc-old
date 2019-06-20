@@ -20,12 +20,10 @@ export default function Contribute() {
         </p>
         <p>
           Our API can be found here at{' '}
-          <a href="http://api.cozy.nyc" alt="">
-            api.cozy.nyc{' '}
-          </a>
-          and it's repo here at{' '}
-          <a href="https://github.com/cozy-nyc/cozy-nyc-backend" alt="">
-            github.com/cozy-nyc/cozy-nyc-backend{' '}
+          <a href="http://api.cozy.nyc" alt="">api.cozy.nyc{' '}</a> and it's repo
+            here at{' '}
+          <a href="https://github.com/cozy-nyc/cozy-api" alt="">
+            github.com/cozy-nyc/cozy-api{' '}
           </a>
         </p>
         <br />

@@ -1,5 +1,14 @@
 @import '../../theme/variables.scss';
 
+// Resets
+.profileButton button {
+  box-shadow: none;
+}
+
+.profileButton button:hover {
+  box-shadow: none;
+}
+
 // Profile
 
 .profileButton {

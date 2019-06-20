@@ -34,9 +34,9 @@ class Home extends Component {
             <ProfileButton className={styles.profileButton} />
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navHoverOrange} to="stream">stream</Link>
-              <Link className={styles.navHoverBlue} to="boards">boards</Link>
-              <Link className={styles.navHoverGreen} to="exchange">exchange</Link>
+              <Link className={styles.navLinkOrange} to="stream">stream</Link>
+              <Link className={styles.navLinkBlue} to="boards">boards</Link>
+              <Link className={styles.navLinkGreen} to="exchange">exchange</Link>
             </div>
 
             <div className={styles.subLinks}>
