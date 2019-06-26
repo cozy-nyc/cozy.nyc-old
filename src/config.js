@@ -10,13 +10,12 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 const config = {
-  host: process.env.HOST || 'localhost',
+  host: process.env.HOST || '0.0.0.0',
   port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
+  apiHost: process.env.APIHOST || 'http://0.0.0.0:8000',
   app: {
-    title: 'React Redux Example',
-    description: 'All the modern best practices in one example.',
+    title: 'cozy.nyc',
+    description: 'A site for neets...',
     head: {
       titleTemplate: 'cozy.%s',
       meta: [

@@ -1,8 +1,19 @@
 @import '../../theme/variables.scss';
 
+// Resets
+.navbar button {
+  box-shadow: none;
+}
+
+
+.navbar button:hover {
+  background: none;
+  box-shadow: none;
+}
+
 // Navbar
 .navbar {
-  position: fixed;
+  // position: fixed;
   width: 100%;
   left: 0px;
   top: 0px;
@@ -91,4 +102,11 @@
 
 .mainLink {
   font-size: 20px;
+}
+
+.profileButton {
+  position: fixed;
+  padding: 5px;
+  top: 1%;
+  right: 60px;
 }

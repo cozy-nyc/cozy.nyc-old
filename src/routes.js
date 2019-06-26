@@ -6,10 +6,10 @@ import Stream from 'containers/Stream/Loadable';
 import Boards from 'containers/Boards/Loadable';
 import Exchange from 'containers/Exchange/Loadable';
 import Contribute from 'containers/Contribute/Loadable';
-import Chat from 'containers/Chat/Loadable';
 import Login from 'containers/Login/Loadable';
 import LoginSuccess from 'containers/LoginSuccess/Loadable';
 import Register from 'containers/Register/Loadable';
+import Profile from 'containers/Profile/Loadable';
 
 const isAuthenticated = connectedReduxRedirect({
   redirectPath: '/login',
@@ -36,10 +36,10 @@ const routes = [
       { path: '/exchange', component: Exchange },
       { path: '/about', component: About },
       { path: '/contribute', component: Contribute },
-      { path: '/chat', component: Chat },
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
+      { path: '/u/:username', exact: true, component: Profile },
       { component: NotFound }
     ]
   }

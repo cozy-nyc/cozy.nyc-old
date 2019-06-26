@@ -37,9 +37,10 @@ const RegisterForm = ({ onSubmit, initialValues }) => (
     validate={registerValidation}
     render={({ handleSubmit, submitError }) => (
       <form className="form-horizontal" onSubmit={handleSubmit}>
-        <Field name="email" type="text" component={Input} label="Email" />
-        <Field name="password" type="password" component={Input} label="Password" />
-        <Field name="password_confirmation" type="password" component={Input} label="Password confirmation" />
+        <Field name="username" type="text" component={Input} label="username" />
+        <Field name="email" type="text" component={Input} label="email" />
+        <Field name="password" type="password" component={Input} label="password" />
+        <Field name="password_confirmation" type="password" component={Input} label="password confirmation" />
         {submitError && (
           <p className="text-danger">
             <strong>{submitError}</strong>

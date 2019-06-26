@@ -3,7 +3,7 @@ import config from 'config';
 
 export default function apiClient(req) {
   const instance = axios.create({
-    baseURL: __SERVER__ ? `http://${config.apiHost}:${config.apiPort}` : '/api'
+    baseURL: __SERVER__ ? `${config.apiHost}` : '/api'
   });
 
   let token;

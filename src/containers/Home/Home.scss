@@ -6,9 +6,19 @@
   padding-bottom: 20px;
 }
 
+.mainLinks a:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
 .subLinks a {
   display: inline-block;
   padding: 0 10px 10px 0;
+}
+
+.subLinks a:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .homeContent {
@@ -31,16 +41,31 @@
   text-align: left;
 }
 
-.navHoverBlue:hover {
+.navLinkBlue {
+  text-shadow: 2px 2px 0 $cozy-blue !important;
+}
+
+.navLinkBlue:hover {
   color: $cozy-blue !important;
+  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
-.navHoverGreen:hover {
+.navLinkGreen {
+  text-shadow: 2px 2px 0 $cozy-green !important;
+}
+
+.navLinkGreen:hover {
   color: $cozy-green !important;
+  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
-.navHoverOrange:hover {
+.navLinkOrange {
+  text-shadow: 2px 2px 0 $cozy-orange !important;
+}
+
+.navLinkOrange:hover {
   color: $cozy-orange !important;
+  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
 @media screen and (max-width: 992px) {
@@ -51,4 +76,8 @@
   .homeSidebar {
     text-align: center;
   }
+}
+
+.profileButton {
+
 }
