@@ -140,9 +140,9 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: async ({ app, client }) => {
-      const token = { token: cookies.get('token') };
-      const response = await client.post('/api-token-verify/', token)
+    promise: async ({ client }) => {
+      const token = { token: cookie.get('jwt') };
+      const response = await client.post('/api-token-verify/', token);
       await setCookie(response);
       setToken({
         client
@@ -157,8 +157,8 @@ export function register(data) {
     types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/register/', data)
-        await setCookie((response))
+        const response = await client.post('/register/', data);
+        await setCookie((response));
       } catch (error) {
         return catchValidation(error);
       }
@@ -171,14 +171,14 @@ export function login(data) {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/api-token-auth/', data)
-        await setCookie((response))
+        const response = await client.post('/api-token-auth/', data);
+        await setCookie((response));
         setToken({
           client
         })(response);
         return response;
       } catch (error) {
-          return catchValidation(error);
+        return catchValidation(error);
       }
     }
   };

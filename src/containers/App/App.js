@@ -101,7 +101,7 @@ class App extends Component {
 
   render() {
     const { notifs, route } = this.props;
-    // const { user } = this.state;
+    const { user } = this.state;
     const styles = require('./App.scss');
 
     return (
