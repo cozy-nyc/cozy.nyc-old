@@ -46,18 +46,18 @@ class ProfileButton extends Component {
         {user && (
           <div>
             <div className={styles.userInfo}>
-              <Link to={'/u/' + this.props.user.username}>
-                <p>{this.props.user.username}</p>
+              <Link to={`/u/${user.username}`}>
+                <p>{user.username}</p>
               </Link>
               {/* TODO: Users Rank/Title */}
               <button className={styles.logoutButton} type="button" onClick={logout}>logout</button>
             </div>
             <div className={styles.userAvatar}>
-              <Link to={'/u/' + this.props.user.username}>
+              <Link to={`/u/${user.username}`}>
                 <img
                   className={styles.profileImage}
-                  src={this.props.user.profile.profileImg}
-                  alt={this.props.user.username}
+                  src={user.profile.profileImg}
+                  alt={user.username}
                 />
               </Link>
             </div>

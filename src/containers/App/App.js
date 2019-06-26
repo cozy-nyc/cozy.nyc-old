@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   state = {
-    user: this.props.user, // eslint-disable-line react/destructuring-assignment
+    // user: this.props.user, // eslint-disable-line react/destructuring-assignment
     prevProps: this.props // eslint-disable-line react/no-unused-state
   };
 
@@ -101,7 +101,7 @@ class App extends Component {
 
   render() {
     const { notifs, route } = this.props;
-    const { user } = this.state;
+    // const { user } = this.state;
     const styles = require('./App.scss');
 
     return (
