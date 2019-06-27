@@ -30,28 +30,35 @@ class Profile extends Component {
 
 
   componentWillMount() {
-    const { getProfile, match } = this.props;
-    getProfile(match.params.username);
+    const { getProfile, match, profile } = this.props;
+    if (profile == null) {
+      getProfile(match.params.username);
+    }
   }
 
 
   render() {
     const { profile } = this.props;
+    const styles = require('./Profile.scss');
+
     return (
-      <div>
+      <div className={styles.profileWrapper}>
         {profile && (
-          <div>
+          <div className={styles.profileHeader}>
             <Helmet title={profile.username} />
             <img
-              id="profile-page-avatar"
+              className={styles.profileAvatar}
               src={profile.profileImg}
               alt={profile.username}
             />
-            <h1>{profile.username}</h1>
+            <span className={styles.ProfileInfo}>
+              <h1>{`@${profile.username}`}</h1>
+              <p>[Bio Here]</p>
+            </span>
           </div>
         )}
         {!profile && (
-          <div>
+          <div className={styles.profileHeader}>
             <Helmet title="noot" />
             <h1>NOOT</h1>
           </div>

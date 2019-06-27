@@ -14,6 +14,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         fecthing: false,
+        fetched: false,
         error: action.payload
       };
     case 'FETCH_PROFILE_FULFILLED':
