@@ -47,7 +47,7 @@ class ProfileButton extends Component {
           <div>
             <div className={styles.userInfo}>
               <Link to={`/u/${user.username}`}>
-                <p>{user.username}</p>
+                <p>{`@${user.username}`}</p>
               </Link>
               {/* TODO: Users Rank/Title */}
               <button className={styles.logoutButton} type="button" onClick={logout}>logout</button>
