@@ -8,7 +8,7 @@ import config from './config';
 
 const storage = __SERVER__ ? null : require('localforage');
 
-const host = clientUrl => (__SERVER__ ? `http://${config.apiHost}:${config.apiPort}` : clientUrl);
+const host = clientUrl => (__SERVER__ ? `${config.apiHost}` : clientUrl);
 
 const configureApp = transport => feathers()
   .configure(transport)
