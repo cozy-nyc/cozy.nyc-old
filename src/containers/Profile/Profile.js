@@ -6,13 +6,14 @@ import { connect } from 'react-redux';
 import * as profileActions from 'redux/modules/profile';
 
 @connect(
-  state => ({ profile: state.profile }),
+  state => ({ profile: state.profile.active }),
   { ...profileActions }
 )
 class Profile extends Component {
   static propTypes = {
     profile: PropTypes.shape({
-      profileImg: PropTypes.string
+      username: PropTypes.string
+      // profileImg: PropTypes.string
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -35,16 +36,26 @@ class Profile extends Component {
 
 
   render() {
-    const { profile, match } = this.props;
+    const { profile } = this.props;
     return (
       <div>
-        <Helmet title="noot" />
-        <img
-          id="profile-page-avatar"
-          src={profile.profileImg}
-          alt={match.params.username}
-        />
-        <h1>{match.params.username}</h1>
+        {profile && (
+          <div>
+            <Helmet title={profile.username} />
+            <img
+              id="profile-page-avatar"
+              src={profile.profileImg}
+              alt={profile.username}
+            />
+            <h1>{profile.username}</h1>
+          </div>
+        )}
+        {!profile && (
+          <div>
+            <Helmet title="noot" />
+            <h1>NOOT</h1>
+          </div>
+        )}
       </div>
     );
   }
