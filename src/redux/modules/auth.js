@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        accessToken: action.result.accessToken,
+        token: action.result.token,
         user: action.result.user
       };
     case LOAD_FAIL:
@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loggingIn: false,
         loaded: true,
-        accessToken: action.result.accessToken,
+        token: action.result.token,
         user: action.result.user
       };
     case LOGIN_FAIL:
@@ -85,7 +85,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingOut: false,
-        accessToken: null,
+        token: null,
         user: null
       };
     case LOGOUT_FAIL:
@@ -114,25 +114,17 @@ const catchValidation = error => {
 
 function setCookie({ app }) {
   return async response => {
-    const payload = await app.passport.verifyJWT(response.accessToken);
+    const payload = await app.passport.verifyJWT(response.token);
     const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
 
-    cookie.set('feathers-jwt', response.accessToken, options);
+    cookie.set('jwt', response.token, options);
   };
 }
 
-function setToken({ client, app }) {
+function setToken({ client }) {
   return response => {
-    const { accessToken } = response;
-
-    app.set('accessToken', accessToken);
-    client.setJwtToken(accessToken);
-  };
-}
-
-function setUser({ app }) {
-  return response => {
-    app.set('user', response.user);
+    const { token } = response;
+    client.setJwtToken(token);
   };
 }
 
@@ -147,14 +139,13 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: async ({ app, client }) => {
-      const response = await app.authenticate();
-      await setCookie({ app })(response);
+    promise: async ({ client }) => {
+      const token = { token: cookie.get('jwt') };
+      const response = await client.post('/api-token-verify/', token);
+      await setCookie(response);
       setToken({
-        client,
-        app
+        client
       })(response);
-      setUser({ app })(response);
       return response;
     }
   };
@@ -163,34 +154,30 @@ export function load() {
 export function register(data) {
   return {
     types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
-    promise: ({ app }) => app
-      .service('users')
-      .create(data)
-      .catch(catchValidation)
+    promise: async ({ client }) => {
+      try {
+        const response = await client.post('/register/', data);
+        await setCookie(response);
+      } catch (error) {
+        return catchValidation(error);
+      }
+    }
   };
 }
 
-export function login(strategy, data) {
+export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
-    promise: async ({ client, app }) => {
+    promise: async ({ client }) => {
       try {
-        const response = await app.authenticate({
-          ...data,
-          strategy
-        });
-        await setCookie({ app })(response);
+        const response = await client.post('/api-token-auth/', data);
+        await setCookie(response);
         setToken({
-          client,
-          app
+          client
         })(response);
-        setUser({ app })(response);
         return response;
       } catch (error) {
-        if (strategy === 'local') {
-          return catchValidation(error);
-        }
-        throw error;
+        return catchValidation(error);
       }
     }
   };
@@ -199,14 +186,11 @@ export function login(strategy, data) {
 export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
-    promise: async ({ client, app }) => {
-      await app.logout();
+    promise: async ({ client }) => {
       setToken({
-        client,
-        app
+        client
       })({ accessToken: null });
-      setUser({ app })({ user: null });
-      cookie.set('feathers-jwt', '');
+      cookie.set('jwt', '');
     }
   };
 }

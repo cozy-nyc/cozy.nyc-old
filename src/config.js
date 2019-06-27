@@ -10,20 +10,22 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 const config = {
-  host: process.env.HOST || 'localhost',
+  host: process.env.HOST || '0.0.0.0',
   port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
+  apiHost: process.env.APIHOST || 'http://0.0.0.0:8000',
   app: {
-    title: 'React Redux Example',
-    description: 'All the modern best practices in one example.',
+    title: 'cozy.nyc',
+    description: 'A site for neets...',
     head: {
       titleTemplate: 'cozy.%s',
       meta: [
         { name: 'description', content: 'A site for neets...' },
         { charset: 'utf-8' },
         { property: 'og:site_name', content: 'cozy.nyc' },
-        { property: 'og:image', content: 'https://raw.githubusercontent.com/cozy-nyc/cozy-nyc.github.io/master/favicon.ico' },
+        {
+          property: 'og:image',
+          content: 'https://raw.githubusercontent.com/cozy-nyc/cozy-nyc.github.io/master/favicon.ico'
+        },
         { property: 'og:locale', content: 'en_US' },
         { property: 'og:title', content: 'cozy.nyc' },
         { property: 'og:description', content: 'A site for neets...' },
