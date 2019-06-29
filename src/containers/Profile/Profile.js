@@ -20,14 +20,13 @@ class Profile extends Component {
         username: PropTypes.string.isRequired
       })
     }),
-    getProfile: PropTypes.func.isRequired,
-  }
+    getProfile: PropTypes.func.isRequired
+  };
 
   static defaultProps = {
     profile: null,
     match: null
   };
-
 
   componentWillMount() {
     const { getProfile, match, profile } = this.props;
@@ -35,7 +34,6 @@ class Profile extends Component {
       getProfile(match.params.username);
     }
   }
-
 
   render() {
     const { profile } = this.props;
@@ -46,11 +44,7 @@ class Profile extends Component {
         {profile && (
           <div className={styles.profileHeader}>
             <Helmet title={profile.username} />
-            <img
-              className={styles.profileAvatar}
-              src={profile.profileImg}
-              alt={profile.username}
-            />
+            <img className={styles.profileAvatar} src={profile.profileImg} alt={profile.username} />
             <span className={styles.ProfileInfo}>
               <h1>{`@${profile.username}`}</h1>
               <p>[Bio Here]</p>

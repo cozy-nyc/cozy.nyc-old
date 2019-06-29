@@ -115,9 +115,7 @@ class App extends Component {
             NotifComponent={props => <Alert bsStyle={props.kind}>{props.message}</Alert>}
           />
         )}
-        <div className="container">
-          {renderRoutes(route.routes)}
-        </div>
+        <div className="container">{renderRoutes(route.routes)}</div>
       </div>
     );
   }

@@ -128,7 +128,6 @@ function setToken({ client }) {
   };
 }
 
-
 /*
 * Actions
 * * * * */
@@ -158,7 +157,7 @@ export function register(data) {
     promise: async ({ client }) => {
       try {
         const response = await client.post('/register/', data);
-        await setCookie((response));
+        await setCookie(response);
       } catch (error) {
         return catchValidation(error);
       }
@@ -172,7 +171,7 @@ export function login(data) {
     promise: async ({ client }) => {
       try {
         const response = await client.post('/api-token-auth/', data);
-        await setCookie((response));
+        await setCookie(response);
         setToken({
           client
         })(response);

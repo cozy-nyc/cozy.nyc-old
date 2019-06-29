@@ -29,7 +29,7 @@ class ProfileButton extends Component {
     auth: PropTypes.shape({
       loaded: PropTypes.bool.isRequired
     }),
-    logout: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -50,15 +50,13 @@ class ProfileButton extends Component {
                 <p>{`@${user.username}`}</p>
               </Link>
               {/* TODO: Users Rank/Title */}
-              <button className={styles.logoutButton} type="button" onClick={logout}>logout</button>
+              <button className={styles.logoutButton} type="button" onClick={logout}>
+                logout
+              </button>
             </div>
             <div className={styles.userAvatar}>
               <Link to={`/u/${user.username}`}>
-                <img
-                  className={styles.profileImage}
-                  src={user.profile.profileImg}
-                  alt={user.username}
-                />
+                <img className={styles.profileImage} src={user.profile.profileImg} alt={user.username} />
               </Link>
             </div>
           </div>
@@ -74,6 +72,5 @@ class ProfileButton extends Component {
     );
   }
 }
-
 
 export default ProfileButton;
