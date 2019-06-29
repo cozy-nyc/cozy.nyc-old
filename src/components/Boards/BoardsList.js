@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
   Displays list of boards.
 */
 @connect(state => ({
-  boards: state.boards.boards
+  boards: state.boards.categories
 }))
 class BoardsList extends Component {
   static get propTypes() {
@@ -22,7 +22,7 @@ class BoardsList extends Component {
     const { boards } = this.props;
 
     const mappedBoards = boards.map(board => (
-      <div classNaame="row" key={board.id}>
+      <div className="row" key={board.id}>
         <Link to={{ pathname: `/boards/${board.tag}` }}>
           /{board.tag}/ - {board.name}
         </Link>
