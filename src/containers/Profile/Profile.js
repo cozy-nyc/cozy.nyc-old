@@ -51,7 +51,7 @@ class Profile extends Component {
               src={profile.profileImg}
               alt={profile.username}
             />
-          <span className={styles.profileInfo}>
+            <span className={styles.profileInfo}>
               <h1>{`@${profile.username}`}</h1>
               <p>[Bio Here]</p>
             </span>
