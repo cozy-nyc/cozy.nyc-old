@@ -44,8 +44,12 @@ class Profile extends Component {
         {profile && (
           <div className={styles.profileHeader}>
             <Helmet title={profile.username} />
-            <img className={styles.profileAvatar} src={profile.profileImg} alt={profile.username} />
-            <span className={styles.ProfileInfo}>
+            <img
+              className={styles.profileAvatar}
+              src={profile.profileImg}
+              alt={profile.username}
+            />
+            <span className={styles.profileInfo}>
               <h1>{`@${profile.username}`}</h1>
               <p>[Bio Here]</p>
             </span>
