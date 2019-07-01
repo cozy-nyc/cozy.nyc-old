@@ -8,7 +8,7 @@
 
 --------------------------------------------------------------------------------
 
-This is only the frontend for [cozy.nyc](https://cozy.nyc )the backend can be found here [cozy-nyc-backend](https://github.com/cozy-nyc/cozy-nyc-backend)
+This is only the frontend for [cozy.nyc](https://cozy.nyc) the backend can be found here [cozy-api](https://github.com/cozy-nyc/cozy-api)
 
 ## Installation
 

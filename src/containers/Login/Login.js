@@ -19,7 +19,7 @@ class Login extends Component {
     }),
     login: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
-    notifSend: PropTypes.func.isRequired,
+    notifSend: PropTypes.func.isRequired
     // history: PropTypes.objectOf(PropTypes.any).isRequired
   };
 
@@ -60,9 +60,7 @@ class Login extends Component {
         )}
         {user && (
           <div>
-            <p>
-              You are currently logged in as {user.username}.
-            </p>
+            <p>You are currently logged in as {user.username}.</p>
 
             <div>
               <button type="button" className="btn btn-danger" onClick={logout}>

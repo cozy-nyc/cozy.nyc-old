@@ -20,14 +20,13 @@ class Profile extends Component {
         username: PropTypes.string.isRequired
       })
     }),
-    getProfile: PropTypes.func.isRequired,
-  }
+    getProfile: PropTypes.func.isRequired
+  };
 
   static defaultProps = {
     profile: null,
     match: null
   };
-
 
   componentWillMount() {
     const { getProfile, match, profile } = this.props;
@@ -35,7 +34,6 @@ class Profile extends Component {
       getProfile(match.params.username);
     }
   }
-
 
   render() {
     const { profile } = this.props;

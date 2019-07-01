@@ -22,7 +22,10 @@ const config = {
         { name: 'description', content: 'A site for neets...' },
         { charset: 'utf-8' },
         { property: 'og:site_name', content: 'cozy.nyc' },
-        { property: 'og:image', content: 'https://raw.githubusercontent.com/cozy-nyc/cozy-nyc.github.io/master/favicon.ico' },
+        {
+          property: 'og:image',
+          content: 'https://raw.githubusercontent.com/cozy-nyc/cozy-nyc.github.io/master/favicon.ico'
+        },
         { property: 'og:locale', content: 'en_US' },
         { property: 'og:title', content: 'cozy.nyc' },
         { property: 'og:description', content: 'A site for neets...' },

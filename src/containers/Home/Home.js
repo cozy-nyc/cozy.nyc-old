@@ -24,28 +24,30 @@ class Home extends Component {
         <Helmet title="home" />
 
         <div className="row">
-
           <div className={`${styles.homeFeatured} col-md-8`}>
             <h1 className={styles.brandTag}>cozy.</h1>
           </div>
 
           <div id="homeSidebar" className={`${styles.homeSidebar} col-md-4`}>
-
             <ProfileButton className={styles.profileButton} />
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navLinkOrange} to="stream">stream</Link>
-              <Link className={styles.navLinkBlue} to="boards">boards</Link>
-              <Link className={styles.navLinkGreen} to="exchange">exchange</Link>
+              <Link className={styles.navLinkOrange} to="stream">
+                stream
+              </Link>
+              <Link className={styles.navLinkBlue} to="boards">
+                boards
+              </Link>
+              <Link className={styles.navLinkGreen} to="exchange">
+                exchange
+              </Link>
             </div>
 
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>
             </div>
-
           </div>
-
         </div>
       </div>
     );

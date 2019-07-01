@@ -3,7 +3,6 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProfileButton from 'components/ProfileButton/ProfileButton';
 
-
 /*
   NavBar Component
 
@@ -15,7 +14,7 @@ import ProfileButton from 'components/ProfileButton/ProfileButton';
 class NavBar extends Component {
   static propTypes = {
     location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -40,9 +39,7 @@ class NavBar extends Component {
           Don't display NavBar.
 
       */
-      return (
-        <div className="u-cf" />
-      );
+      return <div className="u-cf" />;
     }
     // else if (this.props.location.pathname === '/about') {
     //   /*
@@ -69,20 +66,22 @@ class NavBar extends Component {
           <button type="button" className={styles.navbarBackbutton} onClick={this.goBack}>
             <img src={backbutton} alt="backbutton" />
           </button>
-          <span
-            className={styles.navbarMenu}
-            role="button"
-            tabIndex={0}
-          >
+          <span className={styles.navbarMenu} role="button" tabIndex={0}>
             <Link className={styles.navbarButton} to="/">
               <img className={styles.brandimg} src={cube} alt="cube" />
             </Link>
             <div className={styles.navbarDropdown}>
               <div className={styles.navbarDropdownMenu}>
                 <div className="main-links">
-                  <NavLink className={`${styles.mainLink} nav-hover-orange`} to="stream">stream</NavLink>
-                  <NavLink className={`${styles.mainLink} nav-hover-blue`} to="boards">boards</NavLink>
-                  <NavLink className={`${styles.mainLink} nav-hover-green`} to="exchange">exchange</NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-orange`} to="stream">
+                    stream
+                  </NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-blue`} to="boards">
+                    boards
+                  </NavLink>
+                  <NavLink className={`${styles.mainLink} nav-hover-green`} to="exchange">
+                    exchange
+                  </NavLink>
                 </div>
                 <br />
                 <div className="sub-links">
@@ -101,6 +100,5 @@ class NavBar extends Component {
     );
   }
 }
-
 
 export default withRouter(NavBar);
