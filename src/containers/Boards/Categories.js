@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import BoardsList from 'components/Boards/BoardsList';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
 
@@ -13,7 +12,7 @@ import * as BoardsActions from 'redux/modules/boards';
   }),
   { ...BoardsActions }
 )
-class BoardCategories extends Component {
+class Categories extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object),
     getCategories: PropTypes.func.isRequired
@@ -30,14 +29,25 @@ class BoardCategories extends Component {
     }
   }
 
+
   render() {
     const { categories } = this.props;
+
+    const mappedBoards = categories.map(board => (
+      <div className="row" key={board.id}>
+        <Link to={{ pathname: `/boards/${board.tag}` }}>
+          /{board.tag}/ - {board.name}
+        </Link>
+      </div>
+    ));
+
+
     return (
       <div>
         <Helmet title="boards" />
         {categories && (
           <div>
-            <BoardsList />
+            <ul>{mappedBoards}</ul>
           </div>
         )}
         {!categories && (
@@ -50,4 +60,4 @@ class BoardCategories extends Component {
   }
 }
 
-export default BoardCategories;
+export default Categories;
