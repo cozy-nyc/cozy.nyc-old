@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import BoardsList from 'components/Boards/BoardsList';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
 
+/*
+  Board Categories Page
+
+  Displays a list of active boards on the site.
+*/
 @connect(
   state => ({
     categories: state.boards.categories
   }),
   { ...BoardsActions }
 )
-class BoardCategories extends Component {
+class Categories extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object),
     getCategories: PropTypes.func.isRequired
@@ -24,20 +28,34 @@ class BoardCategories extends Component {
   };
 
   componentWillMount() {
+    // Calls API for list of boards if there are no categories in state.
     const { getCategories, categories } = this.props;
-    if (categories == null) {
-      getCategories();
-    }
+    getCategories();
   }
+
 
   render() {
     const { categories } = this.props;
+
+    const mappedBoards = categories.map(board => (
+      <div className="row" key={board.id}>
+        <Link to={{ pathname: `/boards/${board.tag}/` }}>
+          /{board.tag}/ - {board.name}
+        </Link>
+      </div>
+    ));
+
+
     return (
       <div>
         <Helmet title="boards" />
+        {/*
+            ToDo:
+              Conditional state should be change to if cozy board services are online
+        */}
         {categories && (
           <div>
-            <BoardsList />
+            <ul>{mappedBoards}</ul>
           </div>
         )}
         {!categories && (
@@ -50,4 +68,4 @@ class BoardCategories extends Component {
   }
 }
 
-export default BoardCategories;
+export default Categories;

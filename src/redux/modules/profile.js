@@ -38,7 +38,6 @@ export function getProfile(username) {
         return response;
       } catch (error) {
         console.log(error);
-        // return catchValidation(error);
       }
     }
   };
