@@ -16,4 +16,4 @@ const BoardsThreadLoadable = Loadable({
   loading: () => <div>Loading</div>
 });
 
-export BoardsCategoriesLoadable, BoardLoadable, BoardsThreadLoadable;
+export { BoardsCategoriesLoadable, BoardLoadable, BoardsThreadLoadable };

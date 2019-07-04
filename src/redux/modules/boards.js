@@ -1,5 +1,5 @@
 const initialState = {
-  categories: null,
+  categories: [],
   loaded: false
 };
 export default function reducer(state = initialState, action = {}) {

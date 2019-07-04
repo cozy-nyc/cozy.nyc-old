@@ -6,6 +6,11 @@ import Helmet from 'react-helmet';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
 
+/*
+  Board Categories Page
+
+  Displays a list of active boards on the site.
+*/
 @connect(
   state => ({
     categories: state.boards.categories
@@ -23,10 +28,9 @@ class Categories extends Component {
   };
 
   componentWillMount() {
+    // Calls API for list of boards if there are no categories in state.
     const { getCategories, categories } = this.props;
-    if (categories == null) {
-      getCategories();
-    }
+    getCategories();
   }
 
 
@@ -35,7 +39,7 @@ class Categories extends Component {
 
     const mappedBoards = categories.map(board => (
       <div className="row" key={board.id}>
-        <Link to={{ pathname: `/boards/${board.tag}` }}>
+        <Link to={{ pathname: `/boards/${board.tag}/` }}>
           /{board.tag}/ - {board.name}
         </Link>
       </div>
@@ -45,6 +49,10 @@ class Categories extends Component {
     return (
       <div>
         <Helmet title="boards" />
+        {/*
+            ToDo:
+              Conditional state should be change to if cozy board services are online
+        */}
         {categories && (
           <div>
             <ul>{mappedBoards}</ul>
