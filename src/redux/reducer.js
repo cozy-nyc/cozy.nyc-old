@@ -4,6 +4,7 @@ import auth from './modules/auth';
 import notifs from './modules/notifs';
 import info from './modules/info';
 import boards from './modules/boards';
+import streams from './modules/streams';
 import profile from './modules/profile';
 
 export default function createReducers(asyncReducers) {
@@ -13,6 +14,7 @@ export default function createReducers(asyncReducers) {
     notifs,
     auth,
     boards,
+    streams,
     profile,
     info,
     ...asyncReducers
