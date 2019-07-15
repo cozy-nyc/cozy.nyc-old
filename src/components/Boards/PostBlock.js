@@ -8,7 +8,11 @@ import { Link } from 'react-router-dom';
 */
 class PostBlock extends Component {
   static propTypes = {
-    // Define the proptyes being used here.
+    key: post.id}
+    image: PropTypes.
+    message: PropTypes.string,
+    user: PropTypes.string,
+    date: PropTypes.date
   };
 
   render() {

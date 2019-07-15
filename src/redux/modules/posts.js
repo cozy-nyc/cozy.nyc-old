@@ -1,40 +1,40 @@
 const initialState = {
-  categories: [],
+  posts: [],
   loaded: false
 };
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'FETCH_CATEGORIES':
+    case 'FETCH_POSTS':
       return {
         ...state,
         fetching: true
       };
-    case 'FETCH_CATEGORIES_ERROR':
+    case 'FETCH_POSTS_ERROR':
       return {
         ...state,
         fetching: false,
         fetched: false,
         error: action.error
       };
-    case 'FETCH_CATEGORIES_FULFILLED':
+    case 'FETCH_POSTS_FULFILLED':
       return {
         ...state,
         fetching: true,
         fetched: true,
-        categories: action.result
+        posts: action.result
       };
     default:
       return state;
   }
 }
 
-export function getCategories() {
+export function getPosts() {
   return {
-    types: ['FETCH_CATEGORIES', 'FETCH_CATEGORIES_FULFILLED', 'FETCH_CATEGORIES_ERROR'],
+    types: ['FETCH_POSTS', 'FETCH_POSTS_FULFILLED', 'FETCH_POSTS_ERROR'],
     promise: async ({ client }) => {
       try {
-        // TODO: change to /boards/
-        const response = await client.get('/board/');
+        // TODO: change to /posts/
+        const response = await client.get('/post/');
         return response;
       } catch (error) {
         console.log(error);
