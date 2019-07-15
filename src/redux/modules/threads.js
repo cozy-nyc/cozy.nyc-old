@@ -1,40 +1,40 @@
 const initialState = {
-  categories: [],
+  threads: [],
   loaded: false
 };
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case 'FETCH_CATEGORIES':
+    case 'FETCH_THREADS':
       return {
         ...state,
         fetching: true
       };
-    case 'FETCH_CATEGORIES_ERROR':
+    case 'FETCH_THREADS_ERROR':
       return {
         ...state,
         fetching: false,
         fetched: false,
         error: action.error
       };
-    case 'FETCH_CATEGORIES_FULFILLED':
+    case 'FETCH_THREADS_FULFILLED':
       return {
         ...state,
         fetching: true,
         fetched: true,
-        categories: action.result
+        threads: action.result
       };
     default:
       return state;
   }
 }
 
-export function getCategories() {
+export function getThreads() {
   return {
-    types: ['FETCH_CATEGORIES', 'FETCH_CATEGORIES_FULFILLED', 'FETCH_CATEGORIES_ERROR'],
+    types: ['FETCH_THREADS', 'FETCH_THREADS_FULFILLED', 'FETCH_THREADS_ERROR'],
     promise: async ({ client }) => {
       try {
-        // TODO: change to /boards/
-        const response = await client.get('/board/');
+        // TODO: change to /threads/
+        const response = await client.get('/thread/');
         return response;
       } catch (error) {
         console.log(error);
