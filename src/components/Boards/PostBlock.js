@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 /*
   Post Component
@@ -8,11 +8,16 @@ import { Link } from 'react-router-dom';
 */
 class PostBlock extends Component {
   static propTypes = {
-    // Define the proptyes being used here.
+    image: PropTypes.string,
+    message: PropTypes.string,
+    user: PropTypes.string,
+    date: PropTypes.date
   };
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const {
+      /* props needed */
+    } = this.prop;
 
     return (
       <div>

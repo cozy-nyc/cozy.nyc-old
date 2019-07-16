@@ -5,19 +5,33 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import PostBlock from 'components/Boards/PostBlock';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
-import * as BoardsActions from 'redux/modules/boards';
-
+import * as ThreadActions from 'redux/modules/thread';
 /*
   Thread Page
 
   Displays a thread which is an OP post followed by replies.
 */
+/* queryset: Query that holds all Threads in the order based off their
+latestReplyTime
+serializer_class: The ThreadListSerializer is used
+permission_classes: anyone is allowed to call ThreadList even those
+who are not authenticated users
+search_fields: Allow searched to be based off the following fields
+title,
+poster,
+board
+example: http://example.com/thread/title?search=Treyway
+ordering_fields: Allow search query to be ordered in reverse latestReplyTime
+
+*/
 @connect(
   state => ({
-    // Needs to check if thr
+    // Needs to check if there
     // ie. Board ID/Tag, Thread Title, Thread ID, Posts, Stats(Number of replies and images)
   }),
-  { /* needs action to call data from API to see if the thread exist and the thread info */}
+  {
+    /* needs action to call data from API to see if the thread exist and the thread info */
+  }
 )
 class Thread extends Component {
   static propTypes = {
@@ -26,6 +40,7 @@ class Thread extends Component {
 
   static defaultProps = {
     // Define any defaults like Thread ID
+    id: null
   };
 
   componentWillMount() {
@@ -33,20 +48,16 @@ class Thread extends Component {
   }
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const {
+      /* props needed */
+    } = this.prop;
 
     /*
       Creates a list of posts.
       IMPORTANT: OP's post should be visually different!!!!
     */
     const mappedPosts = thread.map(post => (
-      <PostBlock
-        key={post.id}
-        user={post.poster}
-        image={post.image}
-        message={post.message}
-        date={post.date}
-      />
+      <PostBlock key={post.id} image={post.image} message={post.message} user={post.poster} date={post.date} />
     ));
 
     return (
@@ -57,7 +68,22 @@ class Thread extends Component {
           Conditional statement is needed to prevent the page from loading if
           there's no thread based on the ID.
         */}
-        {mappedPosts}
+        {thread && (
+          <div>
+            <div className="op">
+              <ul>{mappedPosts[0]}</ul>
+            </div>
+            e
+            <div className="replies">
+              <ul>{mappedPosts.slice(1)}</ul>
+            </div>
+          </div>
+        )}
+        {!thread && (
+          <div>
+            <NotAvailable />
+          </div>
+        )}
       </div>
     );
   }

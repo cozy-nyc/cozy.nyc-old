@@ -35,7 +35,7 @@ const routes = [
       { path: '/stream/:username', exact: true, component: Stream },
       { path: '/boards', component: BoardsHome },
       { path: '/boards/:boardTag/', exact: true, component: Board },
-      { path: '/boards/:boardTag/:threadid', exact: true, component: Thread },
+      { path: '/boards/:boardTag/thread/:threadid', exact: true, component: Thread },
       { path: '/exchange', component: Exchange },
       { path: '/about', component: About },
       { path: '/contribute', component: Contribute },
