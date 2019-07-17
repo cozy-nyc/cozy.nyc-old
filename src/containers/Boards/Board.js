@@ -15,45 +15,75 @@ import * as BoardsActions from 'redux/modules/boards';
 @connect(
   state => ({
     // Needs to get all the threads on the active board
+    currentBoard: state.boards.currentBoard
   }),
-  { /* actions to check if board is available and list of boards */}
+  /* actions to check if board is available and list of boards */
+  { ...BoardsActions }
 )
 class Board extends Component {
   static propTypes = {
-    // Define the proptyes being used here.
+    // Define the proptypes being used here.
+    currentBoard: PropTypes.shape({
+      tag: PropTypes.string,
+      name: PropTypes.string,
+      threads: PropTypes.array
+    }),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        boardTag: PropTypes.string.isRequired
+      })
+    }),
+    getBoard: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     // Define any defaults like Board tag
+    currentBoard: null,
+    match: null,
   };
 
   componentWillMount() {
     // Call board actions and gets data based on URL/Location
+    const { match, getBoard } = this.props;
+    getBoard(match.params.boardTag);
   }
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const { currentBoard } = this.props;
 
     /*
       Creates a list of threads.
     */
-    const mappedThreads = threads.map(thread => (
+    const mappedThreads = currentBoard.threads.map(thread => (
       <ThreadBlock
-        key={post.id}
-        image={post.image}
-        blurb={post.blurb}
-        user={post.poster}
-        date={post.date}
+        key={thread.id}
+        image={thread.image}
+        title={thread.title}
+        message={thread.blurb}
+        user={thread.poster}
+        date={thread.created}
       />
     ));
 
     return (
       <div>
         {/*
-          Conditional statement is needed to prevent the page from loading if
-          there's no thread based on the ID.
-        */}
-        {mappedThreads}
+        Conditional statement is needed to prevent the page from loading if
+        there's no board based on the ID.
+       */}
+        {currentBoard !== null && (
+          <div>
+            <Helmet title={currentBoard.tag} />
+            <div>
+              <ul>{mappedThreads}</ul>
+            </div>
+          </div>
+        )}
+        {currentBoard == null && (
+          <div>
+            <NotAvailable />
+          </div>
+        )}
       </div>
     );
   }

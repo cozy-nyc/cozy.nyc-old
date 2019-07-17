@@ -8,18 +8,44 @@ import { Link } from 'react-router-dom';
 */
 class PostBlock extends Component {
   static propTypes = {
-    // Define the proptyes being used here.
+    image: PropTypes.string,
+    message: PropTypes.string.isRequired,
+    user: PropTypes.shape({
+      username: PropTypes.string,
+      profileImg: PropTypes.string
+    }).isRequired,
+    date: PropTypes.number.isRequired
+  };
+
+  static defaultProps = {
+    image: null
   };
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const {
+      image,
+      message,
+      user,
+      date
+    } = this.props;
+
+    const profileURL = `/u/${user.username}/`;
 
     return (
-      <div>
-        {/*
-          Needs to display Post image(If it exist), user/profile of poster, message,
-          and post date.
-        */}
+      <div className="post-wrapper">
+        <div className="post-poster">
+          <Link to={{ pathname: profileURL }}>
+            <img className="profile-image" src={user.profileImg} alt={user.username} />
+            <p>{user.username}</p>
+          </Link>
+        </div>
+        <div className="post-bubble">
+          {image !== null
+            && <img className="post-image" src={image} alt={user.username} />
+          }
+          {message}
+          {date}
+        </div>
       </div>
     );
   }

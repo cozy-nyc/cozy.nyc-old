@@ -6,7 +6,6 @@ import Helmet from 'react-helmet';
 import PostBlock from 'components/Boards/PostBlock';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
-
 /*
   Thread Page
 
@@ -14,38 +13,54 @@ import * as BoardsActions from 'redux/modules/boards';
 */
 @connect(
   state => ({
-    // Needs to check if thr
+    // Needs to check if there
     // ie. Board ID/Tag, Thread Title, Thread ID, Posts, Stats(Number of replies and images)
+    currentThread: state.boards.currentThread
   }),
-  { /* needs action to call data from API to see if the thread exist and the thread info */}
+  /* needs action to call data from API to see if the thread exist and the thread info */
+  { ...BoardsActions }
 )
 class Thread extends Component {
   static propTypes = {
     // Define the proptyes being used here.
+    currentThread: PropTypes.shape({
+      id: PropTypes.number,
+      posts: PropTypes.array,
+    }),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        threadId: PropTypes.string.isRequired
+      })
+    }),
+    getThread: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     // Define any defaults like Thread ID
+    currentThread: null,
+    match: null,
   };
 
   componentWillMount() {
     // Call Thread action and gets data based on URL/Location ie. ThreadID
+    const { match, getThread } = this.props;
+    getThread(match.params.threadId);
   }
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const { currentThread } = this.props;
 
     /*
       Creates a list of posts.
       IMPORTANT: OP's post should be visually different!!!!
     */
-    const mappedPosts = thread.map(post => (
+    const mappedPosts = currentThread.posts.map(post => (
       <PostBlock
         key={post.id}
-        user={post.poster}
         image={post.image}
         message={post.message}
-        date={post.date}
+        user={post.poster}
+        date={post.created}
       />
     ));
 
@@ -57,7 +72,22 @@ class Thread extends Component {
           Conditional statement is needed to prevent the page from loading if
           there's no thread based on the ID.
         */}
-        {mappedPosts}
+        {currentThread !== null && (
+          <div>
+            <Helmet title={currentThread.board} />
+            <div className="op">
+              {mappedPosts[0]}
+            </div>
+            <div className="replies">
+              <ul>{mappedPosts.slice(1)}</ul>
+            </div>
+          </div>
+        )}
+        {currentThread == null && (
+          <div>
+            <NotAvailable />
+          </div>
+        )}
       </div>
     );
   }
