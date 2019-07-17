@@ -42,7 +42,7 @@ const routes = [
       { path: '/login', component: Login },
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
-      { path: '/u/:username', exact: true, component: Profile },
+      { path: '/u/:username/', exact: true, component: Profile },
       { component: NotFound }
     ]
   }
