@@ -11,6 +11,19 @@ import * as BoardsActions from 'redux/modules/boards';
 
   Displays a thread which is an OP post followed by replies.
 */
+/* queryset: Query that holds all Threads in the order based off their
+latestReplyTime
+serializer_class: The ThreadListSerializer is used
+permission_classes: anyone is allowed to call ThreadList even those
+who are not authenticated users
+search_fields: Allow searched to be based off the following fields
+title,
+poster,
+board
+example: http://example.com/thread/title?search=Treyway
+ordering_fields: Allow search query to be ordered in reverse latestReplyTime
+
+*/
 @connect(
   state => ({
     // Needs to check if there
