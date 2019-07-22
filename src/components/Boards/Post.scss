@@ -1,0 +1,32 @@
+@import '../../theme/variables.scss';
+
+.postWrapper {
+  padding: 20px;
+}
+
+.postPoster {
+
+}
+
+.profileImage {
+  background: $foreground;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+.postBubble {
+  padding: 20px;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+}
+
+.postDate {
+  font-size: 8px;
+  text-align: right;
+}

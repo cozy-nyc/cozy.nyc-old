@@ -11,6 +11,19 @@ import * as BoardsActions from 'redux/modules/boards';
 
   Displays a thread which is an OP post followed by replies.
 */
+/* queryset: Query that holds all Threads in the order based off their
+latestReplyTime
+serializer_class: The ThreadListSerializer is used
+permission_classes: anyone is allowed to call ThreadList even those
+who are not authenticated users
+search_fields: Allow searched to be based off the following fields
+title,
+poster,
+board
+example: http://example.com/thread/title?search=Treyway
+ordering_fields: Allow search query to be ordered in reverse latestReplyTime
+
+*/
 @connect(
   state => ({
     // Needs to check if there
@@ -25,7 +38,7 @@ class Thread extends Component {
     // Define the proptyes being used here.
     currentThread: PropTypes.shape({
       id: PropTypes.number,
-      posts: PropTypes.array,
+      posts: PropTypes.array
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -38,7 +51,7 @@ class Thread extends Component {
   static defaultProps = {
     // Define any defaults like Thread ID
     currentThread: null,
-    match: null,
+    match: null
   };
 
   componentWillMount() {
@@ -55,13 +68,7 @@ class Thread extends Component {
       IMPORTANT: OP's post should be visually different!!!!
     */
     const mappedPosts = currentThread.posts.map(post => (
-      <PostBlock
-        key={post.id}
-        image={post.image}
-        message={post.message}
-        user={post.poster}
-        date={post.created}
-      />
+      <PostBlock key={post.id} image={post.image} message={post.message} user={post.poster} date={post.created} />
     ));
 
     return (
@@ -75,9 +82,7 @@ class Thread extends Component {
         {currentThread !== null && (
           <div>
             <Helmet title={currentThread.board} />
-            <div className="op">
-              {mappedPosts[0]}
-            </div>
+            <div className="op">{mappedPosts[0]}</div>
             <div className="replies">
               <ul>{mappedPosts.slice(1)}</ul>
             </div>

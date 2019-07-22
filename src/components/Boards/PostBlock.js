@@ -23,29 +23,24 @@ class PostBlock extends Component {
 
   render() {
     const {
-      image,
-      message,
-      user,
-      date
+      image, message, user, date
     } = this.props;
-
+    const styles = require('./Post.scss');
     const profileURL = `/u/${user.username}/`;
 
     return (
-      <div className="post-wrapper">
-        <div className="post-poster">
+      <div className={`${styles.postWrapper} row`}>
+        <div className={`${styles.postPoster} col-xs-2`}>
           <Link to={{ pathname: profileURL }}>
-            <img className="profile-image" src={user.profileImg} alt={user.username} />
-            <p>{user.username}</p>
+            <img className={styles.profileImage} src={user.profileImg} alt={user.username} />
+            <p className={styles.profileUsername}>{user.username}</p>
           </Link>
         </div>
-        <div className="post-bubble">
-          {image !== null
-            && <img className="post-image" src={image} alt={user.username} />
-          }
-          {message}
-          {date}
+        <div className={`${styles.postBubble} col-xs-10`}>
+          {image !== null && <img className="post-image" src={image} alt={user.username} />}
+          <span className="">{message}</span>
         </div>
+        <p className={styles.postDate}>{date}</p>
       </div>
     );
   }
