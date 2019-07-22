@@ -15,7 +15,9 @@ class ThreadBlock extends Component {
       username: PropTypes.string,
       profileImg: PropTypes.string
     }).isRequired,
-    date: PropTypes.number.isRequired
+    date: PropTypes.string.isRequired,
+    boardTag: PropTypes.string.isRequired,
+    threadID: PropTypes.number.isRequired
   };
 
   static defaultProps = {
@@ -25,35 +27,31 @@ class ThreadBlock extends Component {
 
   render() {
     const {
-      image,
-      title,
-      blurb,
-      user,
-      date
+      threadID, boardTag, image, title, blurb, user, date
     } = this.props;
-
+    const styles = require('./Thread.scss');
     const profileURL = `/u/${user.username}`;
+    const threadURL = `/boards/${boardTag}/thread/${threadID}`;
 
     return (
       /*
         Needs to display Thread image(If it exist), user/profile of poster, blurb,
         and post date.
       */
-      <div className="thread-wrapper">
-        <div className="threadthread-poster">
+      <div className={styles.threadWrapper}>
+        <Link to={{ pathname: threadURL }}>
+          {image !== null && <img className={styles.threadImage} src={image} alt={user.username} />}
+          <div className={styles.threadText}>
+            {title !== null && <p className={styles.threadTitle}>{title}</p>}
+            <p className={styles.threadBlurb}>{blurb}</p>
+            <p className={styles.threadDate}>{date}</p>
+          </div>
+        </Link>
+        <div className={styles.threadPoster}>
           <Link to={{ pathname: profileURL }}>
             <img className="profile-image" src={user.profileImg} alt={user.username} />
             <p>{user.username}</p>
           </Link>
-        </div>
-        <div className="thread-bubble">
-          {image !== null
-            && <img className="thread-image" src={image} alt={user.username} />
-          }
-          {title !== null
-            && title}
-          {blurb}
-          {date}
         </div>
       </div>
     );

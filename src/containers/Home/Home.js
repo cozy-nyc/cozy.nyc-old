@@ -41,7 +41,6 @@ class Home extends Component {
                 discovery
               </Link>
             </div>
-            boards
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>

@@ -39,7 +39,7 @@ class Board extends Component {
   static defaultProps = {
     // Define any defaults like Board tag
     currentBoard: null,
-    match: null,
+    match: null
   };
 
   componentWillMount() {
@@ -49,7 +49,7 @@ class Board extends Component {
   }
 
   render() {
-    const { currentBoard } = this.props;
+    const { currentBoard, match } = this.props;
 
     /*
       Creates a list of threads.
@@ -57,9 +57,11 @@ class Board extends Component {
     const mappedThreads = currentBoard.threads.map(thread => (
       <ThreadBlock
         key={thread.id}
+        threadID={thread.id}
+        boardTag={match.params.boardTag}
         image={thread.image}
         title={thread.title}
-        message={thread.blurb}
+        blurb={thread.blurb}
         user={thread.poster}
         date={thread.created}
       />
@@ -73,7 +75,7 @@ class Board extends Component {
        */}
         {currentBoard !== null && (
           <div>
-            <Helmet title={currentBoard.tag} />
+            <Helmet title={`boards /${currentBoard.tag}/`} />
             <div>
               <ul>{mappedThreads}</ul>
             </div>

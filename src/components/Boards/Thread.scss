@@ -1,0 +1,16 @@
+@import '../../theme/variables.scss';
+
+.threadText {
+  padding: 20px;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+}
+
+.threadTitle {
+  font-size: 22px;
+}
+
+.threadDate {
+  font-size: 8;
+}
