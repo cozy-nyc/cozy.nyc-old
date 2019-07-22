@@ -81,7 +81,7 @@ class Thread extends Component {
         */}
         {currentThread !== null && (
           <div>
-            <Helmet title={currentThread.board} />
+            <Helmet title={`boards - #${currentThread.id}`} />
             <div className="op">{mappedPosts[0]}</div>
             <div className="replies">
               <ul>{mappedPosts.slice(1)}</ul>
