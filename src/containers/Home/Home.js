@@ -30,6 +30,7 @@ class Home extends Component {
 
           <div id="homeSidebar" className={`${styles.homeSidebar} col-md-4`}>
             <ProfileButton className={styles.profileButton} />
+
             <div className={styles.mainLinks}>
               <Link className={styles.navLinkGreen} to="stream">
                 stream
@@ -41,7 +42,7 @@ class Home extends Component {
                 discovery
               </Link>
             </div>
-            
+
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>

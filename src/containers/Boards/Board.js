@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import ThreadBlock from 'components/Boards/ThreadBlock';
+import ThreadCreateForum from 'components/Boards/ThreadCreateForum';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
 
@@ -39,17 +40,37 @@ class Board extends Component {
   static defaultProps = {
     // Define any defaults like Board tag
     currentBoard: null,
-    match: null,
+    match: null
   };
 
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    this.state = { showPopupForum: false };
+  }
+
+  componentDidMount() {
     // Call board actions and gets data based on URL/Location
     const { match, getBoard } = this.props;
     getBoard(match.params.boardTag);
   }
 
+  componentDidUpdate(prevProps) {
+    const { match, getBoard, currentBoard } = this.props;
+    if ((currentBoard && !(match.params.boardTag === currentBoard.tag)) || !prevProps.currentBoard) {
+      getBoard(match.params.boardTag);
+    }
+  }
+
+  toggleThreadForum() {
+    // console.log(this.state.showPopupForum);
+    const { showPopupForum } = this.state;
+    this.setState({
+      showPopupForum: !showPopupForum
+    });
+  }
+
   render() {
-    const { currentBoard } = this.props;
+    const { currentBoard, match } = this.props;
 
     /*
       Creates a list of threads.
@@ -57,9 +78,11 @@ class Board extends Component {
     const mappedThreads = currentBoard.threads.map(thread => (
       <ThreadBlock
         key={thread.id}
+        threadID={thread.id}
+        boardTag={match.params.boardTag}
         image={thread.image}
         title={thread.title}
-        message={thread.blurb}
+        blurb={thread.blurb}
         user={thread.poster}
         date={thread.created}
       />
@@ -73,10 +96,8 @@ class Board extends Component {
        */}
         {currentBoard !== null && (
           <div>
-            <Helmet title={currentBoard.tag} />
-            <div>
-              <ul>{mappedThreads}</ul>
-            </div>
+            <Helmet title={`boards - /${currentBoard.tag}/`} />
+            {mappedThreads}
           </div>
         )}
         {currentBoard == null && (

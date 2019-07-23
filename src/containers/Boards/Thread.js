@@ -38,7 +38,7 @@ class Thread extends Component {
     // Define the proptyes being used here.
     currentThread: PropTypes.shape({
       id: PropTypes.number,
-      posts: PropTypes.array,
+      posts: PropTypes.array
     }),
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -51,7 +51,7 @@ class Thread extends Component {
   static defaultProps = {
     // Define any defaults like Thread ID
     currentThread: null,
-    match: null,
+    match: null
   };
 
   componentWillMount() {
@@ -68,13 +68,7 @@ class Thread extends Component {
       IMPORTANT: OP's post should be visually different!!!!
     */
     const mappedPosts = currentThread.posts.map(post => (
-      <PostBlock
-        key={post.id}
-        image={post.image}
-        message={post.message}
-        user={post.poster}
-        date={post.created}
-      />
+      <PostBlock key={post.id} image={post.image} message={post.message} user={post.poster} date={post.created} />
     ));
 
     return (
@@ -87,10 +81,8 @@ class Thread extends Component {
         */}
         {currentThread !== null && (
           <div>
-            <Helmet title={currentThread.board} />
-            <div className="op">
-              {mappedPosts[0]}
-            </div>
+            <Helmet title={`boards - #${currentThread.id}`} />
+            <div className="op">{mappedPosts[0]}</div>
             <div className="replies">
               <ul>{mappedPosts.slice(1)}</ul>
             </div>
