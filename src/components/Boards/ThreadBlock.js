@@ -38,13 +38,15 @@ class ThreadBlock extends Component {
         Needs to display Thread image(If it exist), user/profile of poster, blurb,
         and post date.
       */
-      <div className={styles.threadWrapper}>
+      <div className={`${styles.threadWrapper} card col-md-3 col-xs-6`}>
         <Link to={{ pathname: threadURL }}>
-          {image !== null && <img className={styles.threadImage} src={image} alt={user.username} />}
-          <div className={styles.threadText}>
-            {title !== null && <p className={styles.threadTitle}>{title}</p>}
-            <p className={styles.threadBlurb}>{blurb}</p>
-            <p className={styles.threadDate}>{date}</p>
+          <div className={`${styles.threadContent}`}>
+            {image !== null && <img className={styles.threadImage} src={image} alt={user.username} />}
+            <div className={`${styles.threadText} card-text`}>
+              {title !== null && <p className={`${styles.threadTitle} card-title`}>{title}</p>}
+              <p className={styles.threadBlurb}>{blurb}</p>
+              <p className={styles.threadDate}>{date}</p>
+            </div>
           </div>
         </Link>
         <div className={styles.threadPoster}>

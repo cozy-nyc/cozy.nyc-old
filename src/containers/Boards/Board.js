@@ -76,9 +76,7 @@ class Board extends Component {
         {currentBoard !== null && (
           <div>
             <Helmet title={`boards - /${currentBoard.tag}/`} />
-            <div>
-              <ul>{mappedThreads}</ul>
-            </div>
+            {mappedThreads}
           </div>
         )}
         {currentBoard == null && (
