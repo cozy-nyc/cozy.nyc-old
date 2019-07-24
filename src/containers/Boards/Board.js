@@ -71,6 +71,8 @@ class Board extends Component {
 
   render() {
     const { currentBoard, match } = this.props;
+    const { showPopupForum } = this.state;
+    const popup = (showPopupForum ? <ThreadCreateForum /> : null);
 
     /*
       Creates a list of threads.
@@ -98,6 +100,10 @@ class Board extends Component {
           <div>
             <Helmet title={`boards - /${currentBoard.tag}/`} />
             {mappedThreads}
+            <span>
+              {popup}
+              <button onClick={() => this.toggleThreadForum()}>noot</button>
+            </span>
           </div>
         )}
         {currentBoard == null && (
