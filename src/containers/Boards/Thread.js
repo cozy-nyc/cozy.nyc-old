@@ -54,7 +54,7 @@ class Thread extends Component {
     match: null
   };
 
-  componentWillMount() {
+  componentDidMount() {
     // Call Thread action and gets data based on URL/Location ie. ThreadID
     const { match, getThread } = this.props;
     getThread(match.params.threadId);

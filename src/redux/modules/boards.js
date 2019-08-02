@@ -107,6 +107,20 @@ export function getBoard(boardTag) {
   };
 }
 
+export function createThread(data) {
+  return {
+    // types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
+    promise: async ({ client }) => {
+      try {
+        const response = await client.post('/thread/create', data);
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+}
+
 export function getThread(threadId) {
   return {
     types: ['FETCH_THREAD', 'FETCH_THREAD_FULFILLED', 'FETCH_THREAD_ERROR'],
