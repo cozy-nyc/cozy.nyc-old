@@ -29,10 +29,9 @@ class Categories extends Component {
 
   componentWillMount() {
     // Calls API for list of boards if there are no categories in state.
-    const { getCategories, categories } = this.props;
+    const { getCategories } = this.props;
     getCategories();
   }
-
 
   render() {
     const { categories } = this.props;
@@ -44,7 +43,6 @@ class Categories extends Component {
         </Link>
       </div>
     ));
-
 
     return (
       <div>

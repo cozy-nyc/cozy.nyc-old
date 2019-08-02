@@ -78,7 +78,7 @@ app.use('/api', (req, res) => {
 });
 
 app.use('/ws', (req, res) => {
-  proxy.web(req, res, { target: `${targetUrl}/ws` });
+  proxy.web(req, res, { target: `${targetUrl}` });
 });
 
 server.on('upgrade', (req, socket, head) => {

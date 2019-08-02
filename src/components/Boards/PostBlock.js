@@ -8,22 +8,39 @@ import { Link } from 'react-router-dom';
 */
 class PostBlock extends Component {
   static propTypes = {
-    key: post.id}
-    image: PropTypes.
-    message: PropTypes.string,
-    user: PropTypes.string,
-    date: PropTypes.date
+    image: PropTypes.string,
+    message: PropTypes.string.isRequired,
+    user: PropTypes.shape({
+      username: PropTypes.string,
+      profileImg: PropTypes.string
+    }).isRequired,
+    date: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    image: null
   };
 
   render() {
-    const { /* props needed */ } = this.prop;
+    const {
+      image, message, user, date
+    } = this.props;
+    const styles = require('./Post.scss');
+    const profileURL = `/u/${user.username}/`;
 
     return (
-      <div>
-        {/*
-          Needs to display Post image(If it exist), user/profile of poster, message,
-          and post date.
-        */}
+      <div className={`${styles.postWrapper} row`}>
+        <div className={`${styles.postPoster} col-xs-2`}>
+          <Link to={{ pathname: profileURL }}>
+            <img className={styles.profileImage} src={user.profileImg} alt={user.username} />
+            <p className={styles.profileUsername}>{user.username}</p>
+          </Link>
+        </div>
+        <div className={`${styles.postBubble} col-xs-10`}>
+          {image !== null && <img className="post-image" src={image} alt={user.username} />}
+          <span className="">{message}</span>
+        </div>
+        <p className={styles.postDate}>{date}</p>
       </div>
     );
   }

@@ -10,7 +10,7 @@ import { provideHooks } from 'redial';
 // import Navbar from 'react-bootstrap/lib/Navbar';
 // import Nav from 'react-bootstrap/lib/Nav';
 // import NavItem from 'react-bootstrap/lib/NavItem';
-import Alert from 'react-bootstrap/lib/Alert';
+import { Alert } from 'react-bootstrap';
 import Helmet from 'react-helmet';
 import qs from 'qs';
 import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
