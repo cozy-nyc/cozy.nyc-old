@@ -13,7 +13,7 @@ import { AppContainer as HotEnabler } from 'react-hot-loader';
 import { getStoredState } from 'redux-persist';
 import { CookieStorage } from 'redux-persist-cookie-storage';
 import Cookies from 'cookies-js';
-import { socket, createApp } from 'app';
+import { createApp } from 'app';
 import createStore from 'redux/create';
 import apiClient from 'helpers/apiClient';
 import routes from 'routes';
@@ -40,26 +40,11 @@ const providers = {
   client
 };
 
-function initSocket() {
-  socket.on('news', data => {
-    console.log(data);
-    socket.emit('my other event', { my: 'data from client' });
-  });
-  socket.on('msg', data => {
-    console.log(data);
-  });
-
-  return socket;
-}
-
-initSocket();
-
 (async () => {
   const preloadedState = await getStoredState(persistConfig);
   const online = window.__data ? true : await isOnline();
 
   if (online) {
-    socket.open();
     await app.authenticate().catch(() => null);
   }
 
