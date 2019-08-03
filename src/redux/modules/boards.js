@@ -8,7 +8,7 @@ const initialState = {
   currentThread: {
     id: null,
     board: null,
-    posts: [],
+    posts: []
   },
   loaded: false
 };
@@ -82,7 +82,7 @@ export function getCategories() {
     promise: async ({ client }) => {
       try {
         // TODO: change to /boards/
-        const response = await client.get('/board/');
+        const response = await client.get('/boards/list');
         return response;
       } catch (error) {
         console.log(error);
@@ -97,7 +97,7 @@ export function getBoard(boardTag) {
     types: ['FETCH_BOARD', 'FETCH_BOARD_FULFILLED', 'FETCH_BOARD_ERROR'],
     promise: async ({ client }) => {
       try {
-        const response = await client.get(`/board/${boardTag}/`);
+        const response = await client.get(`/boards/board/${boardTag}/`);
         return response;
       } catch (error) {
         console.log(error);
@@ -112,7 +112,7 @@ export function createThread(data) {
     // types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/thread/create', data);
+        const response = await client.post('/boards/thread/create', data);
         return response;
       } catch (error) {
         console.log(error);
@@ -127,7 +127,7 @@ export function getThread(threadId) {
     promise: async ({ client }) => {
       try {
         // TODO: change to /posts/
-        const response = await client.get(`/thread/${threadId}/`);
+        const response = await client.get(`/boards/thread/${threadId}/`);
         return response;
       } catch (error) {
         console.log(error);
