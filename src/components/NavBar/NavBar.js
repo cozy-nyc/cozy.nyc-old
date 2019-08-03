@@ -73,20 +73,23 @@ class NavBar extends Component {
             <div className={styles.navbarDropdown}>
               <div className={styles.navbarDropdownMenu}>
                 <div className="main-links">
-                  <NavLink className={`${styles.mainLink} nav-hover-orange`} to="stream">
+                  <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/stream">
                     stream
                   </NavLink>
-                  <NavLink className={`${styles.mainLink} nav-hover-blue`} to="boards">
+                  <NavLink className={`${styles.mainLink} nav-hover-blue`} to="/boards">
                     boards
                   </NavLink>
-                  <NavLink className={`${styles.mainLink} nav-hover-green`} to="exchange">
-                    exchange
+                  <NavLink className={`${styles.mainLink} nav-hover-green`} to="/discovery">
+                    discovery
                   </NavLink>
                 </div>
                 <br />
                 <div className="sub-links">
-                  <NavLink to="about">about</NavLink>
-                  <NavLink to="contribute">contribute</NavLink>
+                  <NavLink to="/about">about</NavLink>
+                  <NavLink to="/contribute">contribute</NavLink>
+                  <NavLink to="/exchange">
+                    exchange
+                  </NavLink>
                 </div>
               </div>
             </div>

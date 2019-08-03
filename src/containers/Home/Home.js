@@ -32,20 +32,21 @@ class Home extends Component {
             <ProfileButton className={styles.profileButton} />
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navLinkOrange} to="stream">
+              <Link className={styles.navLinkGreen} to="stream">
                 stream
               </Link>
-              <Link className={styles.navLinkBlue} to="boards">
+              <Link className={styles.navLinkOrange} to="boards">
                 boards
               </Link>
-              <Link className={styles.navLinkGreen} to="exchange">
-                exchange
+              <Link className={styles.navLinkBlue} to="discovery">
+                discovery
               </Link>
             </div>
 
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>
+              <Link to="exchange"> exchange </Link>
             </div>
           </div>
         </div>

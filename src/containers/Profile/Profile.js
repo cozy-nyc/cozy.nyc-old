@@ -25,12 +25,17 @@ class Profile extends Component {
 
   static defaultProps = {
     profile: null,
-    match: null
+    match: null,
   };
 
-  componentWillMount() {
+  componentDidMount() {
+    const { getProfile, match } = this.props;
+    getProfile(match.params.username);
+  }
+
+  componentDidUpdate(prevProps) {
     const { getProfile, match, profile } = this.props;
-    if (profile == null) {
+    if ((profile && !(match.params.username === profile.username)) || !prevProps.profile) {
       getProfile(match.params.username);
     }
   }

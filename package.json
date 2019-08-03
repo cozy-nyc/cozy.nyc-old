@@ -4,6 +4,7 @@
   "author": "cozy.nyc <hello@cozy.nyc> (http://github.com/cozy-nyc)",
   "contributors": [
     "Rokney Rosemie <s1mb10t3@pm.me> (http://github.com/s1mb10t3)",
+    "Sophia Setsu <ssetsu@nyu.edu> (http://github.com/nobodyhere2see)",
     "Kévin Berthommier <kevin.bertho@gmail.com> (http://github.com/bertho-zero)",
     "Erik Rasmussen <rasmussenerik@gmail.com> (http://github.com/erikras)"
   ],
@@ -128,7 +129,6 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.0.0",
     "babel-loader": "^8.0.0",
-    "bootstrap": "^4.3.1",
     "bootstrap-loader": "^2.1.0",
     "bootstrap-sass": "^3.4.1",
     "chai": "^4.1.1",
@@ -158,7 +158,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.0",
     "piping": "^1.0.0-rc.4",
-    "postcss": "^7.0.2",
+    "postcss": "^7.0.17",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^12.0.0",

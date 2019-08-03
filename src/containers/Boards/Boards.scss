@@ -1,0 +1,24 @@
+@import '../../theme/variables.scss';
+
+
+.popupWrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.popupForm {
+  position: fixed;
+  z-index: 800;
+  bottom: 20px;
+  right: 20px;
+  padding: 20px;
+  background-color: grey;
+}
+
+.popupButton {
+  position: fixed;
+  z-index: 900;
+  bottom: 0;
+  right: 0;
+}
