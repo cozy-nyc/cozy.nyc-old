@@ -108,11 +108,13 @@ export function getBoard(boardTag) {
 }
 
 export function createThread(data) {
+  console.log(data);
   return {
-    // types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
+    types: ['CREATE_THREAD', 'CREATE_THREAD_ERROR'],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/thread/create', data);
+        const response = await client.post('/post/create', data);
+        console.log(response);
         return response;
       } catch (error) {
         console.log(error);

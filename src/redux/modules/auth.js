@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        token: action.result.token,
+        accessToken: action.result.token,
         user: action.result.user
       };
     case LOAD_FAIL:
@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loggingIn: false,
         loaded: true,
-        token: action.result.token,
+        accessToken: action.result.token,
         user: action.result.user
       };
     case LOGIN_FAIL:
@@ -85,7 +85,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         loggingOut: false,
-        token: null,
+        accessToken: null,
         user: null
       };
     case LOGOUT_FAIL:
@@ -112,19 +112,16 @@ const catchValidation = error => {
   return Promise.reject(error);
 };
 
-function setCookie({ app }) {
-  return async response => {
-    const payload = await app.passport.verifyJWT(response.token);
-    const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
-
-    cookie.set('jwt', response.token, options);
-  };
-}
-
 function setToken({ client }) {
   return response => {
     const { token } = response;
     client.setJwtToken(token);
+  };
+}
+
+function setUser({ client }) {
+  return response => {
+    client.set('user', response.user);
   };
 }
 
@@ -140,9 +137,8 @@ export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: async ({ client }) => {
-      const token = { token: cookie.get('jwt') };
-      const response = await client.post('/api-token-verify/', token);
-      await setCookie(response);
+      const accessToken = cookie.get('jwt');
+      const response = await client.post('/api-token-verify/', accessToken);
       setToken({
         client
       })(response);
@@ -157,7 +153,7 @@ export function register(data) {
     promise: async ({ client }) => {
       try {
         const response = await client.post('/register/', data);
-        await setCookie(response);
+        await cookie.set('jwt', response.token);
       } catch (error) {
         return catchValidation(error);
       }
@@ -171,10 +167,8 @@ export function login(data) {
     promise: async ({ client }) => {
       try {
         const response = await client.post('/api-token-auth/', data);
-        await setCookie(response);
-        setToken({
-          client
-        })(response);
+        await cookie.set('jwt', response.token);
+        setToken({ client })(response);
         return response;
       } catch (error) {
         return catchValidation(error);
@@ -187,10 +181,9 @@ export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async ({ client }) => {
-      setToken({
-        client
-      })({ accessToken: null });
-      cookie.set('jwt', '');
+      setToken({ client })({ token: null });
+      setUser({ user: null });
+      cookie.remove('jwt');
     }
   };
 }
