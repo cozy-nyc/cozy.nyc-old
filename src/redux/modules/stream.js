@@ -53,7 +53,7 @@ export function getStreams() {
     types: ['FETCH_STREAMS', 'FETCH_STREAMS_FULFILLED', 'FETCH_STREAMS_ERROR'],
     promise: async ({ client }) => {
       try {
-        const response = await client.get('/stream/');
+        const response = await client.get('/stream/list');
         return response;
       } catch (error) {
         console.log(error);

@@ -2,7 +2,7 @@ import { routerActions } from 'react-router-redux';
 import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
 import { App, Home, NotFound } from 'containers';
 import About from 'containers/About/Loadable';
-import { StreamHome, Stream } from 'containers/Stream/Loadable';
+import StreamHome, { Stream } from 'containers/Stream/Loadable';
 import BoardsHome, { Board, Thread } from 'containers/Boards/Loadable';
 import Exchange from 'containers/Exchange/Loadable';
 import Contribute from 'containers/Contribute/Loadable';
