@@ -33,7 +33,7 @@ export function createApp(req) {
       )
     );
 
-    const accessToken = req.header('authorization') || (req.cookies && req.cookies['feathers-jwt']);
+    const accessToken = req.header('authorization') || (req.cookies && req.cookies.jwt);
     app.set('accessToken', accessToken);
 
     return app;

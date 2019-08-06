@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import ProfileButton from 'components/ProfileButton/ProfileButton';
+import SVG from 'react-inlinesvg';
 
 @connect(state => ({
   online: state.online
@@ -18,14 +19,15 @@ class Home extends Component {
     // const { online } = this.props;
     const styles = require('./Home.scss');
     // require the logo image both from client and server
-    // const logoImage = require('./logo.png');
+    const fullLogo = require('./full-logo.svg');
+
     return (
       <div className={`${styles.homeContent} container-fluid`}>
         <Helmet title="home" />
 
         <div className="row">
           <div className={`${styles.homeFeatured} col-md-8`}>
-            <h1 className={styles.brandTag}>cozy.</h1>
+            <SVG className={styles.logo} src={fullLogo} alt="cube" />
           </div>
 
           <div id="homeSidebar" className={`${styles.homeSidebar} col-md-4`}>
