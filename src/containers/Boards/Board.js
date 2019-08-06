@@ -17,7 +17,7 @@ import * as BoardsActions from 'redux/modules/boards';
   state => ({
     // Needs to get all the threads on the active board
     currentBoard: state.boards.currentBoard,
-    authenticated: state.auth.loaded
+    auth: state.auth
   }),
   /* actions to check if board is available and list of boards */
   { ...BoardsActions }
@@ -30,7 +30,7 @@ class Board extends Component {
       name: PropTypes.string,
       threads: PropTypes.array
     }),
-    authenticated: PropTypes.bool.isRequired,
+    auth: PropTypes.objectOf(PropTypes.any).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         boardTag: PropTypes.string.isRequired
@@ -65,7 +65,6 @@ class Board extends Component {
 
   createThread = async data => {
     const { createThread } = this.props;
-    console.log(data);
     const result = await createThread(data);
 
     return result;
@@ -82,9 +81,16 @@ class Board extends Component {
 
   render() {
     const styles = require('./Boards.scss');
-    const { currentBoard, match, authenticated } = this.props;
+    const { currentBoard, match, auth } = this.props;
     const { showPopupForm } = this.state;
-    const popup = (showPopupForm ? <div className={`${styles.popupForm}`}><ThreadForm onSubmit={this.createThread} /></div> : null);
+    const popup = (showPopupForm ? (
+      <div className={`${styles.popupForm}`}>
+        <ThreadForm
+          onSubmit={this.createThread}
+          board={currentBoard.tag}
+          poster={auth.user.id}
+        />
+      </div>) : null);
 
     /*
       Creates a list of threads.
@@ -116,7 +122,7 @@ class Board extends Component {
             Conditional statement is needed to prevent nonauthenticated users
             from filling out a thread create form.
            */}
-            {authenticated === true && (
+            {auth.user !== null && (
               <div className={`${styles.popupWrapper}`}>
                 {popup}
                 <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleThreadForm()}>noot</button>
