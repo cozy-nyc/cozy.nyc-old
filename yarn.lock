@@ -4114,7 +4114,7 @@ execa@^0.9.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-exenv@^1.2.1:
+exenv@^1.2.1, exenv@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
@@ -9206,6 +9206,11 @@ react-final-form@^3.4.0:
   resolved "https://registry.yarnpkg.com/react-final-form/-/react-final-form-3.6.6.tgz#a2aa5c36d3bc4bfcbf79d80ab62a9370bb9512c0"
   integrity sha512-aIZr92koql2WME29/cuXitzqDnIGhbIqfeyNzd4H0wfKAenghDVD5nuD02YjetCGAnGj9sjCfxW4SeRSO3q42A==
 
+react-from-dom@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-from-dom/-/react-from-dom-0.2.3.tgz#33f176684daa518cf083a527805830a87bce9574"
+  integrity sha512-ApFBEi/Ksd9d4X51EP9xwmLz+hJvizw/voBfXhIY696Oy7GmkC5uIOjddYJ3i12xEDRxPmIMzOjiVdEXVGaH2w==
+
 react-helmet@^5.0.3:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
@@ -9227,6 +9232,14 @@ react-hot-loader@^4.0.0:
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
+
+react-inlinesvg@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-inlinesvg/-/react-inlinesvg-1.1.5.tgz#5208a5d990891f35fd5a4a676014fa8351e0da00"
+  integrity sha512-5BQD1910ZhSjfwiqC0L/M1NSCsiB7DJN2uVQOZwmhou70JRhEeK48GU88/WgAFhBbNjuIq8bgkajCuvdNhjjLA==
+  dependencies:
+    exenv "^1.2.2"
+    react-from-dom "^0.2.3"
 
 react-is@^16.3.2:
   version "16.5.2"

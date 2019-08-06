@@ -24,32 +24,36 @@
 }
 
 .navbarNav {
-  position: fixed;
+  position: absolute;
   left: 1%;
   top: 1%;
+  z-index:104;
 }
 
-.navbarBackbutton {
-  display: inline-block;
-}
-
-.navbarBackbutton:hover {
+.hamburger:hover {
   cursor: pointer;
 }
 
-.navbarBackbutton img {
-  height: 50px;
+.hamburger svg style{
+  
+  fill: green;
 }
 
-.navbarBackbutton {
+.hamburger {
   border: none;
   background: none;
   display: inline-block;
   margin: 0;
   padding: 0;
+  height: 50px;
 }
-
-
+.navbarDropdown {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  left: 1%;
+  top: 1%;
+}
 .navbarDropdownMenu {
   position: inherit;
   background-color: $foreground;
@@ -89,17 +93,6 @@
   height: 50px;
 }
 
-
-.navbarDropdown {
-  display: none;
-  position: absolute;
-  z-index: 100;
-}
-
-.navbarMenu:hover .navbarDropdown{
-  display: block;
-}
-
 .mainLink {
   font-size: 20px;
 }
@@ -109,4 +102,8 @@
   padding: 5px;
   top: 1%;
   right: 60px;
+}
+
+.iconClicked {
+  fill: $background;
 }
