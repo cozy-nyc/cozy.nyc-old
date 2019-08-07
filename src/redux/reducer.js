@@ -6,6 +6,7 @@ import info from './modules/info';
 import boards from './modules/boards';
 import stream from './modules/stream';
 import profile from './modules/profile';
+import discovery from './modules/discovery';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -15,6 +16,7 @@ export default function createReducers(asyncReducers) {
     auth,
     boards,
     stream,
+    discovery,
     profile,
     info,
     ...asyncReducers
