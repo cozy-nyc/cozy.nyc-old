@@ -9,8 +9,6 @@ import SVG from 'react-inlinesvg';
 
   Navigation bar used for site.
 
-  TODO:
-    Add background when user scrolls down from the top of a page.
 */
 class NavBar extends Component {
   static propTypes = {
@@ -22,17 +20,16 @@ class NavBar extends Component {
     this.state = {
       show: false
     };
+    // Added binding here
+    this.showDropdown = this.showDropdown.bind(this);
   }
 
+  // changes state to toggle showing dropdown links
   showDropdown() {
     const { show } = this.state;
-    // show dropdown
     this.setState({
       show: !show
     });
-    // change icons
-    // styles.navbarDropdown
-    // styles.navbarDropdown
   }
 
   render() {
@@ -41,6 +38,8 @@ class NavBar extends Component {
     const { show } = this.state;
     const cube = require('./cube.svg');
     const hamburger = require('./hamburger.svg');
+    const iconClicked = show ? styles.iconClicked : null;
+    // conditional rendering of dropdown links
     const dropdown = show ? (
       <div className={styles.links}>
         <div className="main-links">
@@ -98,14 +97,21 @@ class NavBar extends Component {
     return (
       <div className={styles.navbar}>
         <div className={styles.navbarDropdown}>
+          {/* conditionally adds class to show bg */}
           <div className={show ? styles.navbarDropdownMenu : null}>
             <span className={styles.navbarMenu} role="button" tabIndex={0}>
               <div className={styles.icons}>
-                <button type="button" className={styles.hamburger} onClick={() => this.showDropdown()}>
-                  <SVG className={show ? styles.iconClicked : null} src={hamburger} alt="hamburger" />
+                <button
+                  type="button"
+                  className={`${styles.hamburger} ${iconClicked}`}
+                  onClick={() => this.showDropdown()}
+                >
+                  {/* conditionally adds class to change icon color */}
+                  <SVG src={hamburger} alt="hamburger" />
                 </button>
-                <Link className={styles.navbarButton} to="/">
-                  <SVG className={`${styles.brandimg} ${show ? styles.iconClicked : null}`} src={cube} alt="cube" />
+                <Link className={`${styles.navbarButton}  ${iconClicked}`} to="/">
+                  {/* conditionally adds class to change icon color */}
+                  <SVG className={`${styles.brandimg}`} src={cube} alt="cube" />
                 </Link>
               </div>
               {dropdown}
