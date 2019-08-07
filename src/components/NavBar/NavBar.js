@@ -20,8 +20,6 @@ class NavBar extends Component {
     this.state = {
       show: false
     };
-    // Added binding here
-    this.showDropdown = this.showDropdown.bind(this);
   }
 
   // changes state to toggle showing dropdown links
@@ -38,8 +36,10 @@ class NavBar extends Component {
     const { show } = this.state;
     const cube = require('./cube.svg');
     const hamburger = require('./hamburger.svg');
+    // conditional to add of styling classes on click
     const iconClicked = show ? styles.iconClicked : null;
-    // conditional rendering of dropdown links
+    const menuBgClicked = show ? styles.navbarDropdownMenu : null;
+    // conditional to render of dropdown links
     const dropdown = show ? (
       <div className={styles.links}>
         <div className="main-links">
@@ -94,29 +94,28 @@ class NavBar extends Component {
       Else:
         Display basic NavBar.
     */
+
     return (
       <div className={styles.navbar}>
-        <div className={styles.navbarDropdown}>
-          {/* conditionally adds class to show bg */}
-          <div className={show ? styles.navbarDropdownMenu : null}>
-            <span className={styles.navbarMenu} role="button" tabIndex={0}>
-              <div className={styles.icons}>
-                <button
-                  type="button"
-                  className={`${styles.hamburger} ${iconClicked}`}
-                  onClick={() => this.showDropdown()}
-                >
-                  {/* conditionally adds class to change icon color */}
-                  <SVG src={hamburger} alt="hamburger" />
-                </button>
-                <Link className={`${styles.navbarButton}  ${iconClicked}`} to="/">
-                  {/* conditionally adds class to change icon color */}
-                  <SVG className={`${styles.brandimg}`} src={cube} alt="cube" />
-                </Link>
-              </div>
-              {dropdown}
-            </span>
-          </div>
+        {/* conditionally adds class to show bg */}
+        <div className={`${styles.navbarDropdown} ${menuBgClicked}`}>
+          <span className={styles.navbarMenu} role="button" tabIndex={0}>
+            <div className={styles.icons}>
+              <button
+                type="button"
+                className={`${styles.hamburger} ${iconClicked}`}
+                onClick={() => this.showDropdown()}
+              >
+                {/* conditionally adds class to change icon color */}
+                <SVG src={hamburger} alt="hamburger" />
+              </button>
+              <Link className={`${styles.navbarButton}  ${iconClicked}`} to="/">
+                {/* conditionally adds class to change icon color */}
+                <SVG className={`${styles.brandimg}`} src={cube} alt="cube" />
+              </Link>
+            </div>
+            {dropdown}
+          </span>
         </div>
         <div className={styles.profileButton}>
           <ProfileButton />
