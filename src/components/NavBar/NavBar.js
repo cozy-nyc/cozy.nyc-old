@@ -42,22 +42,27 @@ class NavBar extends Component {
     const cube = require('./cube.svg');
     const hamburger = require('./hamburger.svg');
     const dropdown = show ? (
-      <div>
+      <div className={styles.links}>
         <div className="main-links">
           <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/stream">
             stream
           </NavLink>
+          <br />
           <NavLink className={`${styles.mainLink} nav-hover-blue`} to="/boards">
             boards
           </NavLink>
+          <br />
           <NavLink className={`${styles.mainLink} nav-hover-green`} to="/discovery">
             discovery
           </NavLink>
+          <br />
         </div>
         <br />
         <div className="sub-links">
           <NavLink to="/about">about</NavLink>
+          <br />
           <NavLink to="/contribute">contribute</NavLink>
+          <br />
           <NavLink to="/exchange">exchange</NavLink>
         </div>
       </div>
@@ -93,18 +98,18 @@ class NavBar extends Component {
     return (
       <div className={styles.navbar}>
         <div className={styles.navbarDropdown}>
-          <div className={styles.navbarDropdownMenu}>
-            <div className={styles.navbarNav}>
-              <span className={styles.navbarMenu} role="button" tabIndex={0}>
+          <div className={show ? styles.navbarDropdownMenu : null}>
+            <span className={styles.navbarMenu} role="button" tabIndex={0}>
+              <div className={styles.icons}>
                 <button type="button" className={styles.hamburger} onClick={() => this.showDropdown()}>
                   <SVG className={show ? styles.iconClicked : null} src={hamburger} alt="hamburger" />
                 </button>
-              </span>
-              <Link className={styles.navbarButton} to="/">
-                <SVG className={show ? styles.iconClicked : null} src={cube} alt="cube" />
-              </Link>
+                <Link className={styles.navbarButton} to="/">
+                  <SVG className={`${styles.brandimg} ${show ? styles.iconClicked : null}`} src={cube} alt="cube" />
+                </Link>
+              </div>
               {dropdown}
-            </div>
+            </span>
           </div>
         </div>
         <div className={styles.profileButton}>

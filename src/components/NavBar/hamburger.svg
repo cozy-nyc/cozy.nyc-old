@@ -1,17 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="339" height="290" viewBox="0 0 339 290">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #f8f5ea;
-        stroke: #f8f5ea;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 1200px;
-        fill-rule: evenodd;
+  <title>hamburger</title>
+  <style>
+      path {
+        fill:#F8F5EB;
       }
-    </style>
-  </defs>
-  <g id="Artboard_1" data-name="Artboard 1">
-    <path id="hamburger" class="cls-1" d="M267,406H424a10,10,0,0,1,10,10v0.137a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10V416A10,10,0,0,1,267,406Zm0,73.591H424a10,10,0,0,1,10,10v0.137a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10v-0.137A10,10,0,0,1,267,479.591Zm0,71.272H424a10,10,0,0,1,10,10V561a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10v-0.137A10,10,0,0,1,267,550.863Z" transform="translate(-176 -343)"/>
-  </g>
+  </style>
+  <path d="M267,406H424a10,10,0,0,1,10,10v0.137a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10V416A10,10,0,0,1,267,406Zm0,73.591H424a10,10,0,0,1,10,10v0.137a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10v-0.137A10,10,0,0,1,267,479.591Zm0,71.272H424a10,10,0,0,1,10,10V561a10,10,0,0,1-10,10H267a10,10,0,0,1-10-10v-0.137A10,10,0,0,1,267,550.863Z" transform="translate(-176 -343)"/>
 </svg>

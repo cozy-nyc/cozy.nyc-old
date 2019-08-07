@@ -1,67 +1,80 @@
 @import '../../theme/variables.scss';
 
-// Resets
-.navbar button {
-  box-shadow: none;
-}
-
-
-.navbar button:hover {
-  background: none;
-  box-shadow: none;
-}
-
 // Navbar
 .navbar {
-  // position: fixed;
+  position: absolute;
   width: 100%;
-  left: 0px;
-  top: 0px;
+  left: 1%;
+  top: 1%;
   z-index: 100;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.navbarNav {
-  position: absolute;
-  left: 1%;
-  top: 1%;
-  z-index:104;
+//sets up dropdown menu around icons
+.navbarDropdown {
+  display: inline-block;
+}
+
+//adds dropdown menu bg color on hamburger click
+.navbarDropdownMenu {
+  background-color: $foreground;
+}
+
+.icons{
+  padding-top: 7px;
+}
+
+//hamburger button
+.hamburger {
+  box-shadow: none;
+  border: none;
+  background: none;
+  margin: 0;
+  padding: 0;
+  float: left;
 }
 
 .hamburger:hover {
+  background: none;
+  box-shadow: none;
   cursor: pointer;
 }
 
-.hamburger svg style{
-  
-  fill: green;
+.hamburger:focus {
+  outline:0;
 }
 
-.hamburger {
-  border: none;
-  background: none;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
+//hamburger img sizing
+.hamburger svg{
   height: 50px;
+  width: 50px;
 }
-.navbarDropdown {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  left: 1%;
-  top: 1%;
+
+//brand img sizing
+.brandimg{
+  height: 50px;
+  width: 50px;
 }
-.navbarDropdownMenu {
-  position: inherit;
-  background-color: $foreground;
-  padding: 20px;
-  border-radius: 5px;
-  border-color: $foreground;
-  border-style: solid;
-  box-shadow: 1px 1px $background;
+
+/*
+.hamburger svg path{
+
+  fill: green;
+}*/
+
+.iconClicked path{
+  fill: palevioletred  !important;
+}
+
+//div around dropdown links
+.links{
+  padding: 0px 15px 15px 15px;
+}
+
+.mainLink {
+  font-size: 20px;
 }
 
 .navbarMenu a {
@@ -84,19 +97,7 @@
   font-size: 20px;
 }
 
-.navbarLogo {
-  border: 5px ;
-  display: inline;
-}
-
-.brandimg {
-  height: 50px;
-}
-
-.mainLink {
-  font-size: 20px;
-}
-
+//profile button
 .profileButton {
   position: fixed;
   padding: 5px;
@@ -104,6 +105,3 @@
   right: 60px;
 }
 
-.iconClicked {
-  fill: $background;
-}
