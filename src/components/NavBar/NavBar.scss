@@ -3,13 +3,18 @@
 // Navbar
 .navbar {
   position: absolute;
+  z-index: 100;
   width: 100%;
   left: 1%;
   top: 1%;
-  z-index: 100;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.navbar *{
+  position: relative;
+  z-index: 101;
 }
 
 //sets up dropdown menu around icons
@@ -24,6 +29,8 @@
 
 .icons{
   padding-top: 7px;
+  z-index: 102;
+  position:relative;
 }
 
 //hamburger button
@@ -42,28 +49,18 @@
   cursor: pointer;
 }
 
-.hamburger:focus {
-  outline:0;
-}
-
-//hamburger img sizing
+//sizing svg icons
 .hamburger svg{
   height: 50px;
   width: 50px;
 }
 
-//brand img sizing
 .brandimg{
   height: 50px;
   width: 50px;
 }
 
-/*
-.hamburger svg path{
-
-  fill: green;
-}*/
-
+//changes svg icon color on click
 .iconClicked path{
   fill: $background  !important;
 }
@@ -105,3 +102,20 @@
   right: 60px;
 }
 
+//invisible overlay covers entire view
+.overlay {
+  z-index: 99;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top:0px;
+  left:0px;
+}
+.overlay:hover {
+  cursor: default;
+}
+
+//removes outline around clicked elements
+*:focus {
+  outline:0;
+}

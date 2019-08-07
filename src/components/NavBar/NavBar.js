@@ -64,6 +64,14 @@ class NavBar extends Component {
           <br />
           <NavLink to="/exchange">exchange</NavLink>
         </div>
+        {/* overlay allows user to click anywhere to hide dropdown */}
+        <div
+          role="button"
+          className={styles.overlay}
+          onClick={() => this.showDropdown()}
+          onKeyDown={() => this.showDropdown()}
+          tabIndex={0}
+        />
       </div>
     ) : null;
 
