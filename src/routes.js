@@ -1,6 +1,7 @@
 import { routerActions } from 'react-router-redux';
 import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
-import { App, Home, NotFound } from 'containers';
+import { App, Home } from 'containers';
+import { NotFound, InternalServer } from 'containers/ErrorPages';
 import About from 'containers/About/Loadable';
 import StreamHome, { Stream } from 'containers/Stream/Loadable';
 import BoardsHome, { Board, Thread } from 'containers/Boards/Loadable';
@@ -43,7 +44,8 @@ const routes = [
       { path: '/login-success', component: isAuthenticated(LoginSuccess) },
       { path: '/register', component: isNotAuthenticated(Register) },
       { path: '/u/:username/', exact: true, component: Profile },
-      { component: NotFound }
+      { component: NotFound },
+      { path: '/500', component: InternalServer }
     ]
   }
 ];

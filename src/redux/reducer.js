@@ -6,6 +6,7 @@ import info from './modules/info';
 import boards from './modules/boards';
 import stream from './modules/stream';
 import profile from './modules/profile';
+// import errorHandler from './modules/errorHandler';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -17,6 +18,7 @@ export default function createReducers(asyncReducers) {
     stream,
     profile,
     info,
+    // errorHandler,
     ...asyncReducers
   };
 }
