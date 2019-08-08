@@ -1,5 +1,5 @@
 const initialState = {
-  streamsList: null,
+  streamsList: {},
   currentStream: null,
   loaded: false
 };

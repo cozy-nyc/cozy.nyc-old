@@ -6,6 +6,7 @@ import About from 'containers/About/Loadable';
 import StreamHome, { Stream } from 'containers/Stream/Loadable';
 import BoardsHome, { Board, Thread } from 'containers/Boards/Loadable';
 import Exchange from 'containers/Exchange/Loadable';
+import DiscoveryHome from 'containers/Discovery/Loadable';
 import Contribute from 'containers/Contribute/Loadable';
 import Login from 'containers/Login/Loadable';
 import LoginSuccess from 'containers/LoginSuccess/Loadable';
@@ -38,6 +39,7 @@ const routes = [
       { path: '/boards/:boardTag/', exact: true, component: Board },
       { path: '/boards/:boardTag/thread/:threadId', exact: true, component: Thread },
       { path: '/exchange', component: Exchange },
+      { path: '/discovery', component: DiscoveryHome },
       { path: '/about', component: About },
       { path: '/contribute', component: Contribute },
       { path: '/login', component: Login },

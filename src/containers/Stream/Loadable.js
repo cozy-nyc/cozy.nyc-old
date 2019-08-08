@@ -6,9 +6,9 @@ const StreamHome = Loadable({
   loading: () => <div>Loading</div>
 });
 
-export const Stream = Loadable({
-  loader: () => import('./Stream' /* webpackChunkName: 'stream' */).then(module => module.default),
-  loading: () => <div>Loading</div>
-});
+// export const Stream = Loadable({
+//   loader: () => import('./Stream' /* webpackChunkName: 'stream' */).then(module => module.default),
+//   loading: () => <div>Loading</div>
+// });
 
 export default StreamHome;
