@@ -21,8 +21,8 @@ const ThreadForm = ({ onSubmit, board, poster }) => (
 
 ThreadForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  board: PropTypes.string.isRequired,
-  poster: PropTypes.number.isRequired,
+  board: PropTypes.any.isRequired,
+  poster: PropTypes.number.isRequired
 };
 
 export default ThreadForm;
