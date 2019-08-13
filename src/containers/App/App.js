@@ -31,8 +31,8 @@ import NavBar from 'components/NavBar/NavBar';
 })
 @connect(
   state => ({
-    notifs: state.notifs,
-    user: state.auth.user
+    notifs: state.notifs
+    // user: state.auth.user
   }),
   { logout: logoutAction, pushState: push }
 )
@@ -41,9 +41,9 @@ class App extends Component {
   static propTypes = {
     route: PropTypes.objectOf(PropTypes.any).isRequired,
     location: PropTypes.objectOf(PropTypes.any).isRequired,
-    user: PropTypes.shape({
-      username: PropTypes.string
-    }),
+    // user: PropTypes.shape({
+    //   username: PropTypes.string
+    // }),
     notifs: PropTypes.shape({
       global: PropTypes.array
     }).isRequired,
@@ -56,7 +56,7 @@ class App extends Component {
   };
 
   static defaultProps = {
-    user: null
+    // user: null
   };
 
   state = {

@@ -23,23 +23,29 @@ import * as authActions from 'redux/modules/auth';
 class ProfileButton extends Component {
   static propTypes = {
     user: PropTypes.shape({
-      username: PropTypes.string,
-      profile: PropTypes.object
-    }),
-    auth: PropTypes.shape({
-      loaded: PropTypes.bool.isRequired
-    }),
-    logout: PropTypes.func.isRequired
+      username: PropTypes.string
+    }).isRequired,
+    profile: PropTypes.object,
+    logout: PropTypes.func.isRequired,
+    getUserProfile: PropTypes.func.isRequired
   };
 
   static defaultProps = {
-    user: null,
-    auth: null
+    // Define any defaults like Board tag
+    profile: []
   };
+
+  componentDidUpdate() {
+    const { profile, user, getUserProfile } = this.props;
+
+    if (profile == null && user != null) {
+      getUserProfile(user.username);
+    }
+  }
 
   render() {
     const styles = require('./ProfileButton.scss');
-    const { user, logout } = this.props;
+    const { user, profile, logout } = this.props;
 
     return (
       <div className={styles.profileButton}>
@@ -56,7 +62,7 @@ class ProfileButton extends Component {
             </div>
             <div className={styles.userAvatar}>
               <Link to={`/u/${user.username}`}>
-                <img className={styles.profileImage} src={user.profile.profileImg} alt={user.username} />
+                <img className={styles.profileImage} src={profile.profileImg} alt={user.username} />
               </Link>
             </div>
           </div>

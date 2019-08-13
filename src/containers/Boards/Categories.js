@@ -13,18 +13,18 @@ import * as BoardsActions from 'redux/modules/boards';
 */
 @connect(
   state => ({
-    categories: state.boards.categories
+    categories: state.boards.categories,
   }),
   { ...BoardsActions }
 )
 class Categories extends Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object),
-    getCategories: PropTypes.func.isRequired
+    getCategories: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    categories: null
+    categories: []
   };
 
   componentWillMount() {
