@@ -16,7 +16,8 @@ const LOGOUT_SUCCESS = 'redux-example/auth/LOGOUT_SUCCESS';
 const LOGOUT_FAIL = 'redux-example/auth/LOGOUT_FAIL';
 
 const initialState = {
-  loaded: false
+  loaded: false,
+  user: null
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -134,7 +135,8 @@ const catchValidation = error => {
 function setCookie() {
   return response => {
     const payload = jwtDecode(response.access);
-    const options = payload.exp ? { expires: new Date(payload.exp * 100000) } : undefined;
+    console.log(payload);
+    const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
 
     cookie.set('jwt', response.access, options);
   };
