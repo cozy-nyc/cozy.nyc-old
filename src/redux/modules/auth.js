@@ -1,5 +1,6 @@
 import { FORM_ERROR } from 'final-form';
 import cookie from 'js-cookie';
+import * as jwtDecode from 'jwt-decode';
 
 const LOAD = 'redux-example/auth/LOAD';
 const LOAD_SUCCESS = 'redux-example/auth/LOAD_SUCCESS';
@@ -31,7 +32,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loading: false,
         loaded: true,
-        token: action.result.token,
+        accessToken: action.result.token,
         user: action.result.user
       };
     case LOAD_FAIL:
@@ -51,7 +52,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         loggingIn: false,
         loaded: true,
-        token: action.result.token,
+        token: action.result.access,
         user: action.result.user
       };
     case LOGIN_FAIL:
@@ -94,6 +95,25 @@ export default function reducer(state = initialState, action = {}) {
         loggingOut: false,
         logoutError: action.error
       };
+    case 'FETCH_USER_PROFILE':
+      return {
+        ...state,
+        fetching: true
+      };
+    case 'FETCH_USER_PROFILE_ERROR':
+      return {
+        ...state,
+        fecthing: false,
+        fetched: false,
+        error: action.payload
+      };
+    case 'FETCH_USER_PROFILE_FULFILLED':
+      return {
+        ...state,
+        fecthing: false,
+        fetched: true,
+        profile: action.result
+      };
     default:
       return state;
   }
@@ -112,18 +132,20 @@ const catchValidation = error => {
   return Promise.reject(error);
 };
 
-function setCookie({ app }) {
-  return async response => {
-    const payload = await app.passport.verifyJWT(response.token);
+function setCookie() {
+  return response => {
+    const payload = jwtDecode(response.access);
+    console.log(payload);
     const options = payload.exp ? { expires: new Date(payload.exp * 1000) } : undefined;
 
-    cookie.set('jwt', response.token, options);
+    cookie.set('jwt', response.access, options);
   };
 }
 
 function setToken({ client }) {
   return response => {
-    const { token } = response;
+    console.log('test');
+    const token = response.access;
     client.setJwtToken(token);
   };
 }
@@ -140,13 +162,16 @@ export function load() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: async ({ client }) => {
-      const token = { token: cookie.get('jwt') };
-      const response = await client.post('/api-token-verify/', token);
-      await setCookie(response);
-      setToken({
-        client
-      })(response);
-      return response;
+      try {
+        const token = cookie.get('jwt');
+        const response = await client.post('/auth/token/verify/', token);
+        setToken({
+          client
+        })(token);
+        return response;
+      } catch (error) {
+        return catchValidation(error);
+      }
     }
   };
 }
@@ -157,9 +182,23 @@ export function register(data) {
     promise: async ({ client }) => {
       try {
         const response = await client.post('/register/', data);
-        await setCookie(response);
+        await cookie.set('jwt', response.token);
       } catch (error) {
         return catchValidation(error);
+      }
+    }
+  };
+}
+
+export function getUserProfile(username) {
+  return {
+    types: ['FETCH_USER_PROFILE', 'FETCH_USER_PROFILE_FULFILLED', 'FETCH_USER_PROFILE_ERROR'],
+    promise: async ({ client }) => {
+      try {
+        const response = await client.get(`/profile/${username}/`);
+        return response;
+      } catch (error) {
+        console.log(error);
       }
     }
   };
@@ -170,11 +209,15 @@ export function login(data) {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/api-token-auth/', data);
-        await setCookie(response);
-        setToken({
-          client
-        })(response);
+        const response = await client.post('/auth/token/', data);
+        setCookie()(response);
+        setToken({ client })(response);
+        const payload = await jwtDecode(response.access);
+        response.user = {
+          username: payload.username,
+          id: payload.user_id
+        };
+        console.log(response);
         return response;
       } catch (error) {
         return catchValidation(error);
@@ -187,10 +230,8 @@ export function logout() {
   return {
     types: [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAIL],
     promise: async ({ client }) => {
-      setToken({
-        client
-      })({ accessToken: null });
-      cookie.set('jwt', '');
+      setToken({ client })({ token: null });
+      cookie.remove('jwt');
     }
   };
 }

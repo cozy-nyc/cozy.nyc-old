@@ -1,12 +1,13 @@
 import axios from 'axios';
 import config from 'config';
+import cookie from 'js-cookie';
 
 export default function apiClient(req) {
   const instance = axios.create({
     baseURL: __SERVER__ ? `${config.apiHost}` : '/api'
   });
 
-  let token;
+  let token = cookie.get('jwt');
 
   instance.setJwtToken = newToken => {
     token = newToken;
@@ -16,15 +17,15 @@ export default function apiClient(req) {
     conf => {
       if (__SERVER__) {
         if (req.header('cookie')) {
-          conf.headers.Cookie = req.header('cookie');
+          conf.headers.Cookie = req.header('jwt');
         }
-        if (req.header('authorization')) {
-          conf.headers.authorization = req.header('authorization');
+        if (req.header('Authorization')) {
+          conf.headers.authorization = req.header('Authorization');
         }
       }
 
       if (token) {
-        conf.headers.authorization = token;
+        conf.headers.authorization = `Bearer ${token}`;
       }
 
       return conf;

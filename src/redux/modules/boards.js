@@ -43,6 +43,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         fetching: false,
         fetched: false,
+        online: false,
         error: action.error
       };
     case 'FETCH_BOARD_FULFILLED':
@@ -50,6 +51,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         fetching: true,
         fetched: true,
+        online: true,
         currentBoard: action.result
       };
     case 'FETCH_THREAD':
@@ -62,6 +64,7 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         fetching: false,
         fetched: false,
+        online: false,
         error: action.error
       };
     case 'FETCH_THREAD_FULFILLED':
@@ -69,7 +72,27 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         fetching: true,
         fetched: true,
+        online: true,
         currentThread: action.result
+      };
+    case 'CREATE_THREAD':
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+      };
+    case 'CREATE_THREAD_ERROR':
+      return {
+        ...state,
+        fetching: false,
+        fetched: false,
+        error: action.error
+      };
+    case 'CREATE_THREAD_FULFILLED':
+      return {
+        ...state,
+        fetching: true,
+        fetched: true,
       };
     default:
       return state;
@@ -85,8 +108,7 @@ export function getCategories() {
         const response = await client.get('/boards/list');
         return response;
       } catch (error) {
-        console.log(error);
-        // return catchValidation(error);
+        return { type: 'FETCH_CATEGORIES_ERROR', error };
       }
     }
   };
@@ -100,8 +122,7 @@ export function getBoard(boardTag) {
         const response = await client.get(`/boards/board/${boardTag}/`);
         return response;
       } catch (error) {
-        console.log(error);
-        // return catchValidation(error);
+        return { type: 'FETCH_BOARD_ERROR', error };
       }
     }
   };
@@ -109,14 +130,9 @@ export function getBoard(boardTag) {
 
 export function createThread(data) {
   return {
-    // types: [REGISTER, REGISTER_SUCCESS, REGISTER_FAIL],
-    promise: async ({ client }) => {
-      try {
-        const response = await client.post('/boards/thread/create', data);
-        return response;
-      } catch (error) {
-        console.log(error);
-      }
+    types: ['CREATE_THREAD', 'CREATE_THREAD_FULFILLED', 'CREATE_THREAD_ERROR'],
+    promise: ({ client }) => {
+      client.post('/boards/thread/create', data);
     }
   };
 }
@@ -130,8 +146,7 @@ export function getThread(threadId) {
         const response = await client.get(`/boards/thread/${threadId}/`);
         return response;
       } catch (error) {
-        console.log(error);
-        // return catchValidation(error);
+        return { type: 'FETCH_THREAD_ERROR', error };
       }
     }
   };
