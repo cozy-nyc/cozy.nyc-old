@@ -25,11 +25,11 @@ const executeOtherError = (state, action) => ({
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.HTTP_404_ERROR:
+    case HTTP_404_ERROR:
       return execute404(state, action);
-    case actionTypes.HTTP_500_ERROR:
+    case HTTP_500_ERROR:
       return execute500(state, action);
-    case actionTypes.HTTP_OTHER_ERROR:
+    case HTTP_OTHER_ERROR:
       return executeOtherError(state, action);
     default:
       return state;
