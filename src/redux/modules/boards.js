@@ -7,7 +7,7 @@ const initialState = {
   },
   currentThread: {
     id: null,
-    board: null,
+    board: null, // board id
     posts: []
   },
   loaded: false
@@ -79,7 +79,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         fetching: false,
-        fetched: false,
+        fetched: false
       };
     case 'CREATE_THREAD_ERROR':
       return {
@@ -92,7 +92,7 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         fetching: true,
-        fetched: true,
+        fetched: true
       };
     default:
       return state;
@@ -148,6 +148,15 @@ export function getThread(threadId) {
       } catch (error) {
         return { type: 'FETCH_THREAD_ERROR', error };
       }
+    }
+  };
+}
+
+export function createPost(data) {
+  return {
+    types: ['CREATE_POST', 'CREATE_POST_FULFILLED', 'CREATE_TPOST_ERROR'],
+    promise: ({ client }) => {
+      client.post('/boards/post/create', data);
     }
   };
 }

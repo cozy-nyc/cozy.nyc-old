@@ -6,6 +6,7 @@ import Helmet from 'react-helmet';
 import PostBlock from 'components/Boards/PostBlock';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
+import PostForm from 'components/Boards/Forms/PostForm';
 /*
   Thread Page
 
@@ -24,11 +25,14 @@ example: http://example.com/thread/title?search=Treyway
 ordering_fields: Allow search query to be ordered in reverse latestReplyTime
 
 */
+
+// tODO: also needs to send thread info frm store or url
 @connect(
   state => ({
     // Needs to check if there
     // ie. Board ID/Tag, Thread Title, Thread ID, Posts, Stats(Number of replies and images)
-    currentThread: state.boards.currentThread
+    currentThread: state.boards.currentThread,
+    auth: state.auth
   }),
   /* needs action to call data from API to see if the thread exist and the thread info */
   { ...BoardsActions }
@@ -36,10 +40,13 @@ ordering_fields: Allow search query to be ordered in reverse latestReplyTime
 class Thread extends Component {
   static propTypes = {
     // Define the proptyes being used here.
+    // TODO: current thread goes into the api
     currentThread: PropTypes.shape({
       id: PropTypes.number,
-      posts: PropTypes.array
+      posts: PropTypes.array,
+      board: PropTypes.number
     }),
+    auth: PropTypes.objectOf(PropTypes.any).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         threadId: PropTypes.string.isRequired
@@ -54,14 +61,57 @@ class Thread extends Component {
     match: null
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { showPopupForm: false };
+  }
+
   componentDidMount() {
     // Call Thread action and gets data based on URL/Location ie. ThreadID
     const { match, getThread } = this.props;
     getThread(match.params.threadId);
   }
 
+  componentDidUpdate(prevProps) {
+    const { match, getThread, currentThread } = this.props;
+    if ((currentThread && !(match.params.threadId === currentThread.id)) || !prevProps.currentThread) {
+      getThread(match.params.threadId);
+    }
+  }
+
+  createPost = async data => {
+    this.togglePostForm();
+    const { createPost } = this.props;
+    const result = await createPost(data);
+    return result;
+  };
+
+  togglePostForm() {
+    const { showPopupForm } = this.state;
+    this.setState({
+      showPopupForm: !showPopupForm
+    });
+  }
+
   render() {
-    const { currentThread } = this.props;
+    // TODO: new css
+    const styles = require('./Boards.scss');
+    const { currentThread, auth } = this.props;
+    const { showPopupForm } = this.state;
+    const popup = showPopupForm ? (
+      <div className={`${styles.popupForm}`}>
+        <PostForm
+          onSubmit={this.createPost}
+          board={currentThread.board}
+          poster={auth.user.id}
+          thread={currentThread.id}
+        />
+      </div>
+    ) : (
+      <button type="button" className={`${styles.popupButton}`} onClick={() => this.togglePostForm()}>
+        noot
+      </button>
+    );
 
     /*
       Creates a list of posts.
@@ -86,6 +136,8 @@ class Thread extends Component {
             <div className="replies">
               <ul>{mappedPosts.slice(1)}</ul>
             </div>
+
+            {auth.user !== null && <div className={`${styles.popupWrapper}`}>{popup}</div>}
           </div>
         )}
         {currentThread == null && (

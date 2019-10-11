@@ -64,11 +64,12 @@ class Board extends Component {
   }
 
   createThread = async data => {
+    this.toggleThreadForm();
     const { createThread } = this.props;
     const result = await createThread(data);
 
     return result;
-  }
+  };
 
   toggleThreadForm() {
     // console.log(this.state.showPopupForm);
@@ -78,19 +79,19 @@ class Board extends Component {
     });
   }
 
-
   render() {
     const styles = require('./Boards.scss');
     const { currentBoard, match, auth } = this.props;
     const { showPopupForm } = this.state;
-    const popup = (showPopupForm ? (
+    const popup = showPopupForm ? (
       <div className={`${styles.popupForm}`}>
-        <ThreadForm
-          onSubmit={this.createThread}
-          board={currentBoard.tag}
-          poster={auth.user.id}
-        />
-      </div>) : null);
+        <ThreadForm onSubmit={this.createThread} board={currentBoard.tag} poster={auth.user.id} />
+      </div>
+    ) : (
+      <button type="button" className={`${styles.popupButton}`} onClick={() => this.togglePostForm()}>
+        noot
+      </button>
+    );
 
     /*
       Creates a list of threads.
@@ -125,7 +126,9 @@ class Board extends Component {
             {auth.user !== null && (
               <div className={`${styles.popupWrapper}`}>
                 {popup}
-                <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleThreadForm()}>noot</button>
+                <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleThreadForm()}>
+                  noot
+                </button>
               </div>
             )}
           </div>
