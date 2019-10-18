@@ -64,15 +64,13 @@ class Board extends Component {
   }
 
   createThread = async data => {
-    this.toggleThreadForm();
+    this.toggleForm();
     const { createThread } = this.props;
     const result = await createThread(data);
-
     return result;
   };
 
-  toggleThreadForm() {
-    // console.log(this.state.showPopupForm);
+  toggleForm() {
     const { showPopupForm } = this.state;
     this.setState({
       showPopupForm: !showPopupForm
@@ -88,7 +86,7 @@ class Board extends Component {
         <ThreadForm onSubmit={this.createThread} board={currentBoard.tag} poster={auth.user.id} />
       </div>
     ) : (
-      <button type="button" className={`${styles.popupButton}`} onClick={() => this.togglePostForm()}>
+      <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleForm()}>
         noot
       </button>
     );
@@ -123,14 +121,7 @@ class Board extends Component {
             Conditional statement is needed to prevent nonauthenticated users
             from filling out a thread create form.
            */}
-            {auth.user !== null && (
-              <div className={`${styles.popupWrapper}`}>
-                {popup}
-                <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleThreadForm()}>
-                  noot
-                </button>
-              </div>
-            )}
+            {auth.user !== null && <div className={`${styles.popupWrapper}`}>{popup}</div>}
           </div>
         )}
         {currentBoard == null && (

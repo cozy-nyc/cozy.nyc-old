@@ -22,7 +22,7 @@ const PostForm = ({
 
 PostForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  board: PropTypes.number.isRequired,
+  board: PropTypes.string.isRequired,
   poster: PropTypes.number.isRequired,
   thread: PropTypes.any.isRequired
 };

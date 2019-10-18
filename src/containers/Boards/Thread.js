@@ -40,7 +40,6 @@ ordering_fields: Allow search query to be ordered in reverse latestReplyTime
 class Thread extends Component {
   static propTypes = {
     // Define the proptyes being used here.
-    // TODO: current thread goes into the api
     currentThread: PropTypes.shape({
       id: PropTypes.number,
       posts: PropTypes.array,
@@ -80,13 +79,13 @@ class Thread extends Component {
   }
 
   createPost = async data => {
-    this.togglePostForm();
+    this.toggleForm();
     const { createPost } = this.props;
     const result = await createPost(data);
     return result;
   };
 
-  togglePostForm() {
+  toggleForm() {
     const { showPopupForm } = this.state;
     this.setState({
       showPopupForm: !showPopupForm
@@ -108,7 +107,7 @@ class Thread extends Component {
         />
       </div>
     ) : (
-      <button type="button" className={`${styles.popupButton}`} onClick={() => this.togglePostForm()}>
+      <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleForm()}>
         noot
       </button>
     );
