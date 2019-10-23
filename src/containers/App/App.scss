@@ -29,7 +29,11 @@
 }
 
 .notifs {
+  position: absolute;
   margin: 15px 0;
+  float: left;
+  top: 5px;
+  left: 50%;
 }
 
 :global(.form-control-feedback) {

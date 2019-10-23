@@ -1,0 +1,29 @@
+@import '../../theme/variables.scss';
+
+.threadWrapper {
+  display: inline-block;
+}
+
+.threadContent {
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.threadImage {
+  max-width: 100%;
+}
+
+.threadText {
+  padding: 20px;
+}
+
+.threadTitle {
+  font-size: 22px;
+}
+
+.threadDate {
+  font-size: 8px;
+  text-align: right;
+}

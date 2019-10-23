@@ -52,7 +52,6 @@
       "moduleDirectory": [
         "node_modules",
         "src",
-        "api"
       ]
     }
   },
