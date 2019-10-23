@@ -6,6 +6,7 @@ import ThreadBlock from 'components/Boards/ThreadBlock';
 import ThreadForm from 'components/Boards/Forms/ThreadForm';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
+import * as notifActions from 'redux/modules/notifs';
 
 /*
   Board Page
@@ -20,7 +21,7 @@ import * as BoardsActions from 'redux/modules/boards';
     auth: state.auth
   }),
   /* actions to check if board is available and list of boards */
-  { ...BoardsActions }
+  { ...notifActions, ...BoardsActions }
 )
 class Board extends Component {
   static propTypes = {
@@ -36,7 +37,8 @@ class Board extends Component {
         boardTag: PropTypes.string.isRequired
       })
     }),
-    getBoard: PropTypes.func.isRequired
+    getBoard: PropTypes.func.isRequired,
+    notifSend: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -63,10 +65,22 @@ class Board extends Component {
     }
   }
 
+  successSubmit = () => {
+    const { notifSend } = this.props;
+
+    notifSend({
+      message: 'Thread submitted !',
+      kind: 'success',
+      dismissAfter: 2000
+    });
+  };
+
   createThread = async data => {
     this.toggleForm();
+    // this.successSubmit();
     const { createThread } = this.props;
     const result = await createThread(data);
+    this.successSubmit();
     return result;
   };
 
