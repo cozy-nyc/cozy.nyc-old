@@ -24,7 +24,7 @@ class ProfileButton extends Component {
   static propTypes = {
     user: PropTypes.shape({
       username: PropTypes.string
-    }).isRequired,
+    }),
     profile: PropTypes.object,
     logout: PropTypes.func.isRequired,
     getUserProfile: PropTypes.func.isRequired
@@ -32,6 +32,7 @@ class ProfileButton extends Component {
 
   static defaultProps = {
     // Define any defaults like Board tag
+    user: null,
     profile: []
   };
 
