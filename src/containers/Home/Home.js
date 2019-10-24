@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 // import config from 'config';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import ProfileButton from 'components/ProfileButton/ProfileButton';
-import SVG from 'react-inlinesvg';
 
 @connect(state => ({
   online: state.online
@@ -19,38 +17,32 @@ class Home extends Component {
     // const { online } = this.props;
     const styles = require('./Home.scss');
     // require the logo image both from client and server
-    const fullLogo = require('./full-logo.svg');
-
+    // const logoImage = require('./logo.png');
     return (
       <div className={`${styles.homeContent} container-fluid`}>
         <Helmet title="home" />
 
         <div className="row">
+
           <div className={`${styles.homeFeatured} col-md-8`}>
-            <SVG className={styles.logo} src={fullLogo} alt="cube" />
+            <h1 className={styles.brandTag}>cozy.</h1>
           </div>
 
-          <div id="homeSidebar" className={`${styles.homeSidebar} col-md-4`}>
-            <ProfileButton className={styles.profileButton} />
+          <div className={`${styles.homeSidebar} col-md-4`}>
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navLinkGreen} to="stream">
-                stream
-              </Link>
-              <Link className={styles.navLinkOrange} to="boards">
-                boards
-              </Link>
-              <Link className={styles.navLinkBlue} to="discovery">
-                discovery
-              </Link>
+              <Link className={styles.navHoverOrange} to="stream">stream</Link>
+              <Link className={styles.navHoverBlue} to="boards">boards</Link>
+              <Link className={styles.navHoverGreen} to="exchange">exchange</Link>
             </div>
 
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>
-              <Link to="exchange"> exchange </Link>
             </div>
+
           </div>
+
         </div>
       </div>
     );

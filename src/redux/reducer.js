@@ -1,12 +1,9 @@
-// import multireducer from 'multireducer';
+import multireducer from 'multireducer';
 import { routerReducer } from 'react-router-redux';
 import auth from './modules/auth';
 import notifs from './modules/notifs';
+import counter from './modules/counter';
 import info from './modules/info';
-import boards from './modules/boards';
-import stream from './modules/stream';
-import profile from './modules/profile';
-import discovery from './modules/discovery';
 
 export default function createReducers(asyncReducers) {
   return {
@@ -14,12 +11,12 @@ export default function createReducers(asyncReducers) {
     online: (v = true) => v,
     notifs,
     auth,
-    boards,
-    stream,
-    discovery,
-    profile,
+    counter: multireducer({
+      counter1: counter,
+      counter2: counter,
+      counter3: counter
+    }),
     info,
-    // errorHandler,
     ...asyncReducers
   };
 }

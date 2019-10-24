@@ -8,7 +8,7 @@ import config from './config';
 
 const storage = __SERVER__ ? null : require('localforage');
 
-const host = clientUrl => (__SERVER__ ? `${config.apiHost}` : clientUrl);
+const host = clientUrl => (__SERVER__ ? `http://${config.apiHost}:${config.apiPort}` : clientUrl);
 
 const configureApp = transport => feathers()
   .configure(transport)
@@ -33,7 +33,7 @@ export function createApp(req) {
       )
     );
 
-    const accessToken = req.header('authorization') || (req.cookies && req.cookies.jwt);
+    const accessToken = req.header('authorization') || (req.cookies && req.cookies['feathers-jwt']);
     app.set('accessToken', accessToken);
 
     return app;

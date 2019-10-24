@@ -2,76 +2,51 @@
 
 // Navbar
 .navbar {
-  position: absolute;
-  z-index: 100;
+  position: fixed;
   width: 100%;
-  left: 1%;
-  top: 1%;
+  left: 0px;
+  top: 0px;
+  z-index: 100;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.navbar *{
-  position: relative;
-  z-index: 101;
+.navbarNav {
+  position: fixed;
+  left: 1%;
+  top: 1%;
 }
 
-//sets up dropdown menu around icons
-.navbarDropdown {
+.navbarBackbutton {
   display: inline-block;
 }
 
-//adds dropdown menu bg color on hamburger click
-.navbarDropdownMenu {
-  background-color: $foreground;
-}
-
-.icons{
-  padding-top: 7px;
-  z-index: 102;
-  position:relative;
-}
-
-//hamburger button
-.hamburger {
-  box-shadow: none;
-  border: none;
-  background: none;
-  margin: 0;
-  padding: 0;
-  float: left;
-}
-
-.hamburger:hover {
-  background: none;
-  box-shadow: none;
+.navbarBackbutton:hover {
   cursor: pointer;
 }
 
-//sizing svg icons
-.hamburger svg{
+.navbarBackbutton img {
   height: 50px;
-  width: 50px;
 }
 
-.brandimg{
-  height: 50px;
-  width: 50px;
+.navbarBackbutton {
+  border: none;
+  background: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
-//changes svg icon color on click
-.iconClicked path{
-  fill: $background  !important;
-}
 
-//div around dropdown links
-.links{
-  padding: 0px 15px 15px 15px;
-}
-
-.mainLink {
-  font-size: 20px;
+.navbarDropdownMenu {
+  position: inherit;
+  background-color: $foreground;
+  padding: 20px;
+  border-radius: 5px;
+  border-color: $foreground;
+  border-style: solid;
+  box-shadow: 1px 1px $background;
 }
 
 .navbarMenu a {
@@ -94,28 +69,26 @@
   font-size: 20px;
 }
 
-//profile button
-.profileButton {
-  position: fixed;
-  padding: 5px;
-  top: 1%;
-  right: 60px;
+.navbarLogo {
+  border: 5px ;
+  display: inline;
 }
 
-//invisible overlay covers entire view
-.overlay {
-  z-index: 99;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  top:0px;
-  left:0px;
-}
-.overlay:hover {
-  cursor: default;
+.brandimg {
+  height: 50px;
 }
 
-//removes outline around clicked elements
-*:focus {
-  outline:0;
+
+.navbarDropdown {
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+
+.navbarMenu:hover .navbarDropdown{
+  display: block;
+}
+
+.mainLink {
+  font-size: 20px;
 }

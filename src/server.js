@@ -35,12 +35,11 @@ const chunksPath = path.join(__dirname, '..', 'static', 'dist', 'loadable-chunks
 
 process.on('unhandledRejection', (reason, p) => console.error('Unhandled Rejection at: Promise ', p, pretty.render(reason)));
 
-const targetUrl = `${config.apiHost}`;
+const targetUrl = `http://${config.apiHost}:${config.apiPort}`;
 const app = express();
 const server = new http.Server(app);
 const proxy = httpProxy.createProxyServer({
   target: targetUrl,
-  changeOrigin: true,
   ws: true
 });
 
@@ -78,7 +77,7 @@ app.use('/api', (req, res) => {
 });
 
 app.use('/ws', (req, res) => {
-  proxy.web(req, res, { target: `${targetUrl}` });
+  proxy.web(req, res, { target: `${targetUrl}/ws` });
 });
 
 server.on('upgrade', (req, socket, head) => {
@@ -205,7 +204,7 @@ app.use(async (req, res) => {
       if (err) {
         console.error(err);
       }
-      console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.apiHost);
+      console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort);
       console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
     });
   } else {

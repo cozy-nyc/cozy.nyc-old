@@ -6,19 +6,9 @@
   padding-bottom: 20px;
 }
 
-.mainLinks a:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
 .subLinks a {
   display: inline-block;
   padding: 0 10px 10px 0;
-}
-
-.subLinks a:hover {
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
 }
 
 .homeContent {
@@ -32,9 +22,8 @@
   text-align: center;
   margin: 0 auto;
 }
-.logo {
-  fill: $primary-text-color !important;
-  width: 250px;
+.brandTag{
+
 }
 
 .homeSidebar {
@@ -42,31 +31,16 @@
   text-align: left;
 }
 
-.navLinkBlue {
-  text-shadow: 2px 2px 0 $cozy-blue !important;
-}
-
-.navLinkBlue:hover {
+.navHoverBlue:hover {
   color: $cozy-blue !important;
-  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
-.navLinkGreen {
-  text-shadow: 2px 2px 0 $cozy-green !important;
-}
-
-.navLinkGreen:hover {
+.navHoverGreen:hover {
   color: $cozy-green !important;
-  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
-.navLinkOrange {
-  text-shadow: 2px 2px 0 $cozy-orange !important;
-}
-
-.navLinkOrange:hover {
+.navHoverOrange:hover {
   color: $cozy-orange !important;
-  text-shadow: 2px 2px 0 $primary-text-color !important;
 }
 
 @media screen and (max-width: 992px) {
@@ -77,8 +51,4 @@
   .homeSidebar {
     text-align: center;
   }
-}
-
-.profileButton {
-
 }
