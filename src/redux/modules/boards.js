@@ -78,8 +78,7 @@ export default function reducer(state = initialState, action = {}) {
     case 'CREATE_THREAD':
       return {
         ...state,
-        fetching: true,
-        fetched: false
+        fetching: true
       };
     case 'CREATE_THREAD_ERROR':
       return {
@@ -97,8 +96,7 @@ export default function reducer(state = initialState, action = {}) {
     case 'CREATE_POST':
       return {
         ...state,
-        fetching: true,
-        fetched: false
+        fetching: true
       };
     case 'CREATE_POST_FULFILLED':
       return {
@@ -152,7 +150,7 @@ export function createThread(data) {
     types: ['CREATE_THREAD', 'CREATE_THREAD_FULFILLED', 'CREATE_THREAD_ERROR'],
     promise: async ({ client }) => {
       try {
-        const response = await client.post('/boards/thread/create', data);
+        const response = client.post('/boards/thread/create', data);
         return response;
       } catch (error) {
         return { type: 'CREATE_THREAD_ERROR', error };

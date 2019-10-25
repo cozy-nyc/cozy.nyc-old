@@ -7,6 +7,8 @@ import PostBlock from 'components/Boards/PostBlock';
 import NotAvailable from 'components/NotAvailable/NotAvailable';
 import * as BoardsActions from 'redux/modules/boards';
 import PostForm from 'components/Boards/Forms/PostForm';
+import * as notifActions from 'redux/modules/notifs';
+
 /*
   Thread Page
 
@@ -35,7 +37,7 @@ ordering_fields: Allow search query to be ordered in reverse latestReplyTime
     auth: state.auth
   }),
   /* needs action to call data from API to see if the thread exist and the thread info */
-  { ...BoardsActions }
+  { ...notifActions, ...BoardsActions }
 )
 class Thread extends Component {
   static propTypes = {
@@ -51,7 +53,8 @@ class Thread extends Component {
         threadId: PropTypes.string.isRequired
       })
     }),
-    getThread: PropTypes.func.isRequired
+    getThread: PropTypes.func.isRequired,
+    notifSend: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -78,11 +81,36 @@ class Thread extends Component {
     }
   }
 
+  successSubmit = () => {
+    const { notifSend } = this.props;
+
+    notifSend({
+      message: 'Post submitted !',
+      kind: 'success',
+      dismissAfter: 2000
+    });
+  };
+
+  errorSubmit = error => {
+    const { notifSend } = this.props;
+
+    notifSend({
+      message: `Post submit error:\n${error.detail}`,
+      kind: 'danger',
+      dismissAfter: 2000
+    });
+  };
+
   createPost = async data => {
     this.toggleForm();
     const { createPost } = this.props;
-    const result = await createPost(data);
-    return result;
+    try {
+      const result = await createPost(data);
+      this.successSubmit();
+      return result;
+    } catch (error) {
+      this.errorSubmit(error);
+    }
   };
 
   toggleForm() {

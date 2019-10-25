@@ -75,13 +75,27 @@ class Board extends Component {
     });
   };
 
+  errorSubmit = error => {
+    const { notifSend } = this.props;
+
+    notifSend({
+      message: `Thread submit error:\n${error.detail}`,
+      kind: 'danger',
+      dismissAfter: 2000
+    });
+  };
+
   createThread = async data => {
     this.toggleForm();
     // this.successSubmit();
     const { createThread } = this.props;
-    const result = await createThread(data);
-    this.successSubmit();
-    return result;
+    try {
+      const result = await createThread(data);
+      this.successSubmit();
+      return result;
+    } catch (error) {
+      this.errorSubmit(error);
+    }
   };
 
   toggleForm() {
