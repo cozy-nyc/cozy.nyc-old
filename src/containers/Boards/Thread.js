@@ -50,7 +50,7 @@ class Thread extends Component {
     auth: PropTypes.objectOf(PropTypes.any).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
-        threadId: PropTypes.number.isRequired
+        threadId: PropTypes.string.isRequired
       })
     }),
     getThread: PropTypes.func.isRequired,
