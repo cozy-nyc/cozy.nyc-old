@@ -43,14 +43,14 @@ class Thread extends Component {
   static propTypes = {
     // Define the proptyes being used here.
     currentThread: PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.number.isRequired,
       posts: PropTypes.array,
       board: PropTypes.number
     }),
     auth: PropTypes.objectOf(PropTypes.any).isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
-        threadId: PropTypes.string.isRequired
+        threadId: PropTypes.number.isRequired
       })
     }),
     getThread: PropTypes.func.isRequired,
@@ -76,7 +76,7 @@ class Thread extends Component {
 
   componentDidUpdate(prevProps) {
     const { match, getThread, currentThread } = this.props;
-    if ((currentThread && !(match.params.threadId === currentThread.id)) || !prevProps.currentThread) {
+    if ((currentThread && !(match.params.threadId === `${currentThread.id}`)) || !prevProps.currentThread) {
       getThread(match.params.threadId);
     }
   }
@@ -121,7 +121,6 @@ class Thread extends Component {
   }
 
   render() {
-    // TODO: new css
     const styles = require('./Boards.scss');
     const { currentThread, auth } = this.props;
     const { showPopupForm } = this.state;
@@ -136,7 +135,7 @@ class Thread extends Component {
       </div>
     ) : (
       <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleForm()}>
-        noot
+        +
       </button>
     );
 

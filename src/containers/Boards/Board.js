@@ -115,7 +115,7 @@ class Board extends Component {
       </div>
     ) : (
       <button type="button" className={`${styles.popupButton}`} onClick={() => this.toggleForm()}>
-        noot
+        +
       </button>
     );
 
