@@ -43,26 +43,32 @@ class NavBar extends Component {
     const dropdown = show ? (
       <div className={styles.links}>
         <div className="main-links">
-          <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/stream">
+          <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/stream" onClick={() => this.showDropdown()}>
             stream
           </NavLink>
           <br />
-          <NavLink className={`${styles.mainLink} nav-hover-blue`} to="/boards">
+          <NavLink className={`${styles.mainLink} nav-hover-blue`} to="/boards" onClick={() => this.showDropdown()}>
             boards
           </NavLink>
           <br />
-          <NavLink className={`${styles.mainLink} nav-hover-green`} to="/discovery">
+          <NavLink className={`${styles.mainLink} nav-hover-green`} to="/discovery" onClick={() => this.showDropdown()}>
             discovery
           </NavLink>
           <br />
         </div>
         <br />
         <div className="sub-links">
-          <NavLink to="/about">about</NavLink>
+          <NavLink to="/about" onClick={() => this.showDropdown()}>
+            about
+          </NavLink>
           <br />
-          <NavLink to="/contribute">contribute</NavLink>
+          <NavLink to="/contribute" onClick={() => this.showDropdown()}>
+            contribute
+          </NavLink>
           <br />
-          <NavLink to="/exchange">exchange</NavLink>
+          <NavLink to="/exchange" onClick={() => this.showDropdown()}>
+            exchange
+          </NavLink>
         </div>
         {/* overlay allows user to click anywhere to hide dropdown */}
         <div

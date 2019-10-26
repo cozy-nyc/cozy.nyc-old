@@ -19,6 +19,7 @@
 
 //sets up dropdown menu around icons
 .navbarDropdown {
+  position: fixed;
   display: inline-block;
 }
 
@@ -28,7 +29,6 @@
 }
 
 .icons{
-  padding-top: 7px;
   z-index: 102;
   position:relative;
 }

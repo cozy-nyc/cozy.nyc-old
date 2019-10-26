@@ -29,11 +29,13 @@
 }
 
 .notifs {
-  position: absolute;
-  margin: 15px 0;
-  float: left;
-  top: 5px;
-  left: 50%;
+  position: fixed;
+  margin: 15px 15px 15px 15px;
+  top: 60px;
+  right: 0%;
+  z-index: 120;
+  white-space: pre-wrap;
+  line-height: 1.5em;
 }
 
 :global(.form-control-feedback) {
