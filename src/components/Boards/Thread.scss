@@ -1,11 +1,13 @@
 @import '../../theme/variables.scss';
 
+//css for the thread preview divs on home and board pages
+
 .threadWrapper {
   display: inline-block;
 }
 
 .threadContent {
-  background-color: grey;
+  background-color: $cozy-blue;
   border: none;
   border-radius: 5px;
   overflow: hidden;
@@ -17,6 +19,7 @@
 
 .threadText {
   padding: 20px;
+  color: $cozy-cream;
 }
 
 .threadTitle {

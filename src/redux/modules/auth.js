@@ -208,6 +208,7 @@ export function login(data) {
   return {
     types: [LOGIN, LOGIN_SUCCESS, LOGIN_FAIL],
     promise: async ({ client }) => {
+      console.log('ugh');
       try {
         const response = await client.post('/auth/token/', data);
         setCookie()(response);

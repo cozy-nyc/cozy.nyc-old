@@ -52,3 +52,8 @@
   background: none;
   color: $cozy-pink;
 }
+
+//separates the "login" and "sign up" buttons by padding "sign up"
+.auth a ~ a{
+  padding-left: 10px;
+}
