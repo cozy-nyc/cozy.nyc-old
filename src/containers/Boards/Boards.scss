@@ -23,3 +23,21 @@
   bottom: 0;
   right: 0;
 }
+
+.link {
+  color: $cozy-blue !important;
+}
+
+.link:hover {
+  color: $weird-blue !important;
+}
+
+.hiddenLink {
+  color:$weird-blue !important;
+}
+
+.threadsWrapper {
+  text-align: center;
+  display: inline-block
+}
+

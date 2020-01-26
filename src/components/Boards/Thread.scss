@@ -4,6 +4,9 @@
 
 .threadWrapper {
   display: inline-block;
+  min-width: 300px;
+  margin: 0 auto;
+  text-align:center;
 }
 
 .threadContent {
@@ -11,22 +14,60 @@
   border: none;
   border-radius: 5px;
   overflow: hidden;
+  padding: 10px;
+  min-width: 280px;
+  width: 95%;
+  margin-bottom: 40px;
+  display: inline-block;
 }
 
 .threadImage {
-  max-width: 100%;
+  //max-width: 280px;
+  width:98%;
+  min-width: 270px;
+  margin: 0 auto;
 }
 
 .threadText {
-  padding: 20px;
   color: $cozy-cream;
+  text-align: justify;
+}
+
+.threadText:hover {
+  color: $weird-cream;
+}
+
+.threadPoster {
+  float: right !important;
+}
+
+.threadPoster a{
+  //new font stuff
+  color:$cozy-cream !important;
+}
+
+.threadPoster:hover a{
+  color:$weird-cream !important;
 }
 
 .threadTitle {
   font-size: 22px;
+  text-align: center
 }
 
 .threadDate {
   font-size: 8px;
   text-align: right;
+}
+
+.profileAvatar {
+  overflow: hidden;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  max-width:20px;
+  max-height:20px;
+  object-fit: cover;
+  background-color: $cozy-cream;
+  border: 1px solid $cozy-cream;
 }

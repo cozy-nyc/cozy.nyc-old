@@ -30,8 +30,11 @@ Input.propTypes = {
   meta: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
+const styles = require('./Form.scss');
+
 const LoginForm = ({ onSubmit }) => (
   <Form
+    className={styles.form}
     onSubmit={values => onSubmit(values).then(() => {}, err => err)}
     validate={loginValidation}
     render={({ handleSubmit, submitError }) => (

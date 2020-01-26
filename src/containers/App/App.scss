@@ -1,3 +1,5 @@
+@import '../../theme/variables.scss';
+
 .app {
   nav :global(.fa) {
     font-size: 2em;
@@ -23,4 +25,18 @@
 
 :global(.form-control-feedback) {
   text-align: inherit;
+}
+
+/* changes bg color from default cream
+to blue, green, and peach for respective pages*/
+body[class="creamBoardsTheme"] {
+  background-color: $cozy-blue;
+}
+
+body[class="creamDiscoveryTheme"] {
+  background-color: $cozy-green;
+}
+
+body[class="creamStreamTheme"] {
+  background-color: $cozy-peach;
 }

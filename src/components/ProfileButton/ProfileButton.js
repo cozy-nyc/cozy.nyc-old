@@ -16,7 +16,10 @@ import * as authActions from 'redux/modules/auth';
     - Use current user's profile image
 */
 @connect(
-  state => ({ user: state.auth.user }),
+  state => ({
+    user: state.auth.user,
+    profile: state.auth.profile
+  }),
   { ...authActions }
 )
 @withRouter
@@ -25,19 +28,28 @@ class ProfileButton extends Component {
     user: PropTypes.shape({
       username: PropTypes.string
     }).isRequired,
-    profile: PropTypes.object,
+    profile: PropTypes.shape({
+      profileImg: PropTypes.string
+    }),
     logout: PropTypes.func.isRequired,
     getUserProfile: PropTypes.func.isRequired
   };
 
   static defaultProps = {
     // Define any defaults like Board tag
-    profile: []
+    profile: null
   };
+
+  componentDidMount() {
+    const { profile, user, getUserProfile } = this.props;
+    if (profile == null && user != null) {
+      getUserProfile(user.username);
+    }
+  }
 
   componentDidUpdate() {
     const { profile, user, getUserProfile } = this.props;
-
+    console.log(profile);
     if (profile == null && user != null) {
       getUserProfile(user.username);
     }
@@ -48,7 +60,7 @@ class ProfileButton extends Component {
     const { user, profile, logout } = this.props;
 
     return (
-      <div className={styles.profileButton}>
+      <div className={`${styles.profileButton}`}>
         {user && (
           <div>
             <div className={styles.userInfo}>
@@ -62,7 +74,7 @@ class ProfileButton extends Component {
             </div>
             <div className={styles.userAvatar}>
               <Link to={`/u/${user.username}`}>
-                <img className={styles.profileImage} src={profile.profileImg} alt={user.username} />
+                <img className={styles.profileImage} src={profile.profileImg} alt={profile.username} />
               </Link>
             </div>
           </div>

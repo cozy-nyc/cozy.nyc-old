@@ -34,14 +34,17 @@
 }
 
 .logo {
-  fill: $weird-pink !important;
   filter: drop-shadow( 3px 3px 0 $cozy-pink);
   width: 250px;
 }
 
+.logo path{
+  fill: $weird-pink !important;
+}
+
 .homeSidebar {
   margin: 0 auto;
-  text-align: left;
+  text-align: center !important;
 }
 
 .navLinkBlue {
@@ -85,5 +88,6 @@
 }
 
 .profileButton {
-
+  //display: inline-block !important;
+  margin-bottom: 10px;
 }

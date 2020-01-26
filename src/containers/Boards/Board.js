@@ -144,11 +144,15 @@ class Board extends Component {
         {currentBoard !== null && (
           <div>
             <Helmet title={`boards - /${currentBoard.tag}/`} />
-            {mappedThreads}
-            {/*
-            Conditional statement is needed to prevent nonauthenticated users
-            from filling out a thread create form.
-           */}
+            <div className={`${styles.threadsWrapper}`}>
+              <div className={`${styles.threads} row card-columns justify-content-center`}>
+                {mappedThreads}
+                {/*
+                Conditional statement is needed to prevent nonauthenticated users
+                from filling out a thread create form.
+              */}
+              </div>
+            </div>
             {auth.user !== null && <div className={`${styles.popupWrapper}`}>{popup}</div>}
           </div>
         )}
