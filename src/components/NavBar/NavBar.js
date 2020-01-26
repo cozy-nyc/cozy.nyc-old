@@ -71,10 +71,6 @@ class NavBar extends Component {
           <NavLink to="/contribute" onClick={() => this.hideDropdown()}>
             contribute
           </NavLink>
-          <br />
-          <NavLink to="/exchange" onClick={() => this.hideDropdown()}>
-            exchange
-          </NavLink>
         </div>
         {/* overlay allows user to click anywhere to hide dropdown */}
         <div

@@ -30,7 +30,7 @@ Input.propTypes = {
   meta: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
-const styles = require('./Form.scss');
+const styles = require('./LoginForm.scss');
 
 const LoginForm = ({ onSubmit }) => (
   <Form

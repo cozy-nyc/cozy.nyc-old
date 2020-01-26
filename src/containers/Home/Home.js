@@ -36,13 +36,13 @@ class Home extends Component {
             </div>
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navLinkGreen} to="stream">
+              <Link className={styles.navLinkPeach} to="stream">
                 stream
               </Link>
-              <Link className={styles.navLinkOrange} to="boards">
+              <Link className={styles.navLinkBlue} to="boards">
                 boards
               </Link>
-              <Link className={styles.navLinkBlue} to="discovery">
+              <Link className={styles.navLinkGreen} to="discovery">
                 discovery
               </Link>
             </div>
@@ -50,7 +50,6 @@ class Home extends Component {
             <div className={styles.subLinks}>
               <Link to="about">about</Link>
               <Link to="contribute">contribute</Link>
-              <Link to="exchange"> exchange </Link>
             </div>
           </div>
         </div>

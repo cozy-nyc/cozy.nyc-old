@@ -26,6 +26,7 @@
 //adds dropdown menu bg color on hamburger click
 .navbarDropdownMenu {
   background-color: $foreground;
+  border-radius: 5px;
 }
 
 .icons{
@@ -80,7 +81,11 @@ SVG path {
 }
 
 .navbarMenu a {
-  color: $foreground;
+  color: $cozy-cream !important;
+}
+
+.navbarMenu a:hover {
+  color: $weird-pink !important;
 }
 
 .navbarMenu .main-links {
