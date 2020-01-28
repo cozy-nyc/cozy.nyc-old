@@ -1,5 +1,12 @@
 @import '../../theme/variables.scss';
 
+.homeSidebar {
+  padding: 0px;
+  margin-left:0px 15px;
+  text-align: center !important;
+}
+
+
 .mainLinks a {
   display: block;
   font-size: 40px;
@@ -11,9 +18,12 @@
   transform: scale(1.2);
 }
 
-.subLinks a {
+.subLinks {
   display: inline-block;
-  padding: 0 10px 10px 0;
+}
+
+.subLinks a {
+  padding: 5px 10px;
 }
 
 .subLinks a:hover {
@@ -40,11 +50,6 @@
 
 .logo path{
   fill: $weird-pink !important;
-}
-
-.homeSidebar {
-  margin: 0 auto;
-  text-align: center !important;
 }
 
 .navLinkBlue {
@@ -88,6 +93,5 @@
 }
 
 .profileButton {
-  //display: inline-block !important;
   margin-bottom: 10px;
 }
