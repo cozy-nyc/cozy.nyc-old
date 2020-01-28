@@ -1,12 +1,15 @@
 @import '../../theme/variables.scss';
 
 //css for the thread preview divs on home and board pages
+//450 width
+//space in between: 80 (40 + 40)
 
 .threadWrapper {
   display: inline-block;
-  min-width: 300px;
-  margin: 0 auto;
+  width: 450px;
   text-align:center;
+  padding: 0;
+  margin: 40px 40px 40px 40px;
 }
 
 .threadContent {
@@ -15,16 +18,13 @@
   border-radius: 5px;
   overflow: hidden;
   padding: 10px;
-  min-width: 280px;
-  width: 95%;
-  margin-bottom: 40px;
+  width: 450px;
   display: inline-block;
 }
 
 .threadImage {
   //max-width: 280px;
   width:98%;
-  min-width: 270px;
   margin: 0 auto;
 }
 

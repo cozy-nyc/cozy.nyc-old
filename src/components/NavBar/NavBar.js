@@ -49,16 +49,16 @@ class NavBar extends Component {
     const dropdown = show ? (
       <div className={styles.links}>
         <div className="main-links">
-          <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/stream" onClick={() => this.hideDropdown()}>
-            stream
+          <NavLink className={`${styles.mainLink} nav-hover-orange`} to="/streams" onClick={() => this.hideDropdown()}>
+            streams
           </NavLink>
           <br />
           <NavLink className={`${styles.mainLink} nav-hover-blue`} to="/boards" onClick={() => this.hideDropdown()}>
             boards
           </NavLink>
           <br />
-          <NavLink className={`${styles.mainLink} nav-hover-green`} to="/discovery" onClick={() => this.hideDropdown()}>
-            discovery
+          <NavLink className={`${styles.mainLink} nav-hover-green`} to="/works" onClick={() => this.hideDropdown()}>
+            works
           </NavLink>
           <br />
         </div>

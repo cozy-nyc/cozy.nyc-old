@@ -159,8 +159,8 @@ body[class="boardsTheme"] .navbar{
     fill: $cozy-blue !important;}
   }
 }
-//general stream navbar styles (when body has cream bg)
-body[class="streamTheme"] .navbar{
+//general streams navbar styles (when body has cream bg)
+body[class="streamsTheme"] .navbar{
   .navbarDropdownMenu {
     background-color: $cozy-peach;
   }
@@ -175,8 +175,8 @@ body[class="streamTheme"] .navbar{
     fill: $cozy-peach !important;}
   }
 }
-//general discovery navbar styles (when body has cream bg)
-body[class="discoveryTheme"] .navbar{
+//general works navbar styles (when body has cream bg)
+body[class="worksTheme"] .navbar{
   .navbarDropdownMenu {
     background-color: $cozy-green;
   }
@@ -205,8 +205,8 @@ body[class="creamBoardsTheme"] .navbar{
     fill: $cozy-blue !important;}
   }
 }
-//cream stream theme styles (when body has peach bg)
-body[class="creamStreamTheme"] .navbar{
+//cream streams theme styles (when body has peach bg)
+body[class="creamStreamsTheme"] .navbar{
   @extend .creamTheme;
   .navbarMenu a {
     color: $cozy-peach !important;
@@ -219,8 +219,8 @@ body[class="creamStreamTheme"] .navbar{
     fill: $cozy-peach !important;}
   }
 }
-//cream discovery theme styles (when body has green bg)
-body[class="creamDiscoveryTheme"] .navbar{
+//cream works theme styles (when body has green bg)
+body[class="creamWorksTheme"] .navbar{
   @extend .creamTheme;
   .navbarMenu a {
     color: $cozy-green !important;

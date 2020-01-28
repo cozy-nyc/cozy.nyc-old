@@ -36,14 +36,14 @@ class Home extends Component {
             </div>
 
             <div className={styles.mainLinks}>
-              <Link className={styles.navLinkPeach} to="stream">
-                stream
+              <Link className={styles.navLinkPeach} to="streams">
+                streams
               </Link>
               <Link className={styles.navLinkBlue} to="boards">
                 boards
               </Link>
-              <Link className={styles.navLinkGreen} to="discovery">
-                discovery
+              <Link className={styles.navLinkGreen} to="works">
+                works
               </Link>
             </div>
 

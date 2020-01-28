@@ -36,8 +36,10 @@
   color:$weird-blue !important;
 }
 
-.threadsWrapper {
-  text-align: center;
-  display: inline-block
+.threads {
+  display: flex;
+  justify-content: space-between !important;
+  flex-flow: row wrap !important;
+  //remove extra space around the thread block
+  margin-top: -40px !important;
 }
-

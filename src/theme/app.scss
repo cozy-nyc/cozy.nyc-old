@@ -125,13 +125,19 @@ button:hover {
   margin: 0 auto;
   min-height: 100%;
   height: 100%;
-  padding: 10%;
+  padding: 7% 5% 5%;
   width: 100%;
 }
 
 
 @media screen and (max-width: 992px) {
   .container {
-    padding: 10%;
+    padding: 75px 5% 5%;
+  }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 992px){
+  .container {
+    padding: 130px 5% 5%;
   }
 }

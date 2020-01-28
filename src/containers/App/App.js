@@ -101,17 +101,17 @@ class App extends Component {
       } else {
         document.body.className = 'boardsTheme';
       }
-    } else if (location.pathname.includes('stream')) {
+    } else if (location.pathname.includes('streams')) {
       if (location.pathname.includes('watch')) {
-        document.body.className = 'creamStreamTheme';
+        document.body.className = 'creamStreamsTheme';
       } else {
-        document.body.className = 'streamTheme';
+        document.body.className = 'streamsTheme';
       }
-    } else if (location.pathname.includes('discovery')) {
+    } else if (location.pathname.includes('works')) {
       if (location.pathname.includes('yaya')) {
-        document.body.className = 'creamDiscoveryTheme';
+        document.body.className = 'creamWorksTheme';
       } else {
-        document.body.className = 'discoveryTheme';
+        document.body.className = 'worksTheme';
       }
     } else {
       document.body.removeAttribute('class');

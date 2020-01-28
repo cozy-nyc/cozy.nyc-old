@@ -123,8 +123,8 @@ a:hover {
   }
 }
 
-//styles shared by all stream themes (cream and normal)
-.streamThemes {
+//styles shared by all streams themes (cream and normal)
+.streamsThemes {
   a {
     color: $weird-peach !important;
   }
@@ -138,8 +138,8 @@ a:hover {
     border: 3px solid $weird-peach;
   }
 }
-//styles shared by all discovery themes (cream and normal)
-.discoveryThemes {
+//styles shared by all works themes (cream and normal)
+.worksThemes {
   a {
     color: $weird-green !important;
   }
@@ -169,9 +169,9 @@ body[class="boardsTheme"] .profileButton {
     box-shadow: 2px 2px 0 $cozy-blue;
   }
 }
-//general stream pro-button styles (when body has cream bg)
-body[class="streamTheme"] .profileButton {
-  @extend .streamThemes;
+//general streams pro-button styles (when body has cream bg)
+body[class="streamsTheme"] .profileButton {
+  @extend .streamsThemes;
   a:hover {
     color: $cozy-peach !important;
   }
@@ -185,9 +185,9 @@ body[class="streamTheme"] .profileButton {
     box-shadow: 2px 2px 0 $cozy-peach;
   }
 }
-//general discovery pro-button styles (when body has cream bg)
-body[class="discoveryTheme"] .profileButton {
-  @extend .discoveryThemes;
+//general works pro-button styles (when body has cream bg)
+body[class="worksTheme"] .profileButton {
+  @extend .worksThemes;
   a:hover {
     color: $cozy-green !important;
   }
@@ -206,13 +206,13 @@ body[class="creamBoardsTheme"] .profileButton {
   @extend .creamThemes;
   @extend .boardsThemes;
 }
-//cream stream pro-button styles (when body has peach bg)
-body[class="creamStreamTheme"] .profileButton {
+//cream streams pro-button styles (when body has peach bg)
+body[class="creamStreamsTheme"] .profileButton {
   @extend .creamThemes;
-  @extend .streamThemes;
+  @extend .streamsThemes;
 }
-//cream discovery pro-button styles (when body has green bg)
-body[class="creamDiscoveryTheme"] .profileButton {
+//cream works pro-button styles (when body has green bg)
+body[class="creamWorksTheme"] .profileButton {
   @extend .creamThemes;
-  @extend .discoveryThemes;
+  @extend .worksThemes;
 }
