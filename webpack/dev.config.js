@@ -95,7 +95,7 @@ const webpackConfig = {
         loader: 'url-loader',
         options: {
           limit: 10240,
-          mimetype: 'application/octet-streams'
+          mimetype: 'application/octet-stream'
         }
       },
       {
