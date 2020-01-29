@@ -121,9 +121,10 @@ class Thread extends Component {
   }
 
   render() {
-    const styles = require('./Boards.scss');
     const { currentThread, auth } = this.props;
     const { showPopupForm } = this.state;
+    const styles = require('./Boards.scss');
+
     const popup = showPopupForm ? (
       <div className={`${styles.popupForm}`}>
         <PostForm
