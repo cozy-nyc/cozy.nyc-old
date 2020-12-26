@@ -160,7 +160,7 @@
     "lighthouse": "^3.0.3",
     "lint-staged": "^7.0.1",
     "mini-css-extract-plugin": "^0.4.2",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "piping": "^1.0.0-rc.4",
     "postcss": "^7.0.17",
     "postcss-browser-reporter": "^0.5.0",
