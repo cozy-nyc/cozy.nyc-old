@@ -70,7 +70,7 @@
     "@feathersjs/rest-client": "^1.3.2",
     "@feathersjs/socketio": "^3.0.1",
     "@feathersjs/socketio-client": "^1.0.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-plugin-dynamic-import-node": "^2.0.0",
     "body-parser": "^1.16.1",
     "classnames": "^2.2.5",
